@@ -4,17 +4,12 @@ import {Box, Button, Divider, Tab, Tabs} from '@material-ui/core';
 import {Adjustments as AdjustmentsIcon} from '../../icons/adjustments';
 import {
     containsOperator,
-    endsWithOperator,
     equalOperator,
     greaterThanOperator,
     isAfterOperator,
     isBeforeOperator,
-    isBlankOperator,
-    isPresentOperator,
     lessThanOperator,
-    notContainsOperator,
-    notEqualOperator,
-    startsWithOperator
+    notEqualOperator
 } from '../../utils/filter-operators';
 import {BulkActionsMenu} from '../bulk-actions-menu';
 import {FilterDialog} from '../filter-dialog';
@@ -61,15 +56,10 @@ const filterOperators = [
     equalOperator,
     notEqualOperator,
     containsOperator,
-    notContainsOperator,
-    startsWithOperator,
-    endsWithOperator,
     greaterThanOperator,
     lessThanOperator,
     isAfterOperator,
-    isBeforeOperator,
-    isBlankOperator,
-    isPresentOperator
+    isBeforeOperator
 ];
 
 export const ProductsFilter = (props) => {

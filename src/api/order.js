@@ -108,7 +108,7 @@ const orders = [
         paymentId: 'OPP482L',
         paymentMethod: 'creditCard',
         paymentStatus: 'paid',
-        status: 'placed',
+        status: 'inProgress',
         totalAmount: 631,
         updatedAt: new Date('2021-02-21T12:12:45.475Z')
     },
@@ -143,7 +143,7 @@ const orders = [
         paymentId: 'DZS194LD',
         paymentMethod: 'stripe',
         paymentStatus: 'paid',
-        status: 'processed',
+        status: 'shipped',
         trackingCode: null,
         totalAmount: 100,
         updatedAt: new Date('2021-09-09T10:10:45.475Z')
@@ -179,7 +179,7 @@ const orders = [
         paymentId: 'OTIK283L',
         paymentMethod: 'debit',
         paymentStatus: 'paid',
-        status: 'processed',
+        status: 'returned',
         trackingCode: null,
         totalAmount: 60,
         updatedAt: new Date('2021-05-21T02:02:45.475Z')
@@ -215,7 +215,7 @@ const orders = [
         paymentId: 'RKKD832L',
         paymentMethod: 'paypal',
         paymentStatus: 'paid',
-        status: 'complete',
+        status: 'placed',
         trackingCode: null,
         totalAmount: 1200,
         updatedAt: new Date('2021-05-11T02:02:45.475Z')

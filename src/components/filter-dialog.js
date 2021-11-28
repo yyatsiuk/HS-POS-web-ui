@@ -14,6 +14,7 @@ import {
 import {useFilters} from '../hooks/use-filters';
 import {X as XIcon} from '../icons/x';
 import {FilterDialogItem} from './filter-dialog-item';
+import {useTranslation} from "react-i18next";
 
 export const FilterDialog = (props) => {
     const {open, onClose, operators, properties, onApply, onClear, ...other} = props;
@@ -26,6 +27,7 @@ export const FilterDialog = (props) => {
         handleValueChange,
         removeFilter
     } = useFilters(properties, operators);
+    const {t} = useTranslation();
 
     const handleFiltersClear = () => {
         clearFilters();
@@ -56,7 +58,7 @@ export const FilterDialog = (props) => {
                     color="textPrimary"
                     variant="inherit"
                 >
-                    Filter
+                    {t("Filter")}
                 </Typography>
                 <IconButton
                     onClick={onClose}
@@ -109,7 +111,7 @@ export const FilterDialog = (props) => {
                     onClick={handleFiltersClear}
                     variant="text"
                 >
-                    Reset
+                    {t("Reset")}
                 </Button>
                 <Button
                     color="primary"
@@ -119,7 +121,7 @@ export const FilterDialog = (props) => {
                     }}
                     variant="contained"
                 >
-                    Filter
+                    {t("Filter")}
                 </Button>
             </DialogActions>
         </Dialog>

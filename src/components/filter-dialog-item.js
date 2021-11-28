@@ -3,6 +3,7 @@ import {Button, Grid, MenuItem, Typography} from '@material-ui/core';
 import {Plus as PlusIcon} from '../icons/plus';
 import {DateField} from './date-field';
 import {InputField} from './input-field';
+import {useTranslation} from "react-i18next";
 
 export const FilterDialogItem = (props) => {
     const {
@@ -16,7 +17,7 @@ export const FilterDialogItem = (props) => {
         onValueChange,
         operators
     } = props;
-
+    const {t} = useTranslation();
     return (
         <div>
             <Typography
@@ -24,7 +25,7 @@ export const FilterDialogItem = (props) => {
                 sx={{mb: 1}}
                 variant="caption"
             >
-                Where
+                {t("Where")}
             </Typography>
             <Grid
                 container
@@ -46,7 +47,7 @@ export const FilterDialogItem = (props) => {
                                 key={property.name}
                                 value={property.name}
                             >
-                                {property.label}
+                                {t(property.label)}
                             </MenuItem>
                         ))}
                     </InputField>
@@ -69,7 +70,7 @@ export const FilterDialogItem = (props) => {
                                     key={operator.value}
                                     value={operator.value}
                                 >
-                                    {operator.label}
+                                    {t(operator.label)}
                                 </MenuItem>
                             ))}
                     </InputField>
@@ -109,7 +110,7 @@ export const FilterDialogItem = (props) => {
                 sx={{mr: 2}}
                 variant="text"
             >
-                Add Filter
+                {t("Add Filter")}
             </Button>
             <Button
                 onClick={() => onRemoveFilter(index)}
@@ -117,7 +118,7 @@ export const FilterDialogItem = (props) => {
                 sx={{color: 'text.secondary'}}
                 variant="text"
             >
-                Remove
+                {t("Remove")}
             </Button>
         </div>
     );

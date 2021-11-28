@@ -16,24 +16,6 @@ export const containsOperator = {
   value: 'contains'
 };
 
-export const notContainsOperator = {
-  label: 'not contains',
-  typesAccepted: ['string'],
-  value: 'notContains'
-};
-
-export const startsWithOperator = {
-  label: 'starts with',
-  typesAccepted: ['string'],
-  value: 'startsWith'
-};
-
-export const endsWithOperator = {
-  label: 'ends with',
-  typesAccepted: ['string'],
-  value: 'endsWith'
-};
-
 export const greaterThanOperator = {
   label: 'greater than',
   typesAccepted: ['number'],
@@ -58,14 +40,3 @@ export const isBeforeOperator = {
   value: 'isBefore'
 };
 
-export const isBlankOperator = {
-  label: 'is blank',
-  typesAccepted: ['blank'],
-  value: 'isBlank'
-};
-
-export const isPresentOperator = {
-  label: 'is present',
-  typesAccepted: ['blank'],
-  value: 'isPresent'
-};
