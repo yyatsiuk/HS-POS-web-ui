@@ -10,7 +10,7 @@ export const AccountDetails = (props) => {
     initialValues: {
       companyName: 'ACME Corp LLC.',
       email: 'chen.simmons@acmecorp.com',
-      fullName: 'Chen Simmons',
+      fullName: 'Kate Heida',
       jobTitle: 'Operation',
       submit: null
     },

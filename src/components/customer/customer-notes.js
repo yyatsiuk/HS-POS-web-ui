@@ -14,7 +14,7 @@ export const CustomerNotes = (props) => {
             {
                 id: generateResourceId(),
                 senderId: '1',
-                senderName: 'Chen Simmons',
+                senderName: 'Kate Heida',
                 senderAvatar: '/static/user-chen_simmons.png',
                 content,
                 createdAt: new Date()

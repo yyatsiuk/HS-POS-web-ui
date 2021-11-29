@@ -2,9 +2,11 @@ import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import {Avatar, Box, Table, TableBody, TableCell, TableHead, TableRow, Typography} from '@material-ui/core';
 import {Scrollbar} from '../scrollbar';
+import {useTranslation} from "react-i18next";
 
 export const OrderSummary = (props) => {
   const { order, ...other } = props;
+  const {t} = useTranslation();
 
   return (
     <Scrollbar>
@@ -15,16 +17,16 @@ export const OrderSummary = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>
-              Name
+              {t("Name")}
             </TableCell>
             <TableCell>
-              Cost
+              {t("Cost")}
             </TableCell>
             <TableCell>
-              Qty
+              {t("Qty")}
             </TableCell>
             <TableCell>
-              Total
+              {t("Total")}
             </TableCell>
           </TableRow>
         </TableHead>
@@ -76,7 +78,7 @@ export const OrderSummary = (props) => {
           ))}
           <TableRow>
             <TableCell>
-              Subtotal
+              {t("Subtotal")}
             </TableCell>
             <TableCell />
             <TableCell />
@@ -86,17 +88,7 @@ export const OrderSummary = (props) => {
           </TableRow>
           <TableRow>
             <TableCell>
-              Discount (%)
-            </TableCell>
-            <TableCell />
-            <TableCell />
-            <TableCell>
-              {numeral(order.discountAmount).format(`${order.currencySymbol}0,0.00`)}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>
-              VAT (25%)
+              {t("Prepayment")}
             </TableCell>
             <TableCell />
             <TableCell />
@@ -106,11 +98,21 @@ export const OrderSummary = (props) => {
           </TableRow>
           <TableRow>
             <TableCell>
+              {t("Discount (%)")}
+            </TableCell>
+            <TableCell />
+            <TableCell />
+            <TableCell>
+              {numeral(order.discountAmount).format(`${order.currencySymbol}0,0.00`)}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
               <Typography
                 color="textPrimary"
                 variant="subtitle2"
               >
-                Total
+                {t("Total")}
               </Typography>
             </TableCell>
             <TableCell />

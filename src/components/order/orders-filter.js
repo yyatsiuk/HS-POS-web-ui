@@ -36,8 +36,8 @@ const views = [
         value: "inProgress"
     },
     {
-      label: "Made",
-      value: "made"
+      label: "Ready for Shipment",
+      value: "ready"
     },
     {
         label: 'Shipped',

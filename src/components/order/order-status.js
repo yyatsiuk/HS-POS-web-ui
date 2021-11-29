@@ -16,17 +16,27 @@ import {OrderTimeline} from './order-timeline';
 
 const statusOptions = [
   {
-    color: 'info.main',
+    color: 'warning.main',
     label: 'Placed',
     value: 'placed'
   },
   {
-    color: 'error.main',
-    label: 'Processed',
-    value: 'processed'
+    color: 'secondary.dark',
+    label: 'In Progress',
+    value: 'inProgress'
   },
   {
-    color: 'warning.main',
+    color: 'secondary.light',
+    label: "Ready for Shipment",
+    value: "ready"
+  },
+  {
+    color: 'info.dark',
+    label: 'Shipped',
+    value: 'shipped'
+  },
+  {
+    color: 'info.light',
     label: 'Delivered',
     value: 'delivered'
   },
@@ -34,6 +44,11 @@ const statusOptions = [
     color: 'success.main',
     label: 'Complete',
     value: 'complete'
+  },
+  {
+    color: 'error.main',
+    label: 'Returned',
+    value: 'returned'
   }
 ];
 
@@ -120,11 +135,6 @@ export const OrderStatus = (props) => {
             icon={ReceiptRefundIcon}
             label="Request a Refund"
           />
-          <ActionListItem
-            icon={ArchiveIcon}
-            label="Archive Order"
-            onClick={handleOpenArchiveDialog}
-          />
         </ActionList>
       </Card>
       <ConfirmationDialog
@@ -142,14 +152,6 @@ export const OrderStatus = (props) => {
         open={duplicateDialogOpen}
         title="Duplicate Order"
         variant="warning"
-      />
-      <ConfirmationDialog
-        message="Are you sure you want to archive this order? This can't be undone."
-        onCancel={handleCloseArchiveDialog}
-        onConfirm={handleArchive}
-        open={archiveDialogOpen}
-        title="Archive Order"
-        variant="error"
       />
     </>
   );

@@ -43,7 +43,7 @@ const columns = [
     },
     {
         id: 'address',
-        label: 'Address'
+        label: 'Delivery Address'
     },
     {
         id: 'status',
@@ -68,8 +68,8 @@ const statusVariants = [
     },
     {
         color: 'secondary.light',
-        label: "Made",
-        value: "made"
+        label: "Ready for Shipment",
+        value: "ready"
     },
     {
         color: 'info.dark',
@@ -203,24 +203,24 @@ export const OrdersTable = (props) => {
                                             underline="none"
                                             variant="inherit"
                                         >
-                                            {`${order.customer.firstName} ${order.customer.lastName}`}
+                                            {`${order.customer.lastName} ${order.customer.firstName} ${order.customer.middleName}`}
                                         </Link>
                                     </TableCell>
                                     <TableCell>
-                                        000000000000
+                                        {order.customer.phone}
                                     </TableCell>
                                     <TableCell>
                                         <Typography
                                             color="inherit"
                                             variant="inherit"
                                         >
-                                            {`${order.customer.city}, ${order.customer.country}`}
+                                            {order.address}
                                         </Typography>
                                         <Typography
                                             color="textSecondary"
                                             variant="inherit"
                                         >
-                                            {order.courier}
+                                            {`${t(order.courier.name)}, #${order.courier.branchNumber}`}
                                         </Typography>
                                     </TableCell>
                                     <TableCell>
@@ -230,7 +230,7 @@ export const OrdersTable = (props) => {
                                         />
                                     </TableCell>
                                     <TableCell>
-                                        {numeral(order.totalAmount).format(`${order.currencySymbol}0,0.00`)}
+                                        {order.currencySymbol}{numeral(order.totalAmount).format(`0,0.00`)}
                                     </TableCell>
                                     <TableCell align="right">
                                         <OrderMenu/>

@@ -80,7 +80,7 @@ export const AuthProvider = (props) => {
                             id: user.sub,
                             avatar: '/static/user-chen_simmons.png',
                             email: user.attributes.email,
-                            name: 'Chen Simmons'
+                            name: 'Kate Heida'
                         }
                     }
                 });
@@ -113,7 +113,7 @@ export const AuthProvider = (props) => {
                     id: user.attributes.sub,
                     avatar: '/static/user-chen_simmons.png',
                     email: user.attributes.email,
-                    name: 'Chen Simmons',
+                    name: 'Kate Heida',
                     plan: 'Premium'
                 }
             }

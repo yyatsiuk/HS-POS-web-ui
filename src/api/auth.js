@@ -7,7 +7,7 @@ const users = [
         id: '5e86809283e28b96d2d38537',
         avatar: '/static/user-chen_simmons.png',
         email: 'demo@devias.io',
-        name: 'Chen Simmons',
+        name: 'Kate Heida',
         password: 'Password123!'
     }
 ];

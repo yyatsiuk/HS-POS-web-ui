@@ -36,6 +36,14 @@ const resources = {
             'less than': 'менше ніж',
             'is after': 'після',
             'is before': 'перед',
+            'Discount (%)': 'Знижка (%)',
+            "Line Items": 'Список Товарів',
+            'Order Info': 'Інформація Замовлення',
+            'Delivery Address': 'Локація Доставки',
+            'Nova Poshta #': 'Нова Пошта №',
+            'Payment Status': 'Статус Оплати',
+            'Ready for Shipment': 'Готово для відправки',
+            'Nova Poshta': 'Нова Пошта',
             Account: 'Аккаунт',
             Activity: 'Активність',
             Billing: 'Оплата',
@@ -65,7 +73,6 @@ const resources = {
             Processed: 'Обробленно',
             Delivered: 'Доставлено',
             Complete: 'Завершено',
-            Made: 'Зроблено',
             Shipped: 'Відправлено',
             Returned: 'Поверненно',
             Cancel: 'Відміна',
@@ -81,8 +88,13 @@ const resources = {
             Created: 'Дата',
             equal: 'дорівнює',
             contains: 'містить',
-            Where: 'Де'
-
+            Where: 'Де',
+            Name: "Ім'я",
+            Cost: 'Ціна',
+            Qty: 'К-сть',
+            Subtotal: 'Сума без знижок',
+            Prepayment: 'Предоплата',
+            Edit: 'Редагувати'
         }
     }
 };

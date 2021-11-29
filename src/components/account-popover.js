@@ -79,7 +79,7 @@ export const AccountPopover = () => {
                             sx={{color: 'primary.contrastText'}}
                             variant="subtitle2"
                         >
-                            Chen Simmons
+                            Kate Heida
                         </Typography>
                     </div>
                     <ChevronDownIcon
@@ -116,7 +116,7 @@ export const AccountPopover = () => {
                             />
                         </ListItemAvatar>
                         <ListItemText
-                            primary="Chen Simmons"
+                            primary="Kate Heida"
                             secondary="ACME Corp LLC."
                         />
                     </ListItem>

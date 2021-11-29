@@ -7,20 +7,25 @@ import {wait} from '../utils/wait';
 const orders = [
     {
         id: '5273',
-        courier: 'DHL',
         createdAt: new Date('2021-06-02T14:32:45.475Z'),
-        currency: 'USD',
-        currencySymbol: '$',
+        currency: 'UAH',
+        currencySymbol: '\u20B4',
+        address: 'м.Тернопіль',
         customer: {
-            city: 'New York',
-            country: 'USA',
-            firstName: 'Devon',
-            lastName: 'Lane'
+            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            phone: '6035550123',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна'
+        },
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '4',
         },
         discountAmount: 0,
         lineItems: [
             {
-                currency: 'USD',
+                currency: 'UAH',
                 currencySymbol: '$',
                 discountAmount: 0,
                 image: '/static/product-01.png',
@@ -33,7 +38,6 @@ const orders = [
                 unitAmount: 160
             }
         ],
-        paymentId: 'ORIL8823',
         paymentMethod: 'debit',
         paymentStatus: 'paid',
         status: 'delivered',
@@ -43,20 +47,25 @@ const orders = [
     },
     {
         id: '9265',
-        courier: 'DHL',
         createdAt: new Date('2021-05-12T20:10:45.475Z'),
-        currency: 'USD',
-        currencySymbol: '$',
+        currency: 'UAH',
+        currencySymbol: '\u20B4',
+        address: 'с. Гусятин, Тернопільська обл.',
         customer: {
-            city: 'Berlin',
-            country: 'Germany',
-            firstName: 'Livia',
-            lastName: 'Louthe'
+            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            phone: '6035550123',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна'
+        },
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '3',
         },
         discountAmount: 0,
         lineItems: [
             {
-                currency: 'USD',
+                currency: 'UAH',
                 currencySymbol: '$',
                 discountAmount: 0,
                 image: '/static/product-01.png',
@@ -69,7 +78,6 @@ const orders = [
                 unitAmount: 160
             }
         ],
-        paymentId: 'L993DDLS',
         paymentMethod: 'paypal',
         paymentStatus: 'paid',
         status: 'complete',
@@ -79,21 +87,25 @@ const orders = [
     },
     {
         id: '9266',
-        courier: 'UPS',
         createdAt: new Date('2021-02-21T12:12:45.475Z'),
-        currency: 'USD',
-        currencySymbol: '$',
+        currency: 'UAH',
+        currencySymbol: '\u20B4',
+        address: 'с. Гадинківці, Тернопільська обл.',
         customer: {
-            city: 'Hamburg',
-            country: 'Germany',
-            firstName: 'Peri',
-            lastName: 'Ottawell'
+            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            phone: '6035550123',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна'
+        },
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '2',
         },
         discountAmount: 0,
         lineItems: [
             {
-                currency: 'USD',
-                currencySymbol: '$',
+                currency: 'UAH',
                 discountAmount: 0,
                 image: '/static/product-01.png',
                 name: 'Watch with Leather Strap',
@@ -105,7 +117,6 @@ const orders = [
                 unitAmount: 160
             }
         ],
-        paymentId: 'OPP482L',
         paymentMethod: 'creditCard',
         paymentStatus: 'paid',
         status: 'inProgress',
@@ -114,21 +125,25 @@ const orders = [
     },
     {
         id: '1090',
-        courier: 'UPS',
         createdAt: new Date('2021-09-09T10:10:45.475Z'),
-        currency: 'USD',
-        currencySymbol: '$',
+        currency: 'UAH',
+        currencySymbol: '\u20B4',
+        address: 'м. Збараж, Тернопільська обл.',
         customer: {
-            city: 'Madrid',
-            country: 'Spain',
-            firstName: 'Thadeus',
-            lastName: 'Jacketts'
+            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            phone: '6035550123',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна'
+        },
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '1',
         },
         discountAmount: 0,
         lineItems: [
             {
-                currency: 'USD',
-                currencySymbol: '$',
+                currency: 'UAH',
                 discountAmount: 0,
                 image: '/static/product-01.png',
                 name: 'Watch with Leather Strap',
@@ -140,7 +155,6 @@ const orders = [
                 unitAmount: 160
             }
         ],
-        paymentId: 'DZS194LD',
         paymentMethod: 'stripe',
         paymentStatus: 'paid',
         status: 'shipped',
@@ -150,21 +164,25 @@ const orders = [
     },
     {
         id: '1111',
-        courier: 'Purolator',
         createdAt: new Date('2021-05-21T02:02:45.475Z'),
-        currency: 'USD',
-        currencySymbol: '$',
+        currency: 'UAH',
+        currencySymbol: '\u20B4',
+        address: 'м. Збараж, Тернопільська обл.',
         customer: {
-            city: 'Barcelona',
-            country: 'Spain',
-            firstName: 'Rad',
-            lastName: 'Jose'
+            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            phone: '6035550123',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна'
+        },
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '7',
         },
         discountAmount: 0,
         lineItems: [
             {
-                currency: 'USD',
-                currencySymbol: '$',
+                currency: 'UAH',
                 discountAmount: 0,
                 image: '/static/product-01.png',
                 name: 'Watch with Leather Strap',
@@ -186,21 +204,25 @@ const orders = [
     },
     {
         id: '2475',
-        courier: 'Purolator',
         createdAt: new Date('2021-05-11T02:02:45.475Z'),
-        currency: 'USD',
-        currencySymbol: '$',
+        currency: 'UAH',
+        currencySymbol: '\u20B4',
+        address: 'м. Збараж, Тернопільська обл.',
         customer: {
-            city: 'Chicago',
-            country: 'USA',
-            firstName: 'Eydie',
-            lastName: 'Hopkyns'
+            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            phone: '6035550123',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна'
+        },
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '6',
         },
         discountAmount: 0,
         lineItems: [
             {
-                currency: 'USD',
-                currencySymbol: '$',
+                currency: 'UAH',
                 discountAmount: 0,
                 image: '/static/product-01.png',
                 name: 'Watch with Leather Strap',
@@ -212,7 +234,6 @@ const orders = [
                 unitAmount: 160
             }
         ],
-        paymentId: 'RKKD832L',
         paymentMethod: 'paypal',
         paymentStatus: 'paid',
         status: 'placed',
@@ -224,24 +245,25 @@ const orders = [
 
 const order = {
     id: '5273',
-    courier: 'DHL',
     createdAt: new Date('2021-06-02T14:32:45.475Z'),
-    currency: 'USD',
-    currencySymbol: '$',
+    currency: 'UAH',
+    currencySymbol: '\u20B4',
+    address: 'м. Збараж, Тернопільська обл.',
     customer: {
-        address: '8502 Preston Rd. Inglewood, Maine 98380',
-        city: 'New York',
-        country: 'USA',
-        email: 'devon.lane@nopta.com',
-        firstName: 'Devon',
-        lastName: 'Lane',
-        phone: '6035550123'
+        instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+        phone: '6035550123',
+        firstName: 'Чайка',
+        lastName: 'Чайківська',
+        middleName: 'Іванівна'
+    },
+    courier: {
+        name: 'Nova Poshta',
+        branchNumber: '5',
     },
     discountAmount: 0,
     lineItems: [
         {
-            currency: 'USD',
-            currencySymbol: '$',
+            currency: 'UAH',
             discountAmount: 0,
             image: '/static/product-01.png',
             name: 'Watch with Leather Strap',
@@ -253,7 +275,6 @@ const order = {
             unitAmount: 160
         }
     ],
-    paymentId: 'RRNQ8JLQ',
     paymentMethod: 'debit',
     paymentStatus: 'paid',
     status: 'delivered',
