@@ -13,6 +13,7 @@ import {
     MenuItem
 } from '@material-ui/core';
 import {InputField} from '../input-field';
+import {useTranslation} from "react-i18next";
 
 const statusOptions = [
   {
@@ -20,8 +21,16 @@ const statusOptions = [
     value: 'placed'
   },
   {
-    label: 'Processed',
-    value: 'processed'
+    label: 'In Progress',
+    value: 'inProgress'
+  },
+  {
+    label: "Ready for Shipment",
+    value: "ready"
+  },
+  {
+    label: 'Shipped',
+    value: 'shipped'
   },
   {
     label: 'Delivered',
@@ -30,51 +39,44 @@ const statusOptions = [
   {
     label: 'Complete',
     value: 'complete'
+  },
+  {
+    label: 'Returned',
+    value: 'returned'
   }
 ];
 
-const countryOptions = [
+const courierOptions = [
   {
-    value: 'USA',
-    cities: ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Austin']
+    label: 'Nova Poshta',
+    value: 'Nova Poshta',
   },
   {
-    value: 'Germany',
-    cities: ['Berlin', 'Hamburg', 'Munich', 'Dortmund', 'Bremen']
-  },
-  {
-    value: 'Spain',
-    cities: ['Madrid', 'Barcelona', 'Valencia', 'Málaga', 'Sevilla']
-  },
-  {
-    value: 'Italy',
-    cities: ['Rome', 'Milan', 'Naples', 'Turin', 'Palermo']
+    label: 'Meest Express',
+    value: 'Meest Express'
   }
 ];
 
 export const OrderInfoDialog = (props) => {
   const { open, onClose, order } = props;
+  const {t} = useTranslation();
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      address: order?.customer.address || '',
-      country: order?.customer.country || '',
-      email: order?.customer.email || '',
+      address: order?.address || '',
+      courierName: order?.courier.name || '',
+      courierBranchNumber: order?.courier.branchNumber || '',
+      instagram: order?.customer.instagram || '',
       phone: order?.customer.phone || '',
-      city: order?.customer.city || '',
       status: order?.status || '',
       submit: null
     },
     validationSchema: Yup.object().shape({
       address: Yup.string().max(255).required('Address is required'),
-      country: Yup
-        .string()
-        .max(255)
-        .oneOf(countryOptions.map((option) => option.value))
-        .required('Country is required'),
-      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+      courierName: Yup.string().max(255).oneOf(courierOptions.map((option) => option.value)).required('Courier is required'),
+      courierBranchNumber: Yup.string().max(5).required("Branch number is required"),
+      instagram: Yup.string().max(255).required('Instagram is required'),
       phone: Yup.string().max(255).required('Phone number is required'),
-      city: Yup.string().max(255).required('City is required'),
       status: Yup.string().max(255).required('Status is required')
     }),
     onSubmit: async (values, helpers) => {
@@ -106,7 +108,7 @@ export const OrderInfoDialog = (props) => {
       }}
     >
       <DialogTitle>
-        Edit order
+        {t("Edit order")}
       </DialogTitle>
       <DialogContent>
         <Grid
@@ -118,15 +120,14 @@ export const OrderInfoDialog = (props) => {
             xs={12}
           >
             <InputField
-              error={Boolean(formik.touched.email && formik.errors.email)}
+              error={Boolean(formik.touched.instagram && formik.errors.instagram)}
               fullWidth
-              helperText={formik.touched.email && formik.errors.email}
-              label="Email"
-              name="email"
+              helperText={formik.touched.instagram && formik.errors.instagram}
+              label="Instagram"
+              name="instagram"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              type="email"
-              value={formik.values.email}
+              value={formik.values.instagram}
             />
           </Grid>
           <Grid
@@ -137,11 +138,51 @@ export const OrderInfoDialog = (props) => {
               error={Boolean(formik.touched.address && formik.errors.address)}
               fullWidth
               helperText={formik.touched.address && formik.errors.address}
-              label="Address"
-              name="address"
+              label={t("Address")}
+              name="courierBranchNumber"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.address}
+            />
+          </Grid>
+          <Grid
+              item
+              xs={12}
+          >
+            <InputField
+                error={Boolean(formik.touched.courierName && formik.errors.courierName)}
+                fullWidth
+                helperText={formik.touched.courierName && formik.errors.courierName}
+                label={t("Courier")}
+                name="courierName"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                select
+                value={formik.values.courierName}
+            >
+              {courierOptions.map((courier) => (
+                  <MenuItem
+                      key={courier.value}
+                      value={courier.value}
+                  >
+                    {t(courier.label)}
+                  </MenuItem>
+              ))}
+            </InputField>
+          </Grid>
+          <Grid
+              item
+              xs={12}
+          >
+            <InputField
+                error={Boolean(formik.touched.courierBranchNumber && formik.errors.courierBranchNumber)}
+                fullWidth
+                helperText={formik.touched.courierBranchNumber && formik.errors.courierBranchNumber}
+                label={t("Branch Number")}
+                name="courierBranchNumber"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.courierBranchNumber}
             />
           </Grid>
           <Grid
@@ -152,7 +193,7 @@ export const OrderInfoDialog = (props) => {
               error={Boolean(formik.touched.phone && formik.errors.phone)}
               fullWidth
               helperText={formik.touched.phone && formik.errors.phone}
-              label="Phone number"
+              label={t("Phone")}
               name="phone"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -167,7 +208,7 @@ export const OrderInfoDialog = (props) => {
               error={Boolean(formik.touched.status && formik.errors.status)}
               fullWidth
               helperText={formik.touched.status && formik.errors.status}
-              label="Status"
+              label={t("Status")}
               name="status"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -179,61 +220,9 @@ export const OrderInfoDialog = (props) => {
                   key={option.value}
                   value={option.value}
                 >
-                  {option.label}
+                  {t(option.label)}
                 </MenuItem>
               ))}
-            </InputField>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-          >
-            <InputField
-              error={Boolean(formik.touched.country && formik.errors.country)}
-              fullWidth
-              helperText={formik.touched.country && formik.errors.country}
-              label="Country"
-              name="country"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              select
-              value={formik.values.country}
-            >
-              {countryOptions.map((option) => (
-                <MenuItem
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.value}
-                </MenuItem>
-              ))}
-            </InputField>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-          >
-            <InputField
-              error={Boolean(formik.touched.city && formik.errors.city)}
-              fullWidth
-              helperText={formik.touched.city && formik.errors.city}
-              label="City"
-              name="city"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              select
-              value={formik.values.city}
-            >
-              {(countryOptions
-                .find((option) => option.value === formik.values.country)?.cities || [])
-                .map((option) => (
-                  <MenuItem
-                    key={option}
-                    value={option}
-                  >
-                    {option}
-                  </MenuItem>
-                ))}
             </InputField>
           </Grid>
           {formik.errors.submit && (
@@ -254,14 +243,14 @@ export const OrderInfoDialog = (props) => {
           onClick={onClose}
           variant="text"
         >
-          Cancel
+          {t("Cancel")}
         </Button>
         <Button
           color="primary"
           onClick={() => { formik.handleSubmit(); }}
           variant="contained"
         >
-          Save Changes
+          {t("Save Changes")}
         </Button>
       </DialogActions>
     </Dialog>

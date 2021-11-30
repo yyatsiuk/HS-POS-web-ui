@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Typography} from '@material-ui/core';
 import {Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem} from '@material-ui/lab';
 import {Check as CheckIcon} from '../../icons/check';
+import {useTranslation} from "react-i18next";
 
 const getDotStyles = (value) => {
   if (value === 'complete') {
@@ -30,11 +31,13 @@ const getDotStyles = (value) => {
 
 // NOTE: Items should be generated on order data to display information such as ordered date
 const getItems = (status) => {
-  const statusMapping = ['placed', 'processed', 'delivered', 'complete'];
+  const statusMapping = ['placed', 'inProgress', 'ready', 'shipped', 'delivered', 'complete', 'returned'];
   const currentStatusIndex = statusMapping.indexOf(status) + 1;
   const items = [
-    { title: 'Placed at 10/30/2021 03:16' },
-    { title: 'Processed' },
+    { title: 'Placed at' },
+    { title: 'In Progress' },
+    { title: 'Ready' },
+    { title: 'Shipped' },
     { title: 'Delivered' },
     { title: 'complete' }
   ];
@@ -55,6 +58,7 @@ const getItems = (status) => {
 export const OrderTimeline = (props) => {
   const { status, ...other } = props;
   const items = getItems(status);
+  const {t} = useTranslation();
 
   return (
     <Timeline
@@ -99,7 +103,7 @@ export const OrderTimeline = (props) => {
                   : 'textSecondary'}
                 variant="overline"
               >
-                {item.title}
+                {item.title === 'Placed at' ? t(item.title, {date: props.createdAt}) : t(item.title)}
               </Typography>
             </TimelineContent>
           </TimelineItem>
@@ -120,5 +124,7 @@ export const OrderTimeline = (props) => {
 };
 
 OrderTimeline.propTypes = {
-  status: PropTypes.oneOf(['placed', 'processed', 'delivered', 'complete']).isRequired
+  status: PropTypes.oneOf(['placed', 'inProgress', 'ready', 'shipped', 'delivered', 'complete', 'returned']).isRequired,
+
+  createdAt: PropTypes.object.isRequired
 };

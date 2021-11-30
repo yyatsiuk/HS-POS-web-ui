@@ -265,23 +265,21 @@ const order = {
         {
             currency: 'UAH',
             discountAmount: 0,
-            image: '/static/product-01.png',
-            name: 'Watch with Leather Strap',
+            image: '/static/product-05.png',
+            name: 'Червоні Капці',
             quantity: 1,
             sku: 'BBAK01-A',
-            subtotalAmount: 160,
-            taxAmount: 32.5,
-            totalAmount: 192.5,
-            unitAmount: 160
+            totalAmount: 1000,
+            unitAmount: 1000
         }
     ],
     paymentMethod: 'debit',
     paymentStatus: 'paid',
     status: 'delivered',
     trackingCode: 'KDO020021',
-    subtotalAmount: 160,
-    taxAmount: 32.5,
-    totalAmount: 192.5,
+    subtotalAmount: 1000,
+    prepayment: 100,
+    totalAmount: 900,
     updatedAt: new Date('2021-06-02T14:32:45.475Z')
 };
 

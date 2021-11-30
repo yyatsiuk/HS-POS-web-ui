@@ -3,6 +3,7 @@ import {Box, Button, Card, CardHeader, Divider, Grid, Link} from '@material-ui/c
 import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
 import {useTranslation} from "react-i18next";
+import {Fragment} from 'react'
 
 const statusVariants = [
     {
@@ -12,6 +13,10 @@ const statusVariants = [
     {
         label: 'In Progress',
         value: 'inProgress'
+    },
+    {
+        label: "Ready for Shipment",
+        value: "ready"
     },
     {
         label: 'Shipped',
@@ -31,13 +36,30 @@ const statusVariants = [
     }
 ];
 
+const paymentStatusVariants = [
+    {
+        label: 'Paid',
+        value: 'paid'
+    },
+    {
+        label: 'Unpaid',
+        value: 'unpaid'
+    },
+    {
+        label: 'Prepayment',
+        value: 'prepayment'
+    }
+]
+
+
 export const OrderInfo = (props) => {
     const {order, onEdit, ...other} = props;
     const statusVariant = statusVariants.find((variant) => variant.value === order.status);
+    const paymentVariant = paymentStatusVariants.find((paymentStatus) => paymentStatus.value === order.paymentStatus);
     const {t} = useTranslation();
 
     const extractInstagramName = (link) => {
-        return link.split("https://instagram.com/")[1]
+        return "@" + link.split("https://instagram.com/")[1]
             .split("?")[0];
     }
 
@@ -71,23 +93,19 @@ export const OrderInfo = (props) => {
                     <PropertyList>
                         <PropertyListItem
                             label={t("Customer")}
-                            value={`${order.customer.firstName} ${order.customer.lastName}`}
+                            value={`${order.customer.lastName} ${order.customer.firstName} ${order.customer.middleName}`}
                         />
                         <PropertyListItem
                             label="Instagram"
                             value={
                                 <Link href={order.customer.instagram} target="_blank">
-                                    {"@" + extractInstagramName(order.customer.instagram)}
+                                    {extractInstagramName(order.customer.instagram)}
                                 </Link>
                             }
                         />
                         <PropertyListItem
                             label={t("Phone")}
                             value={order.customer.phone}
-                        />
-                        <PropertyListItem
-                            label={t("Payment Status")}
-                            value={order.customer.paymentStatus}
                         />
                     </PropertyList>
                 </Grid>
@@ -99,17 +117,22 @@ export const OrderInfo = (props) => {
                     <PropertyList>
                         <PropertyListItem
                             label={t("Status")}
-                            value={statusVariant.label}
+                            value={t(statusVariant.label)}
                         />
                         <PropertyListItem
                             label={t("Delivery Address")}
-                            value={order.customer.address}
-                        />
-                        <PropertyListItem
-                            label={t("Nova Poshta #")}
-                            value={order.customer.novaPoshtaNumber}
+                            value={
+                                <Fragment>
+                                    <div>{order.address}</div>
+                                    <div>{`${t(order.courier.name)} #${order.courier.branchNumber}`}</div>
+                                </Fragment>
+                            }
                         />
                     </PropertyList>
+                    <PropertyListItem
+                        label={t("Payment Status")}
+                        value={t(paymentVariant.label)}
+                    />
                 </Grid>
             </Grid>
         </Card>

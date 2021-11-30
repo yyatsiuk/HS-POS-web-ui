@@ -66,13 +66,13 @@ export const OrderSummary = (props) => {
                 </Box>
               </TableCell>
               <TableCell>
-                {numeral(lineItem.unitAmount).format(`${lineItem.currencySymbol}0,0.00`)}
+                {`${order.currencySymbol}${numeral(lineItem.unitAmount).format(0,0.00)}`}
               </TableCell>
               <TableCell>
                 {lineItem.quantity}
               </TableCell>
               <TableCell>
-                {numeral(lineItem.totalAmount).format(`${lineItem.currencySymbol}0,0.00`)}
+                {`${order.currencySymbol}${numeral(lineItem.totalAmount).format(0,0.00)}`}
               </TableCell>
             </TableRow>
           ))}
@@ -83,7 +83,7 @@ export const OrderSummary = (props) => {
             <TableCell />
             <TableCell />
             <TableCell>
-              {numeral(order.subtotalAmount).format(`${order.currencySymbol}0,0.00`)}
+              {`${order.currencySymbol}${numeral(order.subtotalAmount).format(0,0.00)}`}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -93,7 +93,7 @@ export const OrderSummary = (props) => {
             <TableCell />
             <TableCell />
             <TableCell>
-              {numeral(order.taxAmount).format(`${order.currencySymbol}0,0.00`)}
+              {`${order.currencySymbol}${numeral(order.prepayment).format(0,0.00)}`}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -103,7 +103,7 @@ export const OrderSummary = (props) => {
             <TableCell />
             <TableCell />
             <TableCell>
-              {numeral(order.discountAmount).format(`${order.currencySymbol}0,0.00`)}
+              {`${order.currencySymbol}${numeral(order.discountAmount).format(0,0.00)}`}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -122,7 +122,7 @@ export const OrderSummary = (props) => {
                 color="textPrimary"
                 variant="subtitle2"
               >
-                {numeral(order.totalAmount).format(`${order.currencySymbol}0,0.00`)}
+                {`${order.currencySymbol}${numeral(order.totalAmount).format(0,0.00)}`}
               </Typography>
             </TableCell>
           </TableRow>

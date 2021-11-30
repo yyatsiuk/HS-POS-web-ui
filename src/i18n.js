@@ -8,11 +8,13 @@ const locales = {en, ukr};
 const resources = {
     en: {
         translation: {
-            "formattedDate": "{{date, dd MMM yyyy}}"
+            "formattedDate": "{{date, dd MMM yyyy}}",
+            'Placed at': 'Placed at {{date, dd MMM yyyy}}',
         }
     },
     ukr: {
         translation: {
+            'Placed at': 'Прийнято {{date, dd MMM yyyy}}',
             "formattedDate": "{{date, dd MMM yyyy}}",
             'Language changed': 'Мову змінено',
             'Blank Page': 'Порожня Сторінка',
@@ -43,7 +45,17 @@ const resources = {
             'Nova Poshta #': 'Нова Пошта №',
             'Payment Status': 'Статус Оплати',
             'Ready for Shipment': 'Готово для відправки',
+            'Branch Number': 'Номер Відділення',
             'Nova Poshta': 'Нова Пошта',
+            'Save Changes': 'Зберегти Зміни',
+            'Order Status': 'Статус Замовлення',
+            'Mark as Paid': 'Позначити як оплачено',
+            'Mark as Duplicate': 'Позначити як дублікат',
+            'Delete Order': 'Видалити Замовлення',
+            'Cancel Order': 'Скасувати Замовлення',
+            'Edit order': 'Редагувати Замовлення',
+            'Mark Order as paid': 'Позначити замовлення як оплачене',
+            "Are you sure you want to mark this order as paid? This can't be undone.": "Ви впевненні, що хочете позначити замовлення, як оплачене?",
             Account: 'Аккаунт',
             Activity: 'Активність',
             Billing: 'Оплата',
@@ -73,6 +85,8 @@ const resources = {
             Processed: 'Обробленно',
             Delivered: 'Доставлено',
             Complete: 'Завершено',
+            complete: 'Завершено',
+            Ready: 'Готово до відправлення',
             Shipped: 'Відправлено',
             Returned: 'Поверненно',
             Cancel: 'Відміна',
@@ -94,7 +108,15 @@ const resources = {
             Qty: 'К-сть',
             Subtotal: 'Сума без знижок',
             Prepayment: 'Предоплата',
-            Edit: 'Редагувати'
+            Paid: 'Оплачено',
+            Unpaid: 'Не оплачено',
+            Edit: 'Редагувати',
+            Courier: 'Доставщик',
+            Actions: 'Дії',
+            Updated: 'Оновленно',
+            Confirm: 'Підтвердити',
+            Delete: 'Видалити',
+            Refund: 'Повернення'
         }
     }
 };

@@ -29,7 +29,7 @@ export const PropertyListItem = (props) => {
                     <Box
                         sx={{
                             flex: 1,
-                            mt: align === 'vertical' ? 0.5 : 0
+                            mt: align === 'vertical' ? 0.25 : 0
                         }}
                     >
                         {children || (
