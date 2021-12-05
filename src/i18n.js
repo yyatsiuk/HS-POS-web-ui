@@ -31,6 +31,7 @@ const resources = {
             'In Progress': 'В Роботі',
             "Order ID": "#ID",
             'Add Filter': 'Добавити Фільтр',
+            'Add Item': 'Добавити Товар',
             'Remove': 'Видалити',
             'Total Amount': 'Сума',
             'not equal': 'не дорівнює',
@@ -55,7 +56,18 @@ const resources = {
             'Cancel Order': 'Скасувати Замовлення',
             'Edit order': 'Редагувати Замовлення',
             'Mark Order as paid': 'Позначити замовлення як оплачене',
+            'Additional Notes': 'Додаткові нотатки',
+            'Full Name': 'П.І.Б',
+            'City/Village, District, Region': 'Місто/Село, Район, Область',
+            'Item Name': 'Назва Товару',
+            'Final Total': 'Загальна Сума',
             "Are you sure you want to mark this order as paid? This can't be undone.": "Ви впевненні, що хочете позначити замовлення, як оплачене?",
+            "Branch number is required": "Номер відділення є обов'язковим полем",
+            "Must be a number": "Значення повинно бути числом",
+            "Value cannot be less then 0": "Значення не може бути меншим за 0",
+            "Only integers are allowed": "Дозволені лише цілі числа",
+            "Customer Full Name is required": "П.І.Б клієнта є обов'язковим полем",
+            "Loading resource data": "Загрузка даних...",
             Account: 'Аккаунт',
             Activity: 'Активність',
             Billing: 'Оплата',
@@ -111,12 +123,14 @@ const resources = {
             Paid: 'Оплачено',
             Unpaid: 'Не оплачено',
             Edit: 'Редагувати',
-            Courier: 'Доставщик',
+            Courier: 'Сервіс Доставки',
             Actions: 'Дії',
             Updated: 'Оновленно',
             Confirm: 'Підтвердити',
             Delete: 'Видалити',
-            Refund: 'Повернення'
+            Refund: 'Повернення',
+            Order: 'Замовлення',
+            Item: 'Товар'
         }
     }
 };

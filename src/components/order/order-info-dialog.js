@@ -138,8 +138,8 @@ export const OrderInfoDialog = (props) => {
               error={Boolean(formik.touched.address && formik.errors.address)}
               fullWidth
               helperText={formik.touched.address && formik.errors.address}
-              label={t("Address")}
-              name="courierBranchNumber"
+              label={t("Delivery Address")}
+              name="deliveryAddress"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.address}

@@ -43,6 +43,10 @@ const items = [
             {
                 href: '/dashboard/orders/1',
                 title: 'Summary'
+            },
+            {
+                href: '/dashboard/orders/create',
+                title: 'Create'
             }
         ]
     },

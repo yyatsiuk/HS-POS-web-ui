@@ -22,8 +22,6 @@ R
 "src/components/action-list-item.js,a/4/a4f050a8e686a4325cf9c08f17334f69398da6d7
 H
 src/icons/adjustments.js,e/6/e6a5944824d878a7243de4e508133d1218c1c6ed
-J
-src/utils/apply-filters.js,8/b/8bc43b1c606e4c43e23b7a509546217acedbc57b
 M
 src/utils/apply-pagination.js,3/1/313da0b96ce91e03621ae75d04ee53ccc8379b8e
 G
@@ -86,8 +84,6 @@ Q
 !src/icons/custom-shopping-cart.js,b/f/bff063b6cb502ea5aa6bc806262c309876e84bfa
 I
 src/icons/custom-users.js,5/a/5a57d0258cc31fd7ba0164041422fa81e93d7db0
-E
-src/pages/customer.js,1/2/12ef72009dafa101d44cb8ce751f4adc3f0dd397
 N
 src/pages/customer-activity.js,0/6/06e40a58a967bd40a4f7e698549d1bd74c247184
 a
@@ -98,8 +94,6 @@ a
 1src/components/customer/customer-latest-orders.js,0/3/0305f7c6f66746c091109de2e91ba7136089869c
 X
 (src/components/customer/customer-menu.js,f/e/fe7d81a7bc5c0e3485908573e8237fe170c1d7e2
-X
-(src/components/customer/customer-note.js,7/7/772a7881ece314c76eb27176008ea26f91a4cef6
 \
 ,src/components/customer/customer-note-add.js,d/6/d695df306d9e3c178268e1cf469612c633d1298c
 ^
@@ -110,18 +104,8 @@ L
 .src/components/customer/customer-properties.js,a/8/a8ea272bb5fefb3ee82404863202545b640ed5d4
 M
 src/pages/customer-summary.js,b/7/b70451b989e55e61613ee3c96d1ddfb366a12a7d
-F
-src/pages/customers.js,6/7/679b0e7efd848cb5c2966dc68c6b22bf83ca29c1
 M
 src/pages/dashboard-layout.js,a/c/ac9bf55310621b97fcb4159d9fd31cdae128cdbc
-R
-"src/components/dashboard-navbar.js,2/f/2fbf6316f4baa2c73e3baab5b5b341dcf5743301
-W
-'src/components/dashboard-navbar-menu.js,c/9/c9fe64fd249e09de81409e1a377308350eb786c6
-S
-#src/components/dashboard-sidebar.js,d/8/d83ac65471430c61c98fcca8e7b1d8fb5bba0977
-X
-(src/components/dashboard-sidebar-item.js,c/8/c84ba760ce6f18f7ba9df336719d39847a7cbbda
 L
 src/components/date-field.js,c/1/c10c14d78c769dc9d1a081154b4efd4dc7f67d16
 N
@@ -160,10 +144,6 @@ P
  src/components/image-dropzone.js,d/9/d99ae2dd283bb9a5594c87c88079a02fb6b5f54b
 A
 public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
-M
-src/components/input-field.js,6/c/6c32e2138e89369a7ee15d457f4b3513fc2930ed
-@
-src/utils/jwt.js,6/a/6a358819430951c355ad2d91d11a746e4a9ff2df
 P
  src/contexts/jwt-auth-context.js,1/d/1def159baf94bf18f9791fa41ca3da00d07d310e
 Q
@@ -232,8 +212,6 @@ W
 'src/components/auth/product-features.js,b/2/b27c8292c98edaf24df1d7ddd0de210c16cef17c
 V
 &src/components/product/product-info.js,7/b/7bc24137fd67a46c35ec972106b783feaecb5835
-]
--src/components/product/product-info-dialog.js,3/a/3a2754533ad7ea7c17e30187c0159b7db34d5273
 V
 &src/components/product/product-menu.js,6/a/6ab9422bf3d9c39b67a1e25aef92716354d5ad62
 ]
@@ -278,8 +256,6 @@ S
 #src/components/auth/register-jwt.js,c/a/cab813df9253ed7154a0416a4639d448534ba48a
 P
  src/components/resource-error.js,2/d/2d46c7106811a5764d0ad2cb3a7979052e29a5c9
-R
-"src/components/resource-loading.js,7/2/72876e1ab126f7eefd33a4faf4af4406e2c96524
 V
 &src/components/resource-unavailable.js,9/f/9f1c2e63ab760fde8a89cbe1655eb6f4b13e2d52
 K
@@ -320,14 +296,6 @@ J
 public/static/ukr_flag.svg,c/e/ce2161edf3c67f4299460511d005395a02a4ac06
 C
 src/icons/upload.js,d/2/d2ec3482c85c1e2628eae55e0375e9fe30b74e93
-E
-src/hooks/use-auth.js,d/2/d2cbfb49aea40a775b21f5e7c635eb72dcfac0b5
-G
-src/hooks/use-dialog.js,d/1/d1b564e602f1ebaf90e98bf1a9cd75a5a7bb0113
-H
-src/hooks/use-mounted.js,b/a/bab8b0b0c5f6f4a68dae40e1dd744eab0b86c979
-H
-src/hooks/use-popover.js,0/4/04e85de4f08f2f03ac1fc36198d223fc86ba7aa4
 J
 src/hooks/use-selection.js,9/1/91f5f9298d04c0b6fe3dcd4e7c9eccd8530a0359
 A
@@ -356,17 +324,10 @@ P
 src/icons/x.js,5/7/57c3304ab35000e3812afa2c9bd1ba909a159d55
 E
 src/icons/x-circle.js,c/8/c858383a1aab9c15c05579c2f6511ef2e590d043
-=
-src/routes.js,e/8/e8d89f7a2814c9e07e58bcf9b360f6aa076dd83e
 <
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
 =
 src/colors.js,c/7/c7912e3313ab47096d7dabb86ac12232f0c3c253
-:
-
-src/app.js,7/e/7e2883689d806a5f689579600efd29e430bebf92
-L
-src/pages/product-summary.js,0/5/05c9668491780185d0814ed995451e35707c5910
 N
 src/pages/product-analytics.js,4/e/4ec5174f6d4010546d57d2a7e868541c533f057b
 N
@@ -385,12 +346,8 @@ L
 public/static/company-bd.svg,7/9/7944a17d5ececd55994faeb49ed14c6d669467d6
 N
 public/static/company-ford.svg,5/4/548e9b970e886641e74585aa7cc98f43c321667a
-\
-,src/components/dashboard-navbar-menu-item.js,3/8/3872e07733ab4375b3ef11be55fda881c5c61147
 a
 1src/components/account/account-change-password.js,7/c/7c1c5e563ec9331b2213bcd8319642678bd7923d
-T
-$src/components/autocomplete-field.js,b/6/b666769ac79a399371952bf4c4c42fb2dcf0c7c3
 Z
 *src/components/customer/customer-dialog.js,3/d/3d09695a1b4a062a293d313558d51672b88a4661
 Z
@@ -399,8 +356,6 @@ H
 src/components/footer.js,f/9/f9a8f3e280b0ce0713ebe20bd2dd93c5ad53cd11
 Z
 *src/components/product/product-variants.js,c/a/caa89db3e058638ff748235abd12f69b20d87908
-H
-src/hooks/use-filters.js,9/b/9beff39604d983835152bd762c4de609c0a8e542
 J
 src/icons/document-text.js,9/6/9646cc5e1bebfe54d716e091eeadf25ba3313fb6
 Y
@@ -431,13 +386,35 @@ O
 src/components/filter-dialog.js,a/c/ac492b823d0900cc61b7f730ab63705d7dfbe72a
 X
 (src/components/images-uploader-dialog.js,c/9/c9f9603ab45cf24912a01014841723d7267be1cc
-[
-+src/components/order/order-create-dialog.js,7/e/7e33fd8de0a195d1be1ed6f1d456dc7f6ad9c94c
 _
 /src/components/product/product-create-dialog.js,a/9/a96cda45e0014dccbb8695e6841871528051506f
 Y
 )src/components/product/products-filter.js,2/e/2eb9939853895d7f67aa6a547e07b58522135455
 Z
 *src/components/order/order-preview-item.js,9/4/945ac0ffa6fd0ea34f34a3bf1ad69c52c8497b9f
+Z
+*src/components/order/order-preview-list.js,c/2/c28b67a0a021c4d540818576f728b83aa6c3dd76
+X
+(src/components/order/order-line-items.js,2/e/2e31e2ef21729b120b086fa140729c52bccd50c0
+N
+src/components/actions-menu.js,3/9/396cea60547479a2b9b7791f42aaaf9e9d9145a6
+U
+%src/components/confirmation-dialog.js,b/3/b3e5a01460d1ffe3551f156ab62c0eb38e6ea853
+R
+"src/components/order/order-menu.js,6/5/6578892debfc56a87bab345302be1b1863e3ee1c
 T
-$src/components/order/orders-table.js,8/b/8b7d5d9ca131e489cd1e256ee64fac30b4973968
+$src/components/order/order-status.js,5/7/579910b8c0a72b48300e6796523abdf6923fb975
+U
+%src/components/order/order-summary.js,b/9/b9ccabdfbf8d141db3310ca4051e7e2120503494
+V
+&src/components/order/order-timeline.js,2/f/2f7ea6caf0df26c223795d140a12e54b7dfcfba2
+T
+$src/components/property-list-item.js,1/1/118b0ac9445769a5384327ad13863b75d97818c6
+E
+src/pages/customer.js,1/2/12ef72009dafa101d44cb8ce751f4adc3f0dd397
+F
+src/pages/customers.js,6/7/679b0e7efd848cb5c2966dc68c6b22bf83ca29c1
+J
+src/utils/apply-filters.js,8/b/8bc43b1c606e4c43e23b7a509546217acedbc57b
+M
+src/components/input-field.js,6/c/6c32e2138e89369a7ee15d457f4b3513fc2930ed

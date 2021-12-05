@@ -3,28 +3,31 @@ import {useNavigate} from 'react-router-dom';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, FormHelperText, Grid} from '@material-ui/core';
-import {InputField} from '../input-field';
 import {useTranslation} from "react-i18next";
+import {AutocompleteField} from "../autocomplete-field";
 
 export const OrderCreateDialog = (props) => {
-    const {open, onClose, ...other} = props;
+    const {open, onClose, customers, products, ...other} = props;
     const navigate = useNavigate();
     const {t} = useTranslation();
+
     const formik = useFormik({
         initialValues: {
-            customerEmail: '',
-            customerName: '',
+            products: products || [],
+            customerFullName: '',
+            customerId: '',
             submit: 'null'
         },
         validationSchema: Yup.object().shape({
-            customerEmail: Yup.string().max(255).email().required('Customer email is required'),
-            customerName: Yup.string().max(255).required('Customer name is required')
+            products: Yup.array().min(1).required("Products is required"),
+            customerFullName: Yup.string().max(255).required('Customer full name is required')
         }),
         onSubmit: async (values, helpers) => {
             try {
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
                 helpers.resetForm();
+                console.log(values);
                 navigate('/dashboard/orders/1');
             } catch (err) {
                 console.error(err);
@@ -39,6 +42,11 @@ export const OrderCreateDialog = (props) => {
         <Dialog
             onClose={onClose}
             open={open}
+            PaperProps={{
+                sx: {
+                    width: '100%'
+                }
+            }}
             TransitionProps={{
                 onExited: () => formik.resetForm()
             }}
@@ -56,31 +64,46 @@ export const OrderCreateDialog = (props) => {
                         item
                         xs={12}
                     >
-                        <InputField
-                            error={Boolean(formik.touched.customerName && formik.errors.customerName)}
+                        <AutocompleteField
+                            error={Boolean(formik.touched.customerFullName && formik.errors.customerFullName)}
+                            filterSelectedOptions
                             fullWidth
-                            helperText={formik.touched.customerName && formik.errors.customerName}
-                            label={t("Customer Name")}
-                            name="customerName"
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            value={formik.values.customerName}
+                            helperText={formik.touched.customerFullName && formik.errors.customerFullName}
+                            label={t("Customer")}
+                            name="customerFullName"
+                            onChange={(event, value) => {
+                                if (value) {
+                                    formik.setFieldValue('customerFullName', value.label);
+                                    formik.setFieldValue('customerId', value.id);
+                                }
+                            }}
+                            value={formik.values.customerFullName}
+                            options={customers}
+                            isOptionEqualToValue={(option, value) => option.label === value}
+                            sx={{mb: 2}}
                         />
                     </Grid>
                     <Grid
                         item
                         xs={12}
                     >
-                        <InputField
-                            error={Boolean(formik.touched.customerEmail && formik.errors.customerEmail)}
+                        <AutocompleteField
+                            error={Boolean(formik.touched.products && formik.errors.products)}
                             fullWidth
-                            helperText={formik.touched.customerEmail && formik.errors.customerEmail}
-                            label={t("Customer Email")}
-                            name="customerEmail"
+                            multiple
+                            filterSelectedOptions
+                            helperText={formik.touched.products && formik.errors.products}
+                            label={t("Products")}
+                            name="products"
                             onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            type="email"
-                            value={formik.values.customerEmail}
+                            onChange={(event, value) => {
+                                if (value) {
+                                    formik.setFieldValue('products', value);
+                                }
+                            }}
+                            value={formik.values.products.label}
+                            options={products}
+                            isOptionEqualToValue={(option, value) => option.label === value}
                         />
                     </Grid>
                     {formik.errors.submit && (

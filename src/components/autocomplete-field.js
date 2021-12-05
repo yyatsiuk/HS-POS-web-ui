@@ -90,6 +90,6 @@ AutocompleteField.propTypes = {
     error: PropTypes.bool,
     helperText: PropTypes.string,
     label: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.array.isRequired,
     placeholder: PropTypes.string
 };

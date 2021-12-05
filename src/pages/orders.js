@@ -1,18 +1,17 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Box, Button, Card, Container, Typography} from '@material-ui/core';
 import {orderApi} from '../api/order';
 import {OrderCreateDialog} from '../components/order/order-create-dialog';
 import {OrdersFilter} from '../components/order/orders-filter';
 import {OrdersTable} from '../components/order/orders-table';
-import {useMounted} from '../hooks/use-mounted';
 import {useSelection} from '../hooks/use-selection';
 import {Plus as PlusIcon} from '../icons/plus';
 import gtm from '../lib/gtm';
 import {useTranslation} from "react-i18next";
+import useHttp from "../hooks/use-http";
 
 export const Orders = () => {
-    const mounted = useMounted();
     const [controller, setController] = useState({
         filters: [],
         page: 0,
@@ -26,40 +25,19 @@ export const Orders = () => {
     const [openCreateDialog, setOpenCreateDialog] = useState();
     const [mode, setMode] = useState('table');
     const {t} = useTranslation();
+    const requestMethod = useHttp();
 
-    const getOrders = useCallback(async () => {
-        setOrdersState(() => ({isLoading: true}));
-
-        try {
-            const result = await orderApi.getOrders({
-                filters: controller.filters,
-                page: controller.page,
-                query: controller.query,
-                sort: controller.sort,
-                sortBy: controller.sortBy,
-                view: controller.view
-            });
-
-            if (mounted.current) {
-                setOrdersState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setOrdersState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
-    }, [controller]);
+    const getOrders = () => orderApi.getOrders({
+        filters: controller.filters,
+        page: controller.page,
+        query: controller.query,
+        sort: controller.sort,
+        sortBy: controller.sortBy,
+        view: controller.view
+    });
 
     useEffect(() => {
-        getOrders().catch(console.error);
+        requestMethod(getOrders, setOrdersState).catch(console.error);
     }, [controller]);
 
     useEffect(() => {
@@ -210,10 +188,6 @@ export const Orders = () => {
                     </Card>
                 </Container>
             </Box>
-            <OrderCreateDialog
-                onClose={() => setOpenCreateDialog(false)}
-                open={openCreateDialog}
-            />
         </>
     );
 };
