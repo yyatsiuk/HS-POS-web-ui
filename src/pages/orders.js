@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Box, Button, Card, Container, Typography} from '@material-ui/core';
 import {orderApi} from '../api/order';
-import {OrderCreateDialog} from '../components/order/order-create-dialog';
+import {Link as RouterLink} from 'react-router-dom';
 import {OrdersFilter} from '../components/order/orders-filter';
 import {OrdersTable} from '../components/order/orders-table';
 import {useSelection} from '../hooks/use-selection';
@@ -22,7 +22,6 @@ export const Orders = () => {
     });
     const [ordersState, setOrdersState] = useState({isLoading: true});
     const [selectedOrders, handleSelect, handleSelectAll] = useSelection(ordersState.data?.orders);
-    const [openCreateDialog, setOpenCreateDialog] = useState();
     const [mode, setMode] = useState('table');
     const {t} = useTranslation();
     const requestMethod = useHttp();
@@ -141,10 +140,11 @@ export const Orders = () => {
                             <Box sx={{flexGrow: 1}}/>
                             <Button
                                 color="primary"
-                                onClick={() => setOpenCreateDialog(true)}
+                                component={RouterLink}
                                 startIcon={<PlusIcon fontSize="small"/>}
                                 variant="contained"
                                 size="large"
+                                to={"/dashboard/orders/create"}
                             >
                                 {t("Add")}
                             </Button>

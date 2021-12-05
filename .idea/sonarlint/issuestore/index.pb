@@ -74,8 +74,6 @@ T
 $src/pages/components-card-headers.js,e/0/e07a4a11010d7409525796345ed32c0f34d17a4c
 T
 $src/pages/components-page-headers.js,c/9/c91f1fc339567df77509c4590f669a8113f9e5d2
-=
-src/config.js,8/7/87f3e0e4cc62eefaef83559ad73420b22d52e801
 M
 src/icons/custom-chart-pie.js,6/a/6a182f6907e0811793ba8083e1a080fe0dbc4bde
 H
@@ -170,8 +168,6 @@ C
 src/icons/logout.js,e/c/ec787ee91d83b6a300912cc8093ebe24acfe1509
 H
 src/pages/main-layout.js,c/7/c71c421f8ed733e622e16f31e8c4d9d2e83918d8
-M
-src/components/main-navbar.js,0/c/0ce2f8c559a8962bc4b75be5b830b22016f431ea
 R
 "src/components/main-navbar-link.js,a/5/a58885fa639da08941fa0113147b530b21255684
 N
@@ -326,8 +322,6 @@ E
 src/icons/x-circle.js,c/8/c858383a1aab9c15c05579c2f6511ef2e590d043
 <
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
-=
-src/colors.js,c/7/c7912e3313ab47096d7dabb86ac12232f0c3c253
 N
 src/pages/product-analytics.js,4/e/4ec5174f6d4010546d57d2a7e868541c533f057b
 N
@@ -376,8 +370,6 @@ U
 %src/components/order/orders-filter.js,0/d/0dff300c832ba9d77794db4b4076dae2bdc1fde1
 O
 src/components/status-select.js,f/7/f76fad12fbfaeb25a9dbcc200968e1acd533a89d
-<
-src/theme.js,0/a/0a7e8303dfe5da72e1b0b137d4890ceddc80a633
 S
 #src/components/bulk-actions-menu.js,a/2/a23e4ca6c14c6306e28d2deda0872b35e83772de
 [

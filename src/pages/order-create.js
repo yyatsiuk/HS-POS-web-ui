@@ -30,6 +30,7 @@ import {productApi} from "../api/product";
 import {AutocompleteField} from "../components/autocomplete-field";
 import {ResourceLoading} from "../components/resource-loading";
 import {ResourceError} from "../components/resource-error";
+import {currency} from "../config";
 
 const courierOptions = [
     {
@@ -194,6 +195,7 @@ export const OrderCreate = () => {
                                     }}
                                     value={formik.values.customer.label}
                                     options={customers}
+                                    placeholder={t("Full Name")}
                                     isOptionEqualToValue={(option, value) => option.id === value.id}
                                 />
                             </Grid>
@@ -351,7 +353,7 @@ export const OrderCreate = () => {
                                                         InputProps={{
                                                             startAdornment: (
                                                                 <InputAdornment
-                                                                    position="start">$</InputAdornment>
+                                                                    position="start">{currency.symbol}</InputAdornment>
                                                             )
                                                         }}
                                                     />
@@ -403,7 +405,7 @@ export const OrderCreate = () => {
                                     color="textPrimary"
                                     variant="h6"
                                 >
-                                    {numeral(totalPriceMinusPrepayment).format('$0,0.00')}
+                                    {`${currency.symbol}${numeral(totalPriceMinusPrepayment).format('0,0.00')}`}
                                 </Typography>
                             </Grid>
                             <Grid
