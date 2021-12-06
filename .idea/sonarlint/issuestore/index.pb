@@ -22,8 +22,6 @@ D
 src/icons/archive.js,3/f/3fb65ee78a7efb3994fe76f18a724870f728a274
 G
 src/icons/arrow-left.js,c/1/c1fd19c406242360124f49cdfb6813b859d19efd
-L
-src/components/auth-guard.js,6/1/6119ea56a6b447432f2a737950190a848b1c8c4f
 A
 src/icons/bell.js,1/6/16f5d982bdcfbf64d3175ec33f27eaa53212e0aa
 E
@@ -72,8 +70,6 @@ I
 src/icons/custom-users.js,5/a/5a57d0258cc31fd7ba0164041422fa81e93d7db0
 L
 src/components/date-field.js,c/1/c10c14d78c769dc9d1a081154b4efd4dc7f67d16
-N
-src/components/demo-preview.js,7/3/7362de313a3d9bc06e0c5297eb78e1ca2394b2b6
 P
  src/icons/devias-chevron-down.js,2/1/21c637d5a0dcdab0fc8a1768d22784867aa79cb2
 Q
@@ -100,18 +96,10 @@ C
 src/lib/firebase.js,4/0/405d9e8e1fdc0bd34d8c6ec210d4381124c464a9
 >
 src/lib/gtm.js,9/0/90c7376451904977d2a585eb413dbe3ea9093bb9
-M
-src/components/guest-guard.js,c/3/c3aa01608f205a9226c9a6254ef97730724179b9
-P
- src/contexts/jwt-auth-context.js,1/d/1def159baf94bf18f9791fa41ca3da00d07d310e
-Q
-!src/components/laguage-popover.js,5/2/52b9695013571f34cd327f9a28d08ca71c4cf3c1
 G
 src/icons/light-bulb.js,8/7/87c861087b4676467f5cc72c3474b5021a8d8c64
 A
 src/icons/link.js,a/4/a4434c2f1364b051969a6be44f10290ab715940c
-P
- src/components/loading-screen.js,a/d/ad63761900f83352ccf20e4f23ac10d83788cf2c
 T
 $src/components/auth/login-amplify.js,8/3/834f97bbe5b6fde8b7f88f90b945b7f9b7ba3933
 R
@@ -126,8 +114,6 @@ C
 src/icons/logout.js,e/c/ec787ee91d83b6a300912cc8093ebe24acfe1509
 H
 src/pages/main-layout.js,c/7/c71c421f8ed733e622e16f31e8c4d9d2e83918d8
-R
-"src/components/main-navbar-link.js,a/5/a58885fa639da08941fa0113147b530b21255684
 S
 #src/components/main-sidebar-link.js,4/1/41331ec8838bd90a7c482167782f36d819e6ddea
 A
@@ -138,14 +124,8 @@ A
 src/icons/moon.js,0/0/007267b36957e29eac9dae1bd165699729e59226
 F
 src/pages/not-found.js,9/c/9ca533e03a7d35bd9017d3f9f26e116f036e0039
-W
-'src/components/notifications-popover.js,1/6/164a2ce8af694948fdeec0b64eb104d583e2f8c5
 L
 src/icons/office-building.js,6/d/6dab05a3f4f3c08b0c9d2fe789d7a952f667c1aa
-V
-&src/components/organization-popover.js,0/1/01e20947182eae616f27788e820fc1bcbfc5aef9
-L
-src/components/pagination.js,d/2/d290a95cd3e99b00b97aa3d0c24606cf4c302278
 G
 src/icons/paper-clip.js,b/6/b640dc50df6a5c3202bdb64b144edff423e1f95f
 C
@@ -176,8 +156,6 @@ Z
 *src/components/product/products-summary.js,0/9/0972870c21677f5d1fe7610a07970fdf97fd0e4d
 X
 (src/components/product/products-table.js,0/e/0e15e182684da73ebe392046f807d3158a0296a1
-O
-src/components/property-list.js,7/b/7b9b2e34b818668eb7582c5910c5fef532d3f712
 S
 #src/icons/question-mark-outlined.js,d/2/d285a01167cd53f718bbf025354e24f581266354
 G
@@ -198,12 +176,6 @@ X
 (src/components/auth/register-firebase.js,7/e/7ed536881db40efd9a7080947d403d411a37f7eb
 S
 #src/components/auth/register-jwt.js,c/a/cab813df9253ed7154a0416a4639d448534ba48a
-P
- src/components/resource-error.js,2/d/2d46c7106811a5764d0ad2cb3a7979052e29a5c9
-V
-&src/components/resource-unavailable.js,9/f/9f1c2e63ab760fde8a89cbe1655eb6f4b13e2d52
-K
-src/components/scrollbar.js,4/6/46c5c2ed229a516231a6b5939b2ee2488c1c757b
 C
 src/icons/search.js,a/8/a8463b4e76e1706e0bf4b02babddac35b7ea3860
 E
@@ -220,12 +192,6 @@ I
 src/icons/speakerphone.js,7/4/741f5c259687cd474258dcceb566d5bb2ba16eaa
 A
 src/icons/star.js,c/7/c736c3ac7b691147b8bf2d81b9ae6a0219c3e34a
-H
-src/components/status.js,2/f/2f29e0f711215f3be0510756bd99a57c382b30a9
-N
-src/components/status-badge.js,d/f/df3684fdcb878ed1a93964dffa2ab37bb712b40c
-I
-src/components/stepper.js,9/7/9727bbc2c87d80f3d134bf06dc3a4dfb2c580147
 @
 src/icons/sun.js,6/d/6d565f56dca44b46da7e2ef405921193931c912d
 @
@@ -246,32 +212,18 @@ A
 src/icons/user.js,9/5/9525f2d7fbd83423c69a18697798360c17419a71
 G
 src/icons/user-group.js,f/8/f894fcc3389241084229b0e3e5ebd7d8c70aa59c
-H
-src/pages/verify-code.js,f/1/f1e9b11a256444d2b108012533fea0deec49a81f
 F
 src/icons/view-grid.js,c/0/c06e03f0a6fcd1c59ed6319a067c029c1c065ee4
 F
 src/icons/view-list.js,2/4/243e2f87155a8284fddb82d405af23b354f3121f
-H
-src/components/wizard.js,d/1/d10d25a53d4373031158c3bf7dfe3d7a8932c2cb
-Q
-!src/components/wizard-business.js,6/3/634c6754a0508e7d1df9a51032ad7b9ffe5487e7
-U
-%src/components/wizard-confirmation.js,d/a/da419841596a7c476b598fbee3b302a74025cd5e
 V
 &src/components/wizard-notifications.js,b/7/b797871bf1f8e26b67f4f71edd4e8e87c1ba48ca
-P
- src/components/wizard-profile.js,0/e/0ee462d8a39fca9e5fc27c36869752844cc672df
 >
 src/icons/x.js,5/7/57c3304ab35000e3812afa2c9bd1ba909a159d55
 E
 src/icons/x-circle.js,c/8/c858383a1aab9c15c05579c2f6511ef2e590d043
 <
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
-D
-src/pages/account.js,0/6/06cfa17cb3226253f8d6130a09adb7b2b55cf8f8
-T
-$src/components/filter-dialog-item.js,6/f/6f9e5afe762391be74989bc01f574da15d3c4eb2
 L
 public/static/company-bd.svg,7/9/7944a17d5ececd55994faeb49ed14c6d669467d6
 N
@@ -280,16 +232,12 @@ a
 1src/components/account/account-change-password.js,7/c/7c1c5e563ec9331b2213bcd8319642678bd7923d
 Z
 *src/components/customer/customer-dialog.js,3/d/3d09695a1b4a062a293d313558d51672b88a4661
-H
-src/components/footer.js,f/9/f9a8f3e280b0ce0713ebe20bd2dd93c5ad53cd11
 Z
 *src/components/product/product-variants.js,c/a/caa89db3e058638ff748235abd12f69b20d87908
 J
 src/icons/document-text.js,9/6/9646cc5e1bebfe54d716e091eeadf25ba3313fb6
 Y
 )src/components/account/account-details.js,9/0/90ee7f5856ba201736b23d7eb0b8513e7f37f8ce
-Q
-!src/components/account-popover.js,c/4/c463e5fc2767abbdd20b5967298d907c41cbb4bd
 T
 $src/contexts/amplify-auth-context.js,f/0/f033eab8819b7e2f7264ecb2336a155cc40cf5a1
 ?
@@ -298,12 +246,6 @@ M
 src/contexts/auth0-context.js,f/9/f900b662f8818e4ea33a55dbfa32ec564b1bfb35
 U
 %src/contexts/firebase-auth-context.js,5/7/57fdc0bdb8bfe03e130da438265afaaf5fc06e24
-U
-%src/components/order/orders-filter.js,0/d/0dff300c832ba9d77794db4b4076dae2bdc1fde1
-O
-src/components/status-select.js,f/7/f76fad12fbfaeb25a9dbcc200968e1acd533a89d
-O
-src/components/filter-dialog.js,a/c/ac492b823d0900cc61b7f730ab63705d7dfbe72a
 X
 (src/components/images-uploader-dialog.js,c/9/c9f9603ab45cf24912a01014841723d7267be1cc
 _
@@ -311,24 +253,8 @@ _
 Y
 )src/components/product/products-filter.js,2/e/2eb9939853895d7f67aa6a547e07b58522135455
 Z
-*src/components/order/order-preview-item.js,9/4/945ac0ffa6fd0ea34f34a3bf1ad69c52c8497b9f
-Z
 *src/components/order/order-preview-list.js,c/2/c28b67a0a021c4d540818576f728b83aa6c3dd76
-X
-(src/components/order/order-line-items.js,2/e/2e31e2ef21729b120b086fa140729c52bccd50c0
 N
 src/components/actions-menu.js,3/9/396cea60547479a2b9b7791f42aaaf9e9d9145a6
 U
 %src/components/confirmation-dialog.js,b/3/b3e5a01460d1ffe3551f156ab62c0eb38e6ea853
-R
-"src/components/order/order-menu.js,6/5/6578892debfc56a87bab345302be1b1863e3ee1c
-T
-$src/components/order/order-status.js,5/7/579910b8c0a72b48300e6796523abdf6923fb975
-U
-%src/components/order/order-summary.js,b/9/b9ccabdfbf8d141db3310ca4051e7e2120503494
-V
-&src/components/order/order-timeline.js,2/f/2f7ea6caf0df26c223795d140a12e54b7dfcfba2
-T
-$src/components/property-list-item.js,1/1/118b0ac9445769a5384327ad13863b75d97818c6
-M
-src/components/input-field.js,6/c/6c32e2138e89369a7ee15d457f4b3513fc2930ed

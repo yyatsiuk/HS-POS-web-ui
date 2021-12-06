@@ -5,10 +5,6 @@ const tabs = [
   {
     href: '/dashboard/account',
     label: 'General'
-  },
-  {
-    href: '/dashboard/account/notifications',
-    label: 'Notifications'
   }
 ];
 

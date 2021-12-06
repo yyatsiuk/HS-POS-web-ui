@@ -61,45 +61,11 @@ const sections = [
         ]
     },
     {
-        title: 'Dashboards',
-        items: [
-            {
-                title: 'Overview',
-                href: '/dashboard'
-            },
-            {
-                title: 'Reports',
-                href: '/dashboard/sales'
-            }
-        ]
-    },
-    {
         title: 'Account',
         items: [
             {
                 title: 'General',
                 href: '/dashboard/account'
-            },
-            {
-                title: 'Notifications',
-                href: '/dashboard/account/notifications'
-            }
-        ]
-    },
-    {
-        title: 'Organization',
-        items: [
-            {
-                title: 'General',
-                href: '/dashboard/organization'
-            },
-            {
-                title: 'Team',
-                href: '/dashboard/organization/team'
-            },
-            {
-                title: 'Billing',
-                href: '/dashboard/organization/billing'
             }
         ]
     }

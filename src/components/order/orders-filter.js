@@ -5,17 +5,12 @@ import {Adjustments as AdjustmentsIcon} from '../../icons/adjustments';
 import {ViewList as ViewListIcon} from '../../icons/view-list';
 import {
     containsOperator,
-    endsWithOperator,
     equalOperator,
     greaterThanOperator,
     isAfterOperator,
     isBeforeOperator,
-    isBlankOperator,
-    isPresentOperator,
     lessThanOperator,
-    notContainsOperator,
     notEqualOperator,
-    startsWithOperator
 } from '../../utils/filter-operators';
 import {BulkActionsMenu} from '../bulk-actions-menu';
 import {FilterDialog} from '../filter-dialog';
@@ -36,8 +31,8 @@ const views = [
         value: "inProgress"
     },
     {
-      label: "Ready for Shipment",
-      value: "ready"
+        label: "Ready for Shipment",
+        value: "ready"
     },
     {
         label: 'Shipped',
@@ -139,8 +134,8 @@ export const OrdersFilter = (props) => {
                     {mode === 'table' && (
                         <BulkActionsMenu
                             disabled={disabled}
-                            onArchive={() => {}}
-                            onDelete={() => {}}
+                            onDelete={() => {
+                            }}
                             selectedCount={selectedOrders.length}
                             sx={{
                                 display: selectedOrders.length > 0 ? 'flex' : 'none',

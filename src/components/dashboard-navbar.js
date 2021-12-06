@@ -12,7 +12,6 @@ import {AccountPopover} from './account-popover';
 import {OrganizationPopover} from './organization-popover';
 import {Logo} from './logo';
 import {DashboardNavbarMenu} from './dashboard-navbar-menu';
-import {NotificationsPopover} from './notifications-popover';
 import {LanguagePopover} from './laguage-popover';
 
 const organizations = [
@@ -132,7 +131,7 @@ export const DashboardNavbar = () => {
                     }}
                     variant="text"
                 >
-                    Menu
+                    {t("Menu")}
                 </Button>
                 <Box sx={{flexGrow: 1}}/>
                 <LanguagePopover
@@ -160,8 +159,11 @@ export const DashboardNavbar = () => {
                         ? <SunIcon/>
                         : <MoonIcon/>}
                 </IconButton>
-                <NotificationsPopover sx={{mr: 2}}/>
-                <AccountPopover/>
+                <AccountPopover
+                    darkMode={darkMode}
+                    onLanguageChange={handleLanguageChange}
+                    onSwitchTheme={handleSwitchTheme}
+                />
             </Toolbar>
         </AppBar>
     );

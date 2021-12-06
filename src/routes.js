@@ -37,7 +37,6 @@ const ProductInventory = Loadable(lazy(() => import('./pages/product-inventory')
 const ProductSummary = Loadable(lazy(() => import('./pages/product-summary').then((module) => ({default: module.ProductSummary}))));
 
 const AccountGeneral = Loadable(lazy(() => import('./pages/account-general').then((module) => ({default: module.AccountGeneral}))));
-const AccountNotifications = Loadable(lazy(() => import('./pages/account-notifications').then((module) => ({default: module.AccountNotifications}))));
 
 const routes = [
     {
@@ -74,10 +73,6 @@ const routes = [
                         path: '',
                         element: <AccountGeneral/>
                     },
-                    {
-                        path: 'notifications',
-                        element: <AccountNotifications/>
-                    }
                 ]
             },
             {

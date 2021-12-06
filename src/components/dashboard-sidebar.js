@@ -77,10 +77,6 @@ const items = [
             {
                 href: '/dashboard/account',
                 title: 'General Settings'
-            },
-            {
-                href: '/dashboard/account/notifications',
-                title: 'Notifications'
             }
         ]
     }

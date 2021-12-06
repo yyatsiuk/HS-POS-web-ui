@@ -73,10 +73,6 @@ const sections = [
             {
                 title: 'General',
                 href: '/dashboard/account'
-            },
-            {
-                title: 'Notifications',
-                href: '/dashboard/account/notifications'
             }
         ]
     }

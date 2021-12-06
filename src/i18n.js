@@ -71,6 +71,9 @@ const resources = {
             "Bulk Actions": "Застосувати до вибраних",
             "Ordered recently": "Нещодавно замовляли",
             "Search...": "Пошук...",
+            "App Settings": "Налаштування Акаунта",
+            "Dark Mode": "Темний Режим",
+            "Log out": "Вихід",
             Account: 'Аккаунт',
             Returning: 'Робили повернення',
             Activity: 'Активність',
@@ -134,7 +137,8 @@ const resources = {
             Delete: 'Видалити',
             Refund: 'Повернення',
             Order: 'Замовлення',
-            Item: 'Товар'
+            Item: 'Товар',
+            Menu: 'Меню'
         }
     }
 };
