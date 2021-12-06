@@ -45,10 +45,6 @@ const items = [
             {
                 href: '/dashboard/customers/1/orders',
                 title: 'Orders'
-            },
-            {
-                href: '/dashboard/customers/1/activity',
-                title: 'Activity'
             }
         ]
     },

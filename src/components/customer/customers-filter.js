@@ -14,6 +14,7 @@ import {
 import {BulkActionsMenu} from '../bulk-actions-menu';
 import {Query} from '../query';
 import {FilterDialog} from '../filter-dialog';
+import {useTranslation} from "react-i18next";
 
 const views = [
     {
@@ -76,6 +77,7 @@ export const CustomersFilter = (props) => {
         view
     } = props;
     const [openFilterDialog, setOpenFilterDialog] = useState(false);
+    const {t} = useTranslation();
 
     return (
         <>
@@ -97,7 +99,7 @@ export const CustomersFilter = (props) => {
                             <Tab
                                 disabled={disabled}
                                 key={option.label}
-                                label={option.label}
+                                label={t(option.label)}
                                 value={option.value}
                             />
                         ))}
@@ -119,8 +121,6 @@ export const CustomersFilter = (props) => {
                 >
                     <BulkActionsMenu
                         disabled={disabled}
-                        onArchive={() => {
-                        }}
                         onDelete={() => {
                         }}
                         selectedCount={selectedCustomers.length}
@@ -152,7 +152,7 @@ export const CustomersFilter = (props) => {
                         sx={{order: 3}}
                         variant={filters.length ? 'contained' : 'text'}
                     >
-                        Filter
+                        {t("Filter")}
                     </Button>
                 </Box>
             </div>

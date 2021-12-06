@@ -51,10 +51,6 @@ const sections = [
             {
                 title: 'Orders',
                 href: '/dashboard/customers/1/orders'
-            },
-            {
-                title: 'Activity',
-                href: '/dashboard/customers/1/orders'
             }
         ]
     },

@@ -24,7 +24,6 @@ const VerifyCode = Loadable(lazy(() => import('./pages/verify-code').then((modul
 
 // Dashboard pages
 const Customers = Loadable(lazy(() => import('./pages/customers').then((module) => ({default: module.Customers}))));
-const CustomerActivity = Loadable(lazy(() => import('./pages/customer-activity').then((module) => ({default: module.CustomerActivity}))));
 const CustomerOrders = Loadable(lazy(() => import('./pages/customer-orders').then((module) => ({default: module.CustomerOrders}))));
 const CustomerSummary = Loadable(lazy(() => import('./pages/customer-summary').then((module) => ({default: module.CustomerSummary}))));
 
@@ -95,10 +94,6 @@ const routes = [
                             {
                                 path: '',
                                 element: <CustomerSummary/>
-                            },
-                            {
-                                path: 'activity',
-                                element: <CustomerActivity/>
                             },
                             {
                                 path: 'orders',

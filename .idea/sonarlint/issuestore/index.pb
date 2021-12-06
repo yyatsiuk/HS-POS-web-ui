@@ -22,10 +22,6 @@ R
 "src/components/action-list-item.js,a/4/a4f050a8e686a4325cf9c08f17334f69398da6d7
 H
 src/icons/adjustments.js,e/6/e6a5944824d878a7243de4e508133d1218c1c6ed
-M
-src/utils/apply-pagination.js,3/1/313da0b96ce91e03621ae75d04ee53ccc8379b8e
-G
-src/utils/apply-sort.js,5/9/59874d7b5386ac07d7935b71d2336223cd49b1d4
 D
 src/icons/archive.js,3/f/3fb65ee78a7efb3994fe76f18a724870f728a274
 G
@@ -82,24 +78,8 @@ Q
 !src/icons/custom-shopping-cart.js,b/f/bff063b6cb502ea5aa6bc806262c309876e84bfa
 I
 src/icons/custom-users.js,5/a/5a57d0258cc31fd7ba0164041422fa81e93d7db0
-N
-src/pages/customer-activity.js,0/6/06e40a58a967bd40a4f7e698549d1bd74c247184
-a
-1src/components/customer/customer-activity-item.js,8/d/8d28a6d1125f4aabfbcf6360d8471a4667e989c4
-X
-(src/components/customer/customer-info.js,4/e/4e7ffdc347cd19e948dc0566d350add154d0aa21
-a
-1src/components/customer/customer-latest-orders.js,0/3/0305f7c6f66746c091109de2e91ba7136089869c
-X
-(src/components/customer/customer-menu.js,f/e/fe7d81a7bc5c0e3485908573e8237fe170c1d7e2
-\
-,src/components/customer/customer-note-add.js,d/6/d695df306d9e3c178268e1cf469612c633d1298c
-^
-.src/components/customer/customer-order-menu.js,3/9/397d3ab3a3b94773dd9aaf0cc49e6845c653b9dd
 L
 src/pages/customer-orders.js,5/4/548ebfd6bfc6e32f27d8a11ee403fdb953689955
-^
-.src/components/customer/customer-properties.js,a/8/a8ea272bb5fefb3ee82404863202545b640ed5d4
 M
 src/pages/customer-summary.js,b/7/b70451b989e55e61613ee3c96d1ddfb366a12a7d
 M
@@ -132,14 +112,10 @@ G
 public/static/figma.svg,8/5/85eef7d466648b116f1cea749768aefae846c520
 C
 src/lib/firebase.js,4/0/405d9e8e1fdc0bd34d8c6ec210d4381124c464a9
-Q
-!src/utils/generate-resource-id.js,b/b/bb99f96b3274526ad305bb2c523f1675a62c5254
 >
 src/lib/gtm.js,9/0/90c7376451904977d2a585eb413dbe3ea9093bb9
 M
 src/components/guest-guard.js,c/3/c3aa01608f205a9226c9a6254ef97730724179b9
-P
- src/components/image-dropzone.js,d/9/d99ae2dd283bb9a5594c87c88079a02fb6b5f54b
 A
 public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
 P
@@ -170,8 +146,6 @@ H
 src/pages/main-layout.js,c/7/c71c421f8ed733e622e16f31e8c4d9d2e83918d8
 R
 "src/components/main-navbar-link.js,a/5/a58885fa639da08941fa0113147b530b21255684
-N
-src/components/main-sidebar.js,f/4/f43ac1b91e8602faf5140dbcfe8c7a2c02568348
 S
 #src/components/main-sidebar-link.js,4/1/41331ec8838bd90a7c482167782f36d819e6ddea
 A
@@ -188,8 +162,6 @@ L
 src/icons/office-building.js,6/d/6dab05a3f4f3c08b0c9d2fe789d7a952f667c1aa
 V
 &src/components/organization-popover.js,0/1/01e20947182eae616f27788e820fc1bcbfc5aef9
-P
- src/components/pages-dropdown.js,4/4/44b096dab642ae424f1db2f8104631823e2c1719
 L
 src/components/pagination.js,d/2/d290a95cd3e99b00b97aa3d0c24606cf4c302278
 G
@@ -304,8 +276,6 @@ F
 src/icons/view-grid.js,c/0/c06e03f0a6fcd1c59ed6319a067c029c1c065ee4
 F
 src/icons/view-list.js,2/4/243e2f87155a8284fddb82d405af23b354f3121f
-A
-src/utils/wait.js,d/2/d26bfd0f6da70c0309b07240f5082531a7159095
 H
 src/components/wizard.js,d/1/d10d25a53d4373031158c3bf7dfe3d7a8932c2cb
 Q
@@ -334,8 +304,6 @@ D
 src/pages/account.js,0/6/06cfa17cb3226253f8d6130a09adb7b2b55cf8f8
 T
 $src/components/filter-dialog-item.js,6/f/6f9e5afe762391be74989bc01f574da15d3c4eb2
-M
-src/utils/filter-operators.js,6/0/6025df09673fabe67d2ad96f23936326adce798d
 L
 public/static/company-bd.svg,7/9/7944a17d5ececd55994faeb49ed14c6d669467d6
 N
@@ -344,8 +312,6 @@ a
 1src/components/account/account-change-password.js,7/c/7c1c5e563ec9331b2213bcd8319642678bd7923d
 Z
 *src/components/customer/customer-dialog.js,3/d/3d09695a1b4a062a293d313558d51672b88a4661
-Z
-*src/components/customer/customers-table.js,5/b/5bb7f387b68ca67a8ec21298fc2091837dceb278
 H
 src/components/footer.js,f/9/f9a8f3e280b0ce0713ebe20bd2dd93c5ad53cd11
 Z
@@ -362,18 +328,12 @@ $src/contexts/amplify-auth-context.js,f/0/f033eab8819b7e2f7264ecb2336a155cc40cf
 src/api/auth.js,1/b/1b283c5a4d11574482a0fc4c295408dc5306d399
 M
 src/contexts/auth0-context.js,f/9/f900b662f8818e4ea33a55dbfa32ec564b1bfb35
-Y
-)src/components/customer/customer-notes.js,7/a/7af0179637225d1db743bd23f3cfae1d443d2b06
 U
 %src/contexts/firebase-auth-context.js,5/7/57fdc0bdb8bfe03e130da438265afaaf5fc06e24
 U
 %src/components/order/orders-filter.js,0/d/0dff300c832ba9d77794db4b4076dae2bdc1fde1
 O
 src/components/status-select.js,f/7/f76fad12fbfaeb25a9dbcc200968e1acd533a89d
-S
-#src/components/bulk-actions-menu.js,a/2/a23e4ca6c14c6306e28d2deda0872b35e83772de
-[
-+src/components/customer/customers-filter.js,2/f/2fc5b925847bad487cf8758e0c9de6682f493470
 O
 src/components/filter-dialog.js,a/c/ac492b823d0900cc61b7f730ab63705d7dfbe72a
 X
@@ -402,11 +362,5 @@ V
 &src/components/order/order-timeline.js,2/f/2f7ea6caf0df26c223795d140a12e54b7dfcfba2
 T
 $src/components/property-list-item.js,1/1/118b0ac9445769a5384327ad13863b75d97818c6
-E
-src/pages/customer.js,1/2/12ef72009dafa101d44cb8ce751f4adc3f0dd397
-F
-src/pages/customers.js,6/7/679b0e7efd848cb5c2966dc68c6b22bf83ca29c1
-J
-src/utils/apply-filters.js,8/b/8bc43b1c606e4c43e23b7a509546217acedbc57b
 M
 src/components/input-field.js,6/c/6c32e2138e89369a7ee15d457f4b3513fc2930ed

@@ -3,19 +3,16 @@ import toast from 'react-hot-toast';
 import {IconButton, Menu, MenuItem} from '@material-ui/core';
 import {usePopover} from '../../hooks/use-popover';
 import {DotsVertical as DotsVerticalIcon} from '../../icons/dots-vertical';
+import {useTranslation} from "react-i18next";
 
 export const CustomerMenu = (props) => {
     const navigate = useNavigate();
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
+    const {t} = useTranslation();
 
     const handleEdit = () => {
         handleClose();
         navigate('/dashboard/customers/1');
-    };
-
-    const handleReport = () => {
-        handleClose();
-        toast.error('This action is not available on demo');
     };
 
     const handleDelete = () => {
@@ -46,13 +43,10 @@ export const CustomerMenu = (props) => {
                 }}
             >
                 <MenuItem onClick={handleEdit}>
-                    Edit
-                </MenuItem>
-                <MenuItem onClick={handleReport}>
-                    Report
+                    {t("Edit")}
                 </MenuItem>
                 <MenuItem onClick={handleDelete}>
-                    Delete
+                    {t("Delete")}
                 </MenuItem>
             </Menu>
         </>

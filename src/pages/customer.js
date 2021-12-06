@@ -54,10 +54,6 @@ const tabs = [
     {
         href: '/dashboard/customers/1/orders',
         label: 'Orders'
-    },
-    {
-        href: '/dashboard/customers/1/activity',
-        label: 'Activity'
     }
 ];
 

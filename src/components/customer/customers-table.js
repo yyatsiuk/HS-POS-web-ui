@@ -7,7 +7,6 @@ import {
     Box,
     Checkbox,
     Divider,
-    IconButton,
     Link,
     Skeleton,
     Table,
@@ -17,26 +16,27 @@ import {
     TableRow,
     TableSortLabel
 } from '@material-ui/core';
-import {Star as StarIcon} from '../../icons/star';
 import {Pagination} from '../pagination';
 import {ResourceError} from '../resource-error';
 import {ResourceUnavailable} from '../resource-unavailable';
 import {Scrollbar} from '../scrollbar';
 import {CustomerMenu} from './customer-menu';
+import {useTranslation} from "react-i18next";
+import {extractInstagramName} from "../../utils/input-formatter";
 
 const columns = [
     {
         id: 'fullName',
         disablePadding: true,
-        label: 'Name'
+        label: 'Full Name'
     },
     {
         id: 'phone',
         label: 'Phone'
     },
     {
-        id: 'email',
-        label: 'Email'
+        id: 'instagram',
+        label: 'Instagram'
     },
     {
         id: 'createdAt',
@@ -60,17 +60,11 @@ export const CustomersTable = (props) => {
         sortBy
     } = props;
     const [customers, setCustomers] = useState(customersProp);
+    const {t} = useTranslation();
 
     useEffect(() => {
         setCustomers(customersProp);
     }, [customersProp]);
-
-    const handleIsFavoriteChange = (customerId, value) => {
-        const temp = [...customers];
-        const customerIndex = temp.findIndex((customer) => customer.id === customerId);
-        temp[customerIndex].isFavorite = value;
-        setCustomers(temp);
-    };
 
     const displayLoading = isLoading;
     const displayError = Boolean(!isLoading && error);
@@ -110,7 +104,7 @@ export const CustomersTable = (props) => {
                                         disabled={isLoading}
                                         onClick={(event) => onSortChange(event, column.id)}
                                     >
-                                        {column.label}
+                                        {t(column.label)}
                                     </TableSortLabel>
                                 </TableCell>
                             ))}
@@ -139,19 +133,6 @@ export const CustomersTable = (props) => {
                                             justifyContent: 'center'
                                         }}
                                     >
-                                        <IconButton
-                                            onClick={() => handleIsFavoriteChange(customer.id,
-                                                !customer.isFavorite)}
-                                            size="small"
-                                        >
-                                            <StarIcon
-                                                sx={{
-                                                    color: customer.isFavorite
-                                                        ? 'rgb(255, 180, 0)'
-                                                        : 'action.disabled'
-                                                }}
-                                            />
-                                        </IconButton>
                                     </Box>
                                 </TableCell>
                                 <TableCell padding="none">
@@ -185,7 +166,9 @@ export const CustomersTable = (props) => {
                                     {customer.phone}
                                 </TableCell>
                                 <TableCell>
-                                    {customer.email}
+                                    <Link href={customer.instagram} target="_blank">
+                                        {extractInstagramName(customer.instagram)}
+                                    </Link>
                                 </TableCell>
                                 <TableCell>
                                     {format(customer.createdAt, 'dd/MM/yyyy HH:mm')}

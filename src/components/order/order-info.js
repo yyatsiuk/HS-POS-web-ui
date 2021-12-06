@@ -4,6 +4,7 @@ import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
 import {useTranslation} from "react-i18next";
 import {Fragment} from 'react'
+import {extractInstagramName} from "../../utils/input-formatter";
 
 const statusVariants = [
     {
@@ -57,11 +58,6 @@ export const OrderInfo = (props) => {
     const statusVariant = statusVariants.find((variant) => variant.value === order.status);
     const paymentVariant = paymentStatusVariants.find((paymentStatus) => paymentStatus.value === order.paymentStatus);
     const {t} = useTranslation();
-
-    const extractInstagramName = (link) => {
-        return "@" + link.split("https://instagram.com/")[1]
-            .split("?")[0];
-    }
 
     return (
         <Card

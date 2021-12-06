@@ -2,15 +2,12 @@ import PropTypes from 'prop-types';
 import {Button, Menu, MenuItem} from '@material-ui/core';
 import {usePopover} from '../hooks/use-popover';
 import {ChevronDown as ChevronDownIcon} from '../icons/chevron-down';
+import {useTranslation} from "react-i18next";
 
 export const BulkActionsMenu = (props) => {
     const {disabled, onArchive, onDelete, selectedCount, ...other} = props;
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
-
-    const handleArchive = () => {
-        onArchive?.();
-        handleClose();
-    };
+    const {t} = useTranslation();
 
     const handleDelete = () => {
         onDelete?.();
@@ -29,7 +26,7 @@ export const BulkActionsMenu = (props) => {
                 variant="outlined"
                 {...other}
             >
-                Bulk Actions
+                {t("Bulk Actions")}
             </Button>
             <Menu
                 anchorEl={anchorRef.current}
@@ -44,9 +41,6 @@ export const BulkActionsMenu = (props) => {
                     horizontal: 'right'
                 }}
             >
-                <MenuItem onClick={handleArchive}>
-                    {`Archive Selected (${selectedCount})`}
-                </MenuItem>
                 <MenuItem onClick={handleDelete}>
                     {`Delete Selected (${selectedCount})`}
                 </MenuItem>
