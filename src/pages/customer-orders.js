@@ -133,7 +133,7 @@ export const CustomerOrders = () => {
   return (
     <>
       <Helmet>
-        <title>Customer: Orders | Carpatin Dashboard</title>
+        <title>Customer: Orders | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

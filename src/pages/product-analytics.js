@@ -15,7 +15,7 @@ export const ProductAnalytics = () => {
   return (
     <>
       <Helmet>
-        <title>Product: Analytics | Carpatin Dashboard</title>
+        <title>Product: Analytics | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

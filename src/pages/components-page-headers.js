@@ -25,7 +25,7 @@ export const ComponentsPageHeaders = () => {
   return (
     <>
       <Helmet>
-        <title>Components: Page Headers | Carpatin Dashboard</title>
+        <title>Components: Page Headers | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

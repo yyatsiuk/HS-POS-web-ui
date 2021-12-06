@@ -190,7 +190,7 @@ export const ProductInventory = () => {
   return (
     <>
       <Helmet>
-        <title>Product: Inventory | Carpatin Dashboard</title>
+        <title>Product: Inventory | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

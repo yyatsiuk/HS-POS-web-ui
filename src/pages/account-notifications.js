@@ -59,7 +59,7 @@ export const AccountNotifications = () => {
   return (
     <>
       <Helmet>
-        <title>Account: Notifications | Carpatin Dashboard</title>
+        <title>Account: Notifications | HS-POS Dashboard</title>
       </Helmet>
       <Card variant="outlined">
         <CardHeader

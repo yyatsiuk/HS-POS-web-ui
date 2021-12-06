@@ -13,7 +13,7 @@ export const AccountGeneral = () => {
   return (
     <>
       <Helmet>
-        <title>Account: General | Carpatin Dashboard</title>
+        <title>Account: General | HS-POS Dashboard</title>
       </Helmet>
       <Box sx={{ backgroundColor: 'background.default' }}>
         <AccountDetails />

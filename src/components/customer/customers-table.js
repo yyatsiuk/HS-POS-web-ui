@@ -41,6 +41,10 @@ const columns = [
     {
         id: 'createdAt',
         label: 'Created'
+    },
+    {
+        id: 'edit',
+        label: ''
     }
 ];
 
@@ -92,7 +96,6 @@ export const CustomersTable = (props) => {
                                     onChange={onSelectAll}
                                 />
                             </TableCell>
-                            <TableCell/>
                             {columns.map((column) => (
                                 <TableCell
                                     key={column.id}
@@ -108,7 +111,6 @@ export const CustomersTable = (props) => {
                                     </TableSortLabel>
                                 </TableCell>
                             ))}
-                            <TableCell/>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -126,15 +128,8 @@ export const CustomersTable = (props) => {
                                         onChange={(event) => onSelect(event, customer.id)}
                                     />
                                 </TableCell>
-                                <TableCell padding="none">
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'center'
-                                        }}
-                                    >
-                                    </Box>
-                                </TableCell>
+                                {/*<TableCell padding="none">*/}
+                                {/*</TableCell>*/}
                                 <TableCell padding="none">
                                     <Box
                                         sx={{

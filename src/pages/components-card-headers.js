@@ -21,7 +21,7 @@ export const ComponentsCardHeaders = () => {
   return (
     <>
       <Helmet>
-        <title>Components: Card Headers | Carpatin Dashboard</title>
+        <title>Components: Card Headers | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

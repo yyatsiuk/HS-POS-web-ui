@@ -127,7 +127,7 @@ export const Products = () => {
   return (
     <>
       <Helmet>
-        <title>Product: List | Carpatin Dashboard</title>
+        <title>Product: List | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

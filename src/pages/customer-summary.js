@@ -180,7 +180,7 @@ export const CustomerSummary = () => {
   return (
     <>
       <Helmet>
-        <title>Customer: Summary | Carpatin Dashboard</title>
+        <title>Customer: Summary | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

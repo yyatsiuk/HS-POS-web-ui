@@ -23,7 +23,7 @@ export const Register = () => {
   return (
     <>
       <Helmet>
-        <title>Register | Carpatin Dashboard</title>
+        <title>Register | HS-POS Dashboard</title>
       </Helmet>
       <AppBar
         elevation={0}

@@ -127,7 +127,7 @@ export const ProductSummary = () => {
   return (
     <>
       <Helmet>
-        <title>Product: Summary | Carpatin Dashboard</title>
+        <title>Product: Summary | HS-POS Dashboard</title>
       </Helmet>
       <Box
         sx={{

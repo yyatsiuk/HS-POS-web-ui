@@ -70,6 +70,7 @@ const resources = {
             "Loading resource data": "Загрузка даних...",
             "Bulk Actions": "Застосувати до вибраних",
             "Ordered recently": "Нещодавно замовляли",
+            "Search...": "Пошук...",
             Account: 'Аккаунт',
             Returning: 'Робили повернення',
             Activity: 'Активність',

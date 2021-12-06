@@ -1,8 +1,6 @@
 
 ;
 example.env,e/9/e92aa7821f38c420fef629d6a96223b078610d40
-D
-public/manifest.json,4/2/42e89cd2213b9d5dfae4f63522702c623170d792
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 A
@@ -14,8 +12,6 @@ A
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-R
-"src/pages/account-notifications.js,c/7/c76fa4199e06abac5f9ba56d5a486edb2c66195b
 M
 src/components/action-list.js,2/a/2a4af3c681c70e8037710652c5811b896e3eddd5
 R
@@ -66,10 +62,6 @@ O
 public/static/company-mbank.svg,0/1/01aed88db043c704685aed30035e08b53de7aa92
 Q
 !public/static/company-samsung.svg,8/6/86a02eb4bf85cbebdef51097dfab872dc3e92fcd
-T
-$src/pages/components-card-headers.js,e/0/e07a4a11010d7409525796345ed32c0f34d17a4c
-T
-$src/pages/components-page-headers.js,c/9/c91f1fc339567df77509c4590f669a8113f9e5d2
 M
 src/icons/custom-chart-pie.js,6/a/6a182f6907e0811793ba8083e1a080fe0dbc4bde
 H
@@ -78,12 +70,6 @@ Q
 !src/icons/custom-shopping-cart.js,b/f/bff063b6cb502ea5aa6bc806262c309876e84bfa
 I
 src/icons/custom-users.js,5/a/5a57d0258cc31fd7ba0164041422fa81e93d7db0
-L
-src/pages/customer-orders.js,5/4/548ebfd6bfc6e32f27d8a11ee403fdb953689955
-M
-src/pages/customer-summary.js,b/7/b70451b989e55e61613ee3c96d1ddfb366a12a7d
-M
-src/pages/dashboard-layout.js,a/c/ac9bf55310621b97fcb4159d9fd31cdae128cdbc
 L
 src/components/date-field.js,c/1/c10c14d78c769dc9d1a081154b4efd4dc7f67d16
 N
@@ -116,8 +102,6 @@ C
 src/lib/gtm.js,9/0/90c7376451904977d2a585eb413dbe3ea9093bb9
 M
 src/components/guest-guard.js,c/3/c3aa01608f205a9226c9a6254ef97730724179b9
-A
-public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
 P
  src/contexts/jwt-auth-context.js,1/d/1def159baf94bf18f9791fa41ca3da00d07d310e
 Q
@@ -128,8 +112,6 @@ A
 src/icons/link.js,a/4/a4434c2f1364b051969a6be44f10290ab715940c
 P
  src/components/loading-screen.js,a/d/ad63761900f83352ccf20e4f23ac10d83788cf2c
-B
-src/pages/login.js,6/9/69bd61b3318a5556b9b2c2cb0288673681b499f0
 T
 $src/components/auth/login-amplify.js,8/3/834f97bbe5b6fde8b7f88f90b945b7f9b7ba3933
 R
@@ -172,8 +154,6 @@ A
 src/icons/plus.js,8/3/83f90d6de54232e1691402a1bdc28123a1ae4cbb
 D
 src/icons/printer.js,8/9/8938d9afb5c7b2897bb9cd70b34a6e39d7448885
-D
-src/pages/product.js,5/a/5a4922546c28de6a2d6f189951cc6a56680f34ef
 Y
 )src/components/product/product-channel.js,b/6/b697891ba38f63ceecd85ab2d9f518887aaa7f8f
 W
@@ -198,8 +178,6 @@ X
 (src/components/product/products-table.js,0/e/0e15e182684da73ebe392046f807d3158a0296a1
 O
 src/components/property-list.js,7/b/7b9b2e34b818668eb7582c5910c5fef532d3f712
-G
-src/components/query.js,0/a/0a9c2fd4165a8636eec9521ce112b772f30d1a88
 S
 #src/icons/question-mark-outlined.js,d/2/d285a01167cd53f718bbf025354e24f581266354
 G
@@ -212,8 +190,6 @@ H
 src/icons/receipt-tax.js,d/8/d858a357bc1a351c8e0a47e8287a9155eb06b736
 D
 src/icons/refresh.js,5/3/53bba354ee37b4224faabf02892f928334a8c250
-E
-src/pages/register.js,c/1/c18d6b24f0a4bd225d8ecf2380a382dd7da872b5
 W
 'src/components/auth/register-amplify.js,8/c/8ce7e43086f0dacf526bedd2b7cd8de42a5a76cc
 U
@@ -292,14 +268,6 @@ E
 src/icons/x-circle.js,c/8/c858383a1aab9c15c05579c2f6511ef2e590d043
 <
 src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
-N
-src/pages/product-analytics.js,4/e/4ec5174f6d4010546d57d2a7e868541c533f057b
-N
-src/pages/product-inventory.js,c/1/c1e369cfc9eac2a5d10eb5ec62b94b7a5a64d905
-E
-src/pages/products.js,4/7/478489a7f1729b3004298860f0e05f0b6e446b90
-L
-src/pages/account-general.js,b/d/bda6d4158033d2bfafbb37e804b47cba5f9da04e
 D
 src/pages/account.js,0/6/06cfa17cb3226253f8d6130a09adb7b2b55cf8f8
 T
