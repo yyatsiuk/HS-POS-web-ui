@@ -72,8 +72,19 @@ const resources = {
             "Ordered recently": "Нещодавно замовляли",
             "Search...": "Пошук...",
             "App Settings": "Налаштування Акаунта",
+            "Account Settings": "Налаштування Акаунта",
             "Dark Mode": "Темний Режим",
             "Log out": "Вихід",
+            "Upload new picture": "Завантажити нову картинку",
+            "Change password": "Змінити Пароль",
+            "Old password": "Старий пароль",
+            "New password": "Новий пароль",
+            "Job title": "Посада",
+            "Email address": "Електронна адреса",
+            "Recommended dimensions is 200x200, maximum file size is 5MB": "Рекомендоване розширення: 200x200, максимальний розмір файлу: 5Mb",
+            "Save settings": "Зберегти налаштування",
+            "Old password is required": "Старий пароль є обов'язковим полем",
+            "New password is required": "Новий пароль є обов'язковим полем",
             Account: 'Аккаунт',
             Returning: 'Робили повернення',
             Activity: 'Активність',
@@ -138,7 +149,9 @@ const resources = {
             Refund: 'Повернення',
             Order: 'Замовлення',
             Item: 'Товар',
-            Menu: 'Меню'
+            Menu: 'Меню',
+            General: 'Загальні Налаштування',
+            Settings: 'Налаштування'
         }
     }
 };

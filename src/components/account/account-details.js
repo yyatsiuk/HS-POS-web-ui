@@ -3,19 +3,19 @@ import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import {Avatar, Box, Button, Card, CardContent, FormHelperText, Grid, Typography} from '@material-ui/core';
 import {InputField} from '../input-field';
+import {useTranslation} from "react-i18next";
 
 
 export const AccountDetails = (props) => {
+  const {t} = useTranslation();
   const formik = useFormik({
     initialValues: {
-      companyName: 'ACME Corp LLC.',
       email: 'chen.simmons@acmecorp.com',
       fullName: 'Kate Heida',
       jobTitle: 'Operation',
       submit: null
     },
     validationSchema: Yup.object().shape({
-      companyName: Yup.string().max(255).required('Company name is required'),
       email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
       fullName: Yup.string().max(255).required('Full Name is required'),
       jobTitle: Yup.string().max(255).required('Job name is required')
@@ -54,7 +54,7 @@ export const AccountDetails = (props) => {
               color="textPrimary"
               variant="h6"
             >
-              Settings
+              {t("Settings")}
             </Typography>
           </Grid>
           <Grid
@@ -92,7 +92,7 @@ export const AccountDetails = (props) => {
                           type="button"
                           variant="outlined"
                         >
-                          Upload new picture
+                          {t("Upload new picture")}
                         </Button>
                       </Grid>
                       <Grid item>
@@ -102,7 +102,7 @@ export const AccountDetails = (props) => {
                           type="button"
                           variant="text"
                         >
-                          Delete
+                          {t("Delete")}
                         </Button>
                       </Grid>
                     </Grid>
@@ -110,7 +110,7 @@ export const AccountDetails = (props) => {
                       color="textSecondary"
                       variant="caption"
                     >
-                      Recommended dimensions: 200x200, maximum file size: 5MB
+                      {t("Recommended dimensions is 200x200, maximum file size is 5MB")}
                     </Typography>
                   </div>
                 </Box>
@@ -126,7 +126,7 @@ export const AccountDetails = (props) => {
                       error={Boolean(formik.touched.fullName && formik.errors.fullName)}
                       fullWidth
                       helperText={formik.touched.fullName && formik.errors.fullName}
-                      label="Full Name"
+                      label={t("Full Name")}
                       name="fullName"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
@@ -141,7 +141,7 @@ export const AccountDetails = (props) => {
                       error={Boolean(formik.touched.email && formik.errors.email)}
                       fullWidth
                       helperText={formik.touched.email && formik.errors.email}
-                      label="Email address"
+                      label={t("Email address")}
                       name="email"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
@@ -157,27 +157,11 @@ export const AccountDetails = (props) => {
                       error={Boolean(formik.touched.jobTitle && formik.errors.jobTitle)}
                       fullWidth
                       helperText={formik.touched.jobTitle && formik.errors.jobTitle}
-                      label="Job title"
+                      label={t("Job title")}
                       name="jobTitle"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
                       value={formik.values.jobTitle}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                  >
-                    <InputField
-                      error={Boolean(formik.touched.companyName
-                        && formik.errors.companyName)}
-                      fullWidth
-                      helperText={formik.touched.companyName && formik.errors.companyName}
-                      label="Company name"
-                      name="companyName"
-                      onBlur={formik.handleBlur}
-                      onChange={formik.handleChange}
-                      value={formik.values.companyName}
                     />
                   </Grid>
                   {formik.errors.submit && (
@@ -200,7 +184,7 @@ export const AccountDetails = (props) => {
                       type="submit"
                       variant="contained"
                     >
-                      Save settings
+                      {t("Save settings")}
                     </Button>
                   </Grid>
                 </Grid>

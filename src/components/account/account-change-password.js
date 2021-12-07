@@ -3,8 +3,10 @@ import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import {Button, Card, CardContent, FormHelperText, Grid, Typography} from '@material-ui/core';
 import {InputField} from '../input-field';
+import {useTranslation} from "react-i18next";
 
 export const AccountChangePassword = (props) => {
+  const {t} = useTranslation();
   const formik = useFormik({
     initialValues: {
       newPassword: '',
@@ -17,7 +19,7 @@ export const AccountChangePassword = (props) => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        toast.success('Password changed');
+        toast.success(t('Password changed'));
         helpers.resetForm();
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
@@ -49,7 +51,7 @@ export const AccountChangePassword = (props) => {
               color="textPrimary"
               variant="h6"
             >
-              Change password
+              {t("Change password")}
             </Typography>
           </Grid>
           <Grid
@@ -69,8 +71,8 @@ export const AccountChangePassword = (props) => {
                   <InputField
                     error={Boolean(formik.touched.password && formik.errors.password)}
                     fullWidth
-                    helperText={formik.touched.password && formik.errors.password}
-                    label="Old password"
+                    helperText={formik.touched.password && t(formik.errors.password)}
+                    label={t("Old password")}
                     name="password"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
@@ -86,8 +88,8 @@ export const AccountChangePassword = (props) => {
                     error={Boolean(formik.touched.newPassword
                       && formik.errors.newPassword)}
                     fullWidth
-                    helperText={formik.touched.newPassword && formik.errors.newPassword}
-                    label="New password"
+                    helperText={formik.touched.newPassword && t(formik.errors.newPassword)}
+                    label={t("New password")}
                     name="newPassword"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
@@ -115,7 +117,7 @@ export const AccountChangePassword = (props) => {
                     type="submit"
                     variant="contained"
                   >
-                    Change password
+                    {t("Change password")}
                   </Button>
                 </Grid>
               </Grid>

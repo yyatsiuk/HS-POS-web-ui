@@ -228,16 +228,12 @@ L
 public/static/company-bd.svg,7/9/7944a17d5ececd55994faeb49ed14c6d669467d6
 N
 public/static/company-ford.svg,5/4/548e9b970e886641e74585aa7cc98f43c321667a
-a
-1src/components/account/account-change-password.js,7/c/7c1c5e563ec9331b2213bcd8319642678bd7923d
 Z
 *src/components/customer/customer-dialog.js,3/d/3d09695a1b4a062a293d313558d51672b88a4661
 Z
 *src/components/product/product-variants.js,c/a/caa89db3e058638ff748235abd12f69b20d87908
 J
 src/icons/document-text.js,9/6/9646cc5e1bebfe54d716e091eeadf25ba3313fb6
-Y
-)src/components/account/account-details.js,9/0/90ee7f5856ba201736b23d7eb0b8513e7f37f8ce
 T
 $src/contexts/amplify-auth-context.js,f/0/f033eab8819b7e2f7264ecb2336a155cc40cf5a1
 ?
