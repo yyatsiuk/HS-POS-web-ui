@@ -284,63 +284,38 @@ const customers = [
 
 const customer = {
     id: '6541237',
-    address: '8502 Preston Rd. Inglewood, Maine 98380',
+    address: 'м.Житомир',
     avatar: '/static/user-julie_reynaud.jpg',
-    city: 'Berlin',
-    country: 'Germany',
     createdAt: subDays(subHours(subMinutes(now, 19), 10), 50),
-    dateOfBirth: new Date('09/21/1998'),
-    email: 'julie.reynaud@nopta.com',
     instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
-    fullName: 'Julie Reynaud',
-    isTaxExempt: false,
-    lastContactChannel: 'Organic',
+    fullName: 'Чайка Чайківська Іванівна',
     lastContactDate: subDays(subHours(subMinutes(now, 32), 5), 123),
     lastOrderDate: subDays(subHours(subMinutes(now, 2), 1), 20),
     orderValue: 12200,
     ordersPlaced: 17,
-    phone: '(249) 894-7992',
+    phone: '+380981111111',
     status: 'Active',
-    storeCredit: 0
 };
 
 const customerOrders = [
     {
         id: '5273',
-        courier: 'DHL',
         createdAt: new Date(),
         currency: 'UAH',
-        currencySymbol: '$',
+        currencySymbol: '\u20B4',
+        address: 'м.Тернопіль',
         customer: {
-            address: '8502 Preston Rd. Inglewood, Maine 98380',
-            city: 'New York',
-            email: 'devon.lane@nopta.com',
-            firstName: 'Devon',
-            lastName: 'Lane',
+            firstName: 'Чайка',
+            lastName: 'Чайківська',
+            middleName: 'Іванівна',
             phone: '6035550123',
-            stripeId: 'RRNQ8JLQ',
             instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link"
         },
-        lineItems: [
-            {
-                currency: 'UAH',
-                currencySymbol: '$',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
-        ],
-        paymentMethod: 'debit',
+        courier: {
+            name: 'Nova Poshta',
+            branchNumber: '4',
+        },
         status: 'delivered',
-        trackingCode: 'KDO020021',
-        subtotalAmount: 160,
-        taxAmount: 32.5,
         totalAmount: 192.5,
         updatedAt: new Date()
     }
@@ -348,59 +323,12 @@ const customerOrders = [
 
 const customerNotes = [
     {
-        id: '1',
-        content: 'I really enjoyed working with this client! She is a ray of sunshine every time I call her. She has a cat called Sticks which she loves very much',
-        createdAt: subMinutes(now, 12),
-        senderAvatar: '/static/user-laurie_tardy.png',
-        senderId: '2',
-        senderName: 'Laurie T.'
-    },
-    {
         id: '2',
-        content: 'Don’t call the client before 5 PM, trust me I know what I’m saying',
+        content: 'Дуже вредна чайка!',
         createdAt: subMinutes(now, 78),
         senderAvatar: '/static/user-chen_simmons.png',
         senderId: '1',
         senderName: 'Kate Heida'
-    }
-];
-
-const customerActivities = [
-    {
-        id: '588237453',
-        adminAvatar: '/static/user-chen_simmons.png',
-        adminId: '58232367',
-        adminName: 'Kate Heida',
-        createdAt: subMinutes(now, 12),
-        message: 'updated customer',
-        type: 'updatedCustomer'
-    },
-    {
-        id: '534948327',
-        adminAvatar: '/static/user-chen_simmons.png',
-        adminId: '58232367',
-        adminName: 'Kate Heida',
-        createdAt: subMinutes(now, 50),
-        message: 'updated customer',
-        type: 'updatedCustomer'
-    },
-    {
-        id: '503923845',
-        adminAvatar: '/static/user-horia_tepar.png',
-        adminId: '48237437',
-        adminName: 'Horia Tepar',
-        createdAt: subDays(subMinutes(now, 17), 15),
-        message: 'triggered the action “Generate Invoice” on the customer',
-        type: 'generateInvoice'
-    },
-    {
-        id: '501923847',
-        adminAvatar: '/static/user-horia_tepar.png',
-        adminId: '48237437',
-        adminName: 'Horia Tepar',
-        createdAt: subDays(subMinutes(now, 54), 16),
-        message: 'triggered the action “Generate Invoice” on the customer',
-        type: 'generateInvoice'
     }
 ];
 

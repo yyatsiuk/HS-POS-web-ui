@@ -3,10 +3,12 @@ import toast from 'react-hot-toast';
 import {IconButton, Menu, MenuItem} from '@material-ui/core';
 import {usePopover} from '../../hooks/use-popover';
 import {DotsVertical as DotsVerticalIcon} from '../../icons/dots-vertical';
+import {useTranslation} from "react-i18next";
 
 export const CustomerOrderMenu = (props) => {
     const navigate = useNavigate();
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
+    const {t} = useTranslation();
 
     const handleEdit = () => {
         handleClose();
@@ -46,13 +48,13 @@ export const CustomerOrderMenu = (props) => {
                 }}
             >
                 <MenuItem onClick={handleEdit}>
-                    Edit
+                    {t("Edit")}
                 </MenuItem>
                 <MenuItem onClick={handleRefund}>
-                    Refund
+                    {t("Refund")}
                 </MenuItem>
                 <MenuItem onClick={handleDelete}>
-                    Delete
+                    {t("Delete")}
                 </MenuItem>
             </Menu>
         </>

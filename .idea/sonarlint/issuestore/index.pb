@@ -238,8 +238,6 @@ _
 /src/components/product/product-create-dialog.js,a/9/a96cda45e0014dccbb8695e6841871528051506f
 Y
 )src/components/product/products-filter.js,2/e/2eb9939853895d7f67aa6a547e07b58522135455
-Z
-*src/components/order/order-preview-list.js,c/2/c28b67a0a021c4d540818576f728b83aa6c3dd76
 N
 src/components/actions-menu.js,3/9/396cea60547479a2b9b7791f42aaaf9e9d9145a6
 U
