@@ -22,7 +22,7 @@ import {ResourceUnavailable} from '../resource-unavailable';
 import {Scrollbar} from '../scrollbar';
 import {CustomerMenu} from './customer-menu';
 import {useTranslation} from "react-i18next";
-import {extractInstagramName} from "../../utils/input-formatter";
+import {extractInstagramName, stringAvatar} from "../../utils/input-formatter";
 
 const columns = [
     {
@@ -128,8 +128,6 @@ export const CustomersTable = (props) => {
                                         onChange={(event) => onSelect(event, customer.id)}
                                     />
                                 </TableCell>
-                                {/*<TableCell padding="none">*/}
-                                {/*</TableCell>*/}
                                 <TableCell padding="none">
                                     <Box
                                         sx={{
@@ -137,15 +135,7 @@ export const CustomersTable = (props) => {
                                             alignItems: 'center'
                                         }}
                                     >
-                                        <Avatar
-                                            src={customer.avatar}
-                                            sx={{
-                                                height: 36,
-                                                mr: 1,
-                                                width: 36
-                                            }}
-                                            variant="rounded"
-                                        />
+                                        <Avatar {...stringAvatar(customer.fullName, 36 ,36)} />
                                         <Link
                                             color="inherit"
                                             component={RouterLink}

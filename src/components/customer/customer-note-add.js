@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import PropTypes from 'prop-types';
-import {Box, Button, Card, Divider, IconButton, InputBase, Typography} from '@material-ui/core';
-import {ChevronDown as ChevronDownIcon} from '../../icons/chevron-down';
-import {Eye as EyeIcon} from '../../icons/eye';
+import {Box, Button, Card, Divider, IconButton, InputBase} from '@material-ui/core';
 import {PaperClip as PaperClipIcon} from '../../icons/paper-clip';
+import {useTranslation} from "react-i18next";
 
 export const CustomerNoteAdd = (props) => {
     const {onSend, submitDisabled, ...other} = props;
     const [content, setContent] = useState('');
+    const {t} = useTranslation();
 
     const handleChange = (event) => {
         setContent(event.target.value);
@@ -33,7 +33,7 @@ export const CustomerNoteAdd = (props) => {
                 <InputBase
                     multiline
                     onChange={handleChange}
-                    placeholder="Comment text..."
+                    placeholder={t("Comment text...")}
                     sx={{
                         flex: 1,
                         mr: 2
@@ -54,21 +54,6 @@ export const CustomerNoteAdd = (props) => {
                     p: 2
                 }}
             >
-                <EyeIcon sx={{color: 'inherit'}}/>
-                <Typography
-                    color="textPrimary"
-                    variant="body2"
-                    sx={{ml: 1}}
-                >
-                    Visible to all
-                </Typography>
-                <IconButton
-                    color="primary"
-                    size="small"
-                    sx={{color: 'inherit'}}
-                >
-                    <ChevronDownIcon fontSize="small"/>
-                </IconButton>
                 <Box sx={{flexGrow: 1}}/>
                 <Button
                     color="primary"
@@ -76,7 +61,7 @@ export const CustomerNoteAdd = (props) => {
                     onClick={handleSend}
                     variant="contained"
                 >
-                    Send
+                    {t("Send")}
                 </Button>
             </Box>
         </Card>

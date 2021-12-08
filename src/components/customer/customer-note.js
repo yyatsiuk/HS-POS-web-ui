@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import {formatDistanceToNowStrict} from 'date-fns';
 import {Avatar, Box, Button, Card, Typography} from '@material-ui/core';
+import {useTranslation} from "react-i18next";
 
 export const CustomerNote = (props) => {
     const {
@@ -14,6 +15,7 @@ export const CustomerNote = (props) => {
         sx,
         ...other
     } = props;
+    const {t} = useTranslation();
 
     return (
         <Card
@@ -65,7 +67,7 @@ export const CustomerNote = (props) => {
                             size="small"
                             variant="text"
                         >
-                            Delete
+                            {t("Delete")}
                         </Button>
                     )}
                 </Box>

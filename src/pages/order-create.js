@@ -3,6 +3,7 @@ import {Link as RouterLink} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import "yup-phone";
 import numeral from 'numeral';
 import toast from 'react-hot-toast';
 import {
@@ -65,6 +66,7 @@ export const OrderCreate = () => {
                 id: '',
                 fullName: ''
             },
+            phone: '',
             courierName: 'Nova Poshta',
             courierBranchNumber: '',
             deliveryAddress: '',
@@ -87,6 +89,7 @@ export const OrderCreate = () => {
             deliveryAddress: Yup.string().max(255).required('Delivery Address is required'),
             courierName: Yup.string().max(255).oneOf(courierOptions.map((option) => option.value)).required('Courier is required'),
             courierBranchNumber: Yup.string().max(5).required("Branch number is required"),
+            phone: Yup.string().phone("UA", true).required("Phone is required"),
             items: Yup.array().of(Yup.object().shape({
                 name: Yup.string().max(255).required('Name of product is required'),
                 quantity: Yup.number().min(1).required('Quantity is required'),
@@ -143,7 +146,8 @@ export const OrderCreate = () => {
     const customers = customersState.data?.customers.map(customer => {
         return {
             id: customer.id,
-            label: customer.fullName
+            label: customer.fullName,
+            phone: customer.phone
         }
     });
 
@@ -191,6 +195,7 @@ export const OrderCreate = () => {
                                                 id: value.id,
                                                 fullName: value.label
                                             });
+                                            formik.setFieldValue('phone', value.phone)
                                         }
                                     }}
                                     value={formik.values.customer.label}
@@ -207,7 +212,7 @@ export const OrderCreate = () => {
                                 <InputField
                                     error={Boolean(formik.touched.deliveryAddress && formik.errors.deliveryAddress)}
                                     fullWidth
-                                    helperText={formik.touched.deliveryAddress && formik.errors.deliveryAddress}
+                                    helperText={formik.touched.deliveryAddress && t(formik.errors.deliveryAddress)}
                                     label={t("Delivery Address")}
                                     name="deliveryAddress"
                                     onBlur={formik.handleBlur}
@@ -262,25 +267,35 @@ export const OrderCreate = () => {
                             <Grid
                                 item
                                 xs={12}
+                                md={6}
                             >
-                                <Divider/>
+                                <InputField
+                                    error={Boolean(formik.touched.phone && formik.errors.phone)}
+                                    fullWidth
+                                    helperText={formik.touched.phone && t(formik.errors.phone)}
+                                    label={t("Phone")}
+                                    name="phone"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.phone}
+                                    placeholder="0981111111"
+                                />
                             </Grid>
                             <Grid
                                 item
                                 xs={12}
+                                md={6}
                             >
-                                <Grid item md={6}>
-                                    <InputField
-                                        error={Boolean(formik.touched.prepayment && formik.errors.prepayment)}
-                                        fullWidth
-                                        helperText={formik.touched.prepayment && t(formik.errors.prepayment)}
-                                        label={t("Prepayment")}
-                                        name="prepayment"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                        value={formik.values.prepayment}
-                                    />
-                                </Grid>
+                                <InputField
+                                    error={Boolean(formik.touched.prepayment && formik.errors.prepayment)}
+                                    fullWidth
+                                    helperText={formik.touched.prepayment && t(formik.errors.prepayment)}
+                                    label={t("Prepayment")}
+                                    name="prepayment"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.prepayment}
+                                />
                             </Grid>
                             {formik.values.items.map((item, index) => {
                                 const totalPrice = Number.parseFloat(item.price) * item.quantity;

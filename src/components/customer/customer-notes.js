@@ -4,10 +4,12 @@ import {Box, Typography} from '@material-ui/core';
 import {generateResourceId} from '../../utils/generate-resource-id';
 import {CustomerNote} from './customer-note';
 import {CustomerNoteAdd} from './customer-note-add';
+import {useTranslation} from "react-i18next";
 
 export const CustomerNotes = (props) => {
     const {notes: notesProp, ...other} = props;
     const [notes, setNotes] = useState(notesProp || []);
+    const {t} = useTranslation();
 
     const handleNoteSend = (content) => {
         setNotes((prevNotes) => [
@@ -38,7 +40,7 @@ export const CustomerNotes = (props) => {
                 variant="h6"
                 sx={{mb: 3}}
             >
-                Team Notes
+                {t("Team Notes")}
             </Typography>
             <Box
                 sx={{

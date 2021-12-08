@@ -3,21 +3,19 @@ import toast from 'react-hot-toast';
 import {Avatar, Box, Button, Card, CardHeader, Divider, IconButton} from '@material-ui/core';
 import {useDialog} from '../../hooks/use-dialog';
 import {ExternalLink as ExternalLinkIcon} from '../../icons/external-link';
-import {Eye as EyeIcon} from '../../icons/eye';
 import {Trash as TrashIcon} from '../../icons/trash';
 import {ActionList} from '../action-list';
 import {ActionListItem} from '../action-list-item';
 import {ConfirmationDialog} from '../confirmation-dialog';
 import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
+import {stringAvatar} from "../../utils/input-formatter";
+import {useTranslation} from "react-i18next";
 
 export const CustomerInfo = (props) => {
     const {customer, onEdit, ...other} = props;
     const [deleteDialogOpen, handleOpenDeleteDialog, handleCloseDeleteDialog] = useDialog();
-
-    const handlePreview = () => {
-        toast.error('This action is not available on demo');
-    };
+    const {t} = useTranslation();
 
     const handleDelete = () => {
         handleCloseDeleteDialog();
@@ -37,10 +35,10 @@ export const CustomerInfo = (props) => {
                             onClick={onEdit}
                             variant="text"
                         >
-                            Edit
+                            {t("Edit")}
                         </Button>
                     )}
-                    title="Contact Info"
+                    title={t("Contact Info")}
                 />
                 <Divider/>
                 <Box
@@ -51,56 +49,33 @@ export const CustomerInfo = (props) => {
                         py: 1.5
                     }}
                 >
-                    <Avatar
-                        alt={customer.fullName}
-                        src={customer.avatar}
-                        sx={{
-                            height: 64,
-                            mr: 1,
-                            width: 64
-                        }}
-                        variant="rounded"
-                    />
-                    <IconButton color="inherit">
+                    <Avatar {...stringAvatar(customer.fullName, 64, 64)} />
+                    <IconButton color="inherit" href={customer.instagram} target="_blank">
                         <ExternalLinkIcon/>
                     </IconButton>
                 </Box>
                 <PropertyList>
                     <PropertyListItem
                         divider
-                        label="Full Name"
+                        label={t("Full Name")}
                         value={customer.fullName}
                     />
                     <PropertyListItem
                         divider
-                        label="Email address"
-                        value={customer.email}
-                    />
-                    <PropertyListItem
-                        divider
-                        label="Phone"
+                        label={t("Phone")}
                         value={customer.phone}
                     />
                     <PropertyListItem
                         divider
-                        label="Full Address"
+                        label={t("Address")}
                         value={customer.address}
-                    />
-                    <PropertyListItem
-                        label="Location"
-                        value={customer.country}
                     />
                 </PropertyList>
                 <Divider/>
                 <ActionList>
                     <ActionListItem
-                        icon={EyeIcon}
-                        onClick={handlePreview}
-                        label="Preview"
-                    />
-                    <ActionListItem
                         icon={TrashIcon}
-                        label="Delete User Data"
+                        label={t("Delete User Data")}
                         onClick={handleOpenDeleteDialog}
                     />
                 </ActionList>
@@ -110,7 +85,7 @@ export const CustomerInfo = (props) => {
                 onCancel={handleCloseDeleteDialog}
                 onConfirm={handleDelete}
                 open={deleteDialogOpen}
-                title="Delete user data"
+                title={t("Delete user data")}
                 variant="error"
             />
         </>

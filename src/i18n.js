@@ -85,6 +85,17 @@ const resources = {
             "Save settings": "Зберегти налаштування",
             "Old password is required": "Старий пароль є обов'язковим полем",
             "New password is required": "Новий пароль є обов'язковим полем",
+            "Delivery Address is required": "Адрес доставки є обов'язковим полем",
+            "phone must be a valid phone number for region UA": "Невірний формат номеру телефона",
+            "Phone is required": "Телефон є обов'язковим полем",
+            "Delete user data": "Видалити інформацію про клієнта",
+            "Delete User Data": "Видалити",
+            "Are you sure you want to delete the user data? This can't be undone.": "Ви впевнені що хочете видалити дані цього клієнта? Дані не можливо буде відновити",
+            "Update Customer": "Редагувати дані клієнта",
+            "Latest Orders": "Останні Замовлення",
+            "Contact Info": "Контактна інформація",
+            "Team Notes": "Командні Нотатки",
+            "Comment text...": "Текст коментаря...",
             Account: 'Аккаунт',
             Returning: 'Робили повернення',
             Activity: 'Активність',
@@ -151,7 +162,8 @@ const resources = {
             Item: 'Товар',
             Menu: 'Меню',
             General: 'Загальні Налаштування',
-            Settings: 'Налаштування'
+            Settings: 'Налаштування',
+            Send: 'Надіслати'
         }
     }
 };

@@ -1,10 +1,6 @@
 
 ;
 example.env,e/9/e92aa7821f38c420fef629d6a96223b078610d40
-<
-package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
-A
-package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
 A
@@ -86,8 +82,6 @@ O
 src/icons/emoji-sad-outlined.js,e/6/e67c974a12904a4e14490ffe8d8d0f1f1e98d504
 Q
 !src/icons/exclamation-outlined.js,6/3/63d7cb781399549c6b1a8a32e34936b7c20431de
-J
-src/icons/external-link.js,c/7/c73495fef01d33fa37c2c7463670b770d2d10d69
 @
 src/icons/eye.js,0/f/0fd4e8ebd44882a1f24dd6ef04367136ca59188c
 G
@@ -112,8 +106,6 @@ F
 src/components/logo.js,7/f/7f19b3418913381a75fa9bdab2dff9aff9afab74
 C
 src/icons/logout.js,e/c/ec787ee91d83b6a300912cc8093ebe24acfe1509
-H
-src/pages/main-layout.js,c/7/c71c421f8ed733e622e16f31e8c4d9d2e83918d8
 S
 #src/components/main-sidebar-link.js,4/1/41331ec8838bd90a7c482167782f36d819e6ddea
 A
@@ -228,8 +220,6 @@ L
 public/static/company-bd.svg,7/9/7944a17d5ececd55994faeb49ed14c6d669467d6
 N
 public/static/company-ford.svg,5/4/548e9b970e886641e74585aa7cc98f43c321667a
-Z
-*src/components/customer/customer-dialog.js,3/d/3d09695a1b4a062a293d313558d51672b88a4661
 Z
 *src/components/product/product-variants.js,c/a/caa89db3e058638ff748235abd12f69b20d87908
 J

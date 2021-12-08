@@ -1,22 +1,19 @@
 import {useCallback, useEffect, useState} from 'react';
 import {Link as RouterLink, Outlet, useLocation} from 'react-router-dom';
-import toast from 'react-hot-toast';
 import {Box, Button, Container, Divider, Grid, Skeleton, Tab, Tabs, Typography} from '@material-ui/core';
 import {customerApi} from '../api/customer';
-import {ActionsMenu} from '../components/actions-menu';
-import {ConfirmationDialog} from '../components/confirmation-dialog';
-import {useDialog} from '../hooks/use-dialog';
 import {useMounted} from '../hooks/use-mounted';
 import {ArrowLeft as ArrowLeftIcon} from '../icons/arrow-left';
 import {Calendar as CalendarIcon} from '../icons/calendar';
 import {Cash as CashIcon} from '../icons/cash';
 import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamation-outlined';
 import {ShoppingCart as ShoppingCartIcon} from '../icons/shopping-cart';
+import {useTranslation} from "react-i18next";
 
 // NOTE: This should be generated based on user data
 const stats = [
     {
-        content: 'Since: Apr 2021',
+        content: 'Зереєстрований з: Apr 2021',
         icon: (
             <CalendarIcon
                 fontSize="small"
@@ -25,7 +22,7 @@ const stats = [
         )
     },
     {
-        content: 'Orders: 17',
+        content: 'К-сть замовлень: 17',
         icon: (
             <ShoppingCartIcon
                 fontSize="small"
@@ -34,7 +31,7 @@ const stats = [
         )
     },
     {
-        content: 'Spent: $ 69.00',
+        content: 'Витрачено: $69.00',
         icon: (
             <CashIcon
                 fontSize="small"
@@ -60,8 +57,8 @@ const tabs = [
 export const Customer = () => {
     const mounted = useMounted();
     const location = useLocation();
-    const [banDialogOpen, handleOpenBanDialog, handleCloseBanDialog] = useDialog();
     const [customerState, setCustomerState] = useState({isLoading: true});
+    const {t} = useTranslation();
 
     const getCustomer = useCallback(async () => {
         setCustomerState(() => ({isLoading: true}));
@@ -90,34 +87,6 @@ export const Customer = () => {
     useEffect(() => {
         getCustomer().catch(console.error);
     }, []);
-
-    const handleSendVerification = () => {
-        toast.error('This action is not available on demo');
-    };
-
-    const handleSendPasswordReset = () => {
-        toast.error('This action is not available on demo');
-    };
-
-    const handleBanAccount = () => {
-        handleCloseBanDialog();
-        toast.error('This action is not available on demo');
-    };
-
-    const actions = [
-        {
-            label: 'Send Verification Email',
-            onClick: handleSendVerification
-        },
-        {
-            label: 'Send Password Reset Email',
-            onClick: handleSendPasswordReset
-        },
-        {
-            label: 'Ban Account',
-            onClick: handleOpenBanDialog
-        }
-    ];
 
     const renderContent = () => {
         if (customerState.isLoading) {
@@ -166,7 +135,7 @@ export const Customer = () => {
                             to="/dashboard/customers"
                             variant="text"
                         >
-                            Customers
+                            {t("Customers")}
                         </Button>
                     </Box>
                     <Box
@@ -182,7 +151,6 @@ export const Customer = () => {
                             {customerState.data.fullName}
                         </Typography>
                         <Box sx={{flexGrow: 1}}/>
-                        <ActionsMenu actions={actions}/>
                     </Box>
                     <Grid
                         container
@@ -226,7 +194,7 @@ export const Customer = () => {
                             <Tab
                                 component={RouterLink}
                                 key={option.href}
-                                label={option.label}
+                                label={t(option.label)}
                                 to={option.href}
                             />
                         ))}
@@ -234,14 +202,6 @@ export const Customer = () => {
                     <Divider/>
                 </Box>
                 <Outlet/>
-                <ConfirmationDialog
-                    message="Are you sure you want to ban this account? This can't be undone."
-                    onCancel={handleCloseBanDialog}
-                    onConfirm={handleBanAccount}
-                    open={banDialogOpen}
-                    title="Ban Customer"
-                    variant="error"
-                />
             </>
         );
     };

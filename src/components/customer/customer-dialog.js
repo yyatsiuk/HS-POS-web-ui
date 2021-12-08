@@ -1,39 +1,29 @@
 import PropTypes from 'prop-types';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import "yup-phone";
 import toast from 'react-hot-toast';
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    FormHelperText,
-    Grid,
-    MenuItem
-} from '@material-ui/core';
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle, FormHelperText, Grid} from '@material-ui/core';
 import {InputField} from '../input-field';
-
-const countryOptions = ['USA', 'Germany', 'Spain', 'Italy'];
+import {useTranslation} from "react-i18next";
 
 export const CustomerDialog = (props) => {
     const {customer, open, onClose, ...other} = props;
+    const {t} = useTranslation();
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
             address: customer?.address || '',
-            email: customer?.email || '',
+            instagram: customer?.instagram || '',
             fullName: customer?.fullName || '',
-            country: customer?.country || '',
             phone: customer?.phone || '',
             submit: null
         },
         validationSchema: Yup.object().shape({
             address: Yup.string().max(255),
-            email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+            instagram: Yup.string().max(255).required('Instagram is required'),
             fullName: Yup.string().max(255).required('Full name is required'),
-            country: Yup.string().oneOf(countryOptions),
-            phone: Yup.string().max(255)
+            phone: Yup.string().phone("UA", true).required("Phone is required")
         }),
         onSubmit: async (values, helpers) => {
             try {
@@ -60,7 +50,7 @@ export const CustomerDialog = (props) => {
             {...other}
         >
             <DialogTitle>
-                {customer ? 'Update Customer' : 'Create Customer'}
+                {customer ? t('Update Customer') : t('Create Customer')}
             </DialogTitle>
             <DialogContent>
                 <Grid
@@ -72,27 +62,10 @@ export const CustomerDialog = (props) => {
                         xs={12}
                     >
                         <InputField
-                            error={Boolean(formik.touched.email && formik.errors.email)}
-                            fullWidth
-                            helperText={formik.touched.email && formik.errors.email}
-                            label="Email address"
-                            name="email"
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            required
-                            type="email"
-                            value={formik.values.email}
-                        />
-                    </Grid>
-                    <Grid
-                        item
-                        xs={12}
-                    >
-                        <InputField
                             error={Boolean(formik.touched.fullName && formik.errors.fullName)}
                             fullWidth
-                            helperText={formik.touched.fullName && formik.errors.fullName}
-                            label="Full Name"
+                            helperText={formik.touched.fullName && t(formik.errors.fullName)}
+                            label={t("Full Name")}
                             name="fullName"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
@@ -105,10 +78,27 @@ export const CustomerDialog = (props) => {
                         xs={12}
                     >
                         <InputField
+                            error={Boolean(formik.touched.instagram && formik.errors.instagram)}
+                            fullWidth
+                            helperText={formik.touched.instagram && t(formik.errors.instagram)}
+                            label={t("Instagram")}
+                            name="instagram"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            required
+                            type="instagram"
+                            value={formik.values.instagram}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <InputField
                             error={Boolean(formik.touched.phone && formik.errors.phone)}
                             fullWidth
-                            helperText={formik.touched.phone && formik.errors.phone}
-                            label="Phone number"
+                            helperText={formik.touched.phone && t(formik.errors.phone)}
+                            label={t("Phone")}
                             name="phone"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
@@ -120,35 +110,10 @@ export const CustomerDialog = (props) => {
                         xs={12}
                     >
                         <InputField
-                            error={Boolean(formik.touched.country && formik.errors.country)}
-                            fullWidth
-                            helperText={formik.touched.country && formik.errors.country}
-                            label="Location"
-                            name="country"
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            select
-                            value={formik.values.country}
-                        >
-                            {countryOptions.map((option) => (
-                                <MenuItem
-                                    key={option}
-                                    value={option}
-                                >
-                                    {option}
-                                </MenuItem>
-                            ))}
-                        </InputField>
-                    </Grid>
-                    <Grid
-                        item
-                        xs={12}
-                    >
-                        <InputField
                             error={Boolean(formik.touched.address && formik.errors.address)}
                             fullWidth
                             helperText={formik.touched.address && formik.errors.address}
-                            label="Full address"
+                            label={t("Address")}
                             name="address"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
@@ -173,7 +138,7 @@ export const CustomerDialog = (props) => {
                     onClick={onClose}
                     variant="outlined"
                 >
-                    Cancel
+                    {t("Cancel")}
                 </Button>
                 <Button
                     color="primary"
@@ -183,7 +148,7 @@ export const CustomerDialog = (props) => {
                     }}
                     variant="contained"
                 >
-                    {customer ? 'Update' : 'Create'}
+                    {customer ? t('Update') : t('Create')}
                 </Button>
             </DialogActions>
         </Dialog>
