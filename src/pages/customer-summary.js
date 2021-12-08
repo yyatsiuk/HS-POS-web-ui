@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Box, Grid} from '@material-ui/core';
 import {customerApi} from '../api/customer';
@@ -7,92 +7,24 @@ import {CustomerInfo} from '../components/customer/customer-info';
 import {CustomerNotes} from '../components/customer/customer-notes';
 import {ResourceError} from '../components/resource-error';
 import {ResourceLoading} from '../components/resource-loading';
-import {useMounted} from '../hooks/use-mounted';
 import gtm from '../lib/gtm';
+import useHttp from "../hooks/use-http";
 
 export const CustomerSummary = () => {
-    const mounted = useMounted();
     const [customerState, setCustomerState] = useState({isLoading: true});
     const [ordersState, setOrdersState] = useState({isLoading: true});
     const [notesState, setNotesState] = useState({isLoading: true});
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
+    const requestMethod = useHttp()
 
-    const getCustomer = useCallback(async () => {
-        setCustomerState(() => ({isLoading: true}));
-
-        try {
-            const result = await customerApi.getCustomer();
-
-            if (mounted.current) {
-                setCustomerState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setCustomerState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
-    }, []);
-
-    const getOrders = useCallback(async () => {
-        setOrdersState(() => ({isLoading: true}));
-
-        try {
-            const result = await customerApi.getCustomerOrders();
-
-            if (mounted.current) {
-                setOrdersState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setOrdersState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
-    }, []);
-
-    const getNotes = useCallback(async () => {
-        setNotesState(() => ({isLoading: true}));
-
-        try {
-            const result = await customerApi.getCustomerNotes();
-
-            if (mounted.current) {
-                setNotesState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setNotesState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
-    }, []);
+    const getCustomer = () => customerApi.getCustomer();
+    const getCustomerOrders = () => customerApi.getCustomerOrders();
+    const getCustomerNotes = () => customerApi.getCustomerNotes();
 
     useEffect(() => {
-        getCustomer().catch(console.error);
-        getOrders().catch(console.error);
-        getNotes().catch(console.error);
+        requestMethod(getCustomer, setCustomerState).catch(console.error);
+        requestMethod(getCustomerOrders, setOrdersState).catch(console.error);
+        requestMethod(getCustomerNotes, setNotesState).catch(console.error);
     }, []);
 
     useEffect(() => {

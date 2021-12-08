@@ -284,7 +284,7 @@ const customers = [
 
 const customer = {
     id: '6541237',
-    address: 'м.Житомир',
+    address: 'м.Тернопіль',
     avatar: '/static/user-julie_reynaud.jpg',
     createdAt: subDays(subHours(subMinutes(now, 19), 10), 50),
     instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",

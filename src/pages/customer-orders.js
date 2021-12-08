@@ -25,6 +25,7 @@ import {useMounted} from '../hooks/use-mounted';
 import gtm from '../lib/gtm';
 import {OrderMenu} from "../components/order/order-menu";
 import {useTranslation} from "react-i18next";
+import {currency} from "../config";
 
 const columns = [
     {
@@ -264,7 +265,7 @@ export const CustomerOrders = () => {
                                                 />
                                             </TableCell>
                                             <TableCell>
-                                                {order.currencySymbol}{numeral(order.totalAmount).format(`0,0.00`)}
+                                                {currency.symbol}{numeral(order.totalAmount).format(`0,0.00`)}
                                             </TableCell>
                                             <TableCell align="right">
                                                 <OrderMenu/>
