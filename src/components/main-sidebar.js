@@ -19,14 +19,6 @@ const sections = [
             {
                 title: 'Summary',
                 href: '/dashboard/products/1'
-            },
-            {
-                title: 'Inventory',
-                href: '/dashboard/products/1/inventory'
-            },
-            {
-                title: 'Insights',
-                href: '/dashboard/products/1/analytics'
             }
         ]
     },

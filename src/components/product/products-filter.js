@@ -21,16 +21,12 @@ const views = [
         value: 'all'
     },
     {
-        label: 'Published',
-        value: 'published'
+        label: 'In Stock',
+        value: 'inStock'
     },
     {
-        label: 'Draft',
-        value: 'draft'
-    },
-    {
-        label: 'Archived',
-        value: 'archived'
+        label: 'Out of Stock',
+        value: 'outOfStock'
     }
 ];
 

@@ -59,14 +59,6 @@ const items = [
             {
                 href: '/dashboard/products/1',
                 title: 'Summary'
-            },
-            {
-                href: '/dashboard/products/1/inventory',
-                title: 'Inventory'
-            },
-            {
-                href: '/dashboard/products/1/analytics',
-                title: 'Insights'
             }
         ]
     },

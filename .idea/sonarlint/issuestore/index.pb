@@ -3,8 +3,6 @@
 example.env,e/9/e92aa7821f38c420fef629d6a96223b078610d40
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
-A
-public/robots.txt,d/a/dac799070c2d0c2fa24462b02c1f2dcc3fb3a1e9
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
@@ -12,12 +10,6 @@ M
 src/components/action-list.js,2/a/2a4af3c681c70e8037710652c5811b896e3eddd5
 R
 "src/components/action-list-item.js,a/4/a4f050a8e686a4325cf9c08f17334f69398da6d7
-H
-src/icons/adjustments.js,e/6/e6a5944824d878a7243de4e508133d1218c1c6ed
-D
-src/icons/archive.js,3/f/3fb65ee78a7efb3994fe76f18a724870f728a274
-G
-src/icons/arrow-left.js,c/1/c1fd19c406242360124f49cdfb6813b859d19efd
 A
 src/icons/bell.js,1/6/16f5d982bdcfbf64d3175ec33f27eaa53212e0aa
 E
@@ -35,15 +27,11 @@ I
 R
 "src/icons/check-circle-outlined.js,1/1/11adec900dd6cd072b642a3025f9199b9e663bd1
 I
-src/icons/chevron-down.js,0/b/0b6c32cc5f37be070891bdff8142407856fa6ddf
-I
 src/icons/chevron-left.js,e/1/e1b36bff69759d255357d082c5bb231982fae948
 J
 src/icons/chevron-right.js,a/7/a766ba438854ecceceb10dd8851e3d0bbf49593d
 A
 src/icons/chip.js,5/f/5fd300dedc9cc5303e741dd2f30f136de50f0cc3
-B
-src/icons/cloud.js,6/b/6b3114770ff5cc691910e8c9b7bc993cdea8f9ad
 @
 src/icons/cog.js,a/4/a4ed0897dce96038178d25e7f880cd0f42225e38
 I
@@ -86,10 +74,6 @@ Q
 src/icons/eye.js,0/f/0fd4e8ebd44882a1f24dd6ef04367136ca59188c
 G
 public/static/figma.svg,8/5/85eef7d466648b116f1cea749768aefae846c520
-C
-src/lib/firebase.js,4/0/405d9e8e1fdc0bd34d8c6ec210d4381124c464a9
->
-src/lib/gtm.js,9/0/90c7376451904977d2a585eb413dbe3ea9093bb9
 G
 src/icons/light-bulb.js,8/7/87c861087b4676467f5cc72c3474b5021a8d8c64
 A
@@ -140,12 +124,6 @@ Y
 .src/components/product/product-sales-report.js,4/0/402e20c1cb35840213a3e5dcd97d79adc480dbbc
 X
 (src/components/product/product-status.js,4/9/49aa25120f92c94b0e9dcb57cf3df4a3b01fa6e4
-`
-0src/components/product/product-variant-dialog.js,f/f/ffc6c0d89c6a5e326372c051cb96b1f0065712cb
-Z
-*src/components/product/products-summary.js,0/9/0972870c21677f5d1fe7610a07970fdf97fd0e4d
-X
-(src/components/product/products-table.js,0/e/0e15e182684da73ebe392046f807d3158a0296a1
 S
 #src/icons/question-mark-outlined.js,d/2/d285a01167cd53f718bbf025354e24f581266354
 G
@@ -166,10 +144,6 @@ X
 (src/components/auth/register-firebase.js,7/e/7ed536881db40efd9a7080947d403d411a37f7eb
 S
 #src/components/auth/register-jwt.js,c/a/cab813df9253ed7154a0416a4639d448534ba48a
-C
-src/icons/search.js,a/8/a8463b4e76e1706e0bf4b02babddac35b7ea3860
-E
-src/icons/selector.js,8/d/8d1139218df479e8341de0eab937405bcada7b53
 P
  src/contexts/settings-context.js,e/2/e2ed9d5e46ad4282007da1005145c82d81c2eaea
 I
@@ -218,8 +192,6 @@ L
 public/static/company-bd.svg,7/9/7944a17d5ececd55994faeb49ed14c6d669467d6
 N
 public/static/company-ford.svg,5/4/548e9b970e886641e74585aa7cc98f43c321667a
-Z
-*src/components/product/product-variants.js,c/a/caa89db3e058638ff748235abd12f69b20d87908
 J
 src/icons/document-text.js,9/6/9646cc5e1bebfe54d716e091eeadf25ba3313fb6
 T
@@ -232,10 +204,6 @@ U
 %src/contexts/firebase-auth-context.js,5/7/57fdc0bdb8bfe03e130da438265afaaf5fc06e24
 X
 (src/components/images-uploader-dialog.js,c/9/c9f9603ab45cf24912a01014841723d7267be1cc
-_
-/src/components/product/product-create-dialog.js,a/9/a96cda45e0014dccbb8695e6841871528051506f
-Y
-)src/components/product/products-filter.js,2/e/2eb9939853895d7f67aa6a547e07b58522135455
 N
 src/components/actions-menu.js,3/9/396cea60547479a2b9b7791f42aaaf9e9d9145a6
 U

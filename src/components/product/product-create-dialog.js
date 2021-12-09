@@ -2,23 +2,47 @@ import PropTypes from 'prop-types';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle, FormHelperText, Grid} from '@material-ui/core';
+import { currency } from '../../config';
+
+import {
+    Box,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    FormHelperText,
+    Grid, IconButton, InputAdornment,
+    Typography
+} from '@material-ui/core';
 import {InputField} from '../input-field';
+import {Trash as TrashIcon} from "../../icons/trash";
+import {ImageDropzone} from "../image-dropzone";
+import {useTranslation} from "react-i18next";
 
 export const ProductCreateDialog = (props) => {
     const {open, onClose, ...other} = props;
+    const {t} = useTranslation();
     const formik = useFormik({
         initialValues: {
             description: '',
             name: '',
+            imageUrl: '',
+            image: null,
+            price: 0,
             submit: 'null'
         },
         validationSchema: Yup.object().shape({
-            description: Yup.string().max(500).required('Description is required'),
-            name: Yup.string().max(255).required('Name is required')
+            description: Yup.string().max(500),
+            name: Yup.string().max(255).required('Name is required'),
+            price: Yup.number().min(0).required("Price is required"),
+            imageUrl: Yup.string(),
+            image: Yup.string()
         }),
         onSubmit: async (values, helpers) => {
+            console.log("Test")
             try {
+                console.log(values);
                 toast.success('Product created');
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
@@ -43,7 +67,7 @@ export const ProductCreateDialog = (props) => {
             {...other}
         >
             <DialogTitle>
-                Create Product
+                {t("Create Product")}
             </DialogTitle>
             <DialogContent>
                 <Grid
@@ -57,8 +81,8 @@ export const ProductCreateDialog = (props) => {
                         <InputField
                             error={Boolean(formik.touched.name && formik.errors.name)}
                             fullWidth
-                            helperText={formik.touched.name && formik.errors.name}
-                            label="Product name"
+                            helperText={formik.touched.name && t(formik.errors.name)}
+                            label={t("Product name")}
                             name="name"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
@@ -73,7 +97,7 @@ export const ProductCreateDialog = (props) => {
                             error={Boolean(formik.touched.description && formik.errors.description)}
                             fullWidth
                             helperText={formik.touched.description && formik.errors.description}
-                            label="Description"
+                            label={t("Description")}
                             multiline
                             name="description"
                             onBlur={formik.handleBlur}
@@ -81,6 +105,95 @@ export const ProductCreateDialog = (props) => {
                             rows={4}
                             value={formik.values.description}
                         />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <InputField
+                            error={Boolean(formik.touched.price && formik.errors.price)}
+                            helperText={formik.touched.price && t(formik.errors.price)}
+                            label={t("Price")}
+                            name="price"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            type="number"
+                            sx={{maxWidth: 236}}
+                            value={formik.values.price}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        {currency.symbol}
+                                    </InputAdornment>
+                                )
+                            }}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <Typography
+                            color="textPrimary"
+                            sx={{mb: 1.25}}
+                            variant="subtitle2"
+                        >
+                            {t("Image")}
+                        </Typography>
+                        {formik.values.imageUrl
+                            ? (
+                                <Box
+                                    sx={{
+                                        borderRadius: 1,
+                                        boxShadow: '0 0 0 1px rgba(24, 33, 77, 0.23)',
+                                        display: 'flex',
+                                        position: 'relative',
+                                        width: 'fit-content',
+                                        '& img': {
+                                            borderRadius: 1,
+                                            display: 'block',
+                                            maxWidth: 126
+                                        },
+                                        '&:hover': {
+                                            boxShadow: (theme) => `0 0 0 1px ${theme.palette.primary.main}`,
+                                            '& > button': {
+                                                display: 'block'
+                                            },
+                                            '& img': {
+                                                opacity: 0.3
+                                            }
+                                        }
+                                    }}
+                                >
+                                    <img
+                                        alt={formik.values.name}
+                                        src={formik.values.imageUrl}
+                                    />
+                                    <IconButton
+                                        color="error"
+                                        onClick={() => formik.setFieldValue('imageUrl', '')}
+                                        sx={{
+                                            display: 'none',
+                                            left: 0,
+                                            position: 'absolute',
+                                            top: 0
+                                        }}
+                                    >
+                                        <TrashIcon fontSize="small"/>
+                                    </IconButton>
+                                </Box>
+                            ) : (
+                                <ImageDropzone
+                                    onDrop={(files) => {
+                                        formik.setFieldValue('imageUrl', URL.createObjectURL(files[0]));
+                                        formik.setFieldValue('image', files[0]);
+                                    }}
+                                    sx={{
+                                        minHeight: 126,
+                                        maxWidth: 126
+                                    }}
+                                />
+                            )}
                     </Grid>
                     {formik.errors.submit && (
                         <Grid
@@ -100,7 +213,7 @@ export const ProductCreateDialog = (props) => {
                     onClick={onClose}
                     variant="text"
                 >
-                    Cancel
+                    {t("Cancel")}
                 </Button>
                 <Button
                     color="primary"
@@ -110,7 +223,7 @@ export const ProductCreateDialog = (props) => {
                     }}
                     variant="contained"
                 >
-                    Create Product
+                    {t("Create Product")}
                 </Button>
             </DialogActions>
         </Dialog>

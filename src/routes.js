@@ -32,8 +32,6 @@ const Orders = Loadable(lazy(() => import('./pages/orders').then((module) => ({d
 const OrderCreate = Loadable(lazy(() => import('./pages/order-create').then((module) => ({default: module.OrderCreate}))));
 
 const Products = Loadable(lazy(() => import('./pages/products').then((module) => ({default: module.Products}))));
-const ProductAnalytics = Loadable(lazy(() => import('./pages/product-analytics').then((module) => ({default: module.ProductAnalytics}))));
-const ProductInventory = Loadable(lazy(() => import('./pages/product-inventory').then((module) => ({default: module.ProductInventory}))));
 const ProductSummary = Loadable(lazy(() => import('./pages/product-summary').then((module) => ({default: module.ProductSummary}))));
 
 const AccountGeneral = Loadable(lazy(() => import('./pages/account-general').then((module) => ({default: module.AccountGeneral}))));
@@ -129,14 +127,6 @@ const routes = [
                             {
                                 path: '',
                                 element: <ProductSummary/>
-                            },
-                            {
-                                path: 'analytics',
-                                element: <ProductAnalytics/>
-                            },
-                            {
-                                path: 'inventory',
-                                element: <ProductInventory/>
                             }
                         ]
                     }
