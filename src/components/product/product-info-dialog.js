@@ -3,43 +3,48 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import {
+    Box,
     Button,
-    Checkbox,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
     FormHelperText,
-    Grid,
-    Typography
+    Grid, IconButton,
+    InputAdornment, Typography
 } from '@material-ui/core';
 import {AutocompleteField} from '../autocomplete-field';
 import {InputField} from '../input-field';
+import {useTranslation} from "react-i18next";
+import {currency} from "../../config";
+import {Trash as TrashIcon} from "../../icons/trash";
+import {ImageDropzone} from "../image-dropzone";
 
-const compositionOptions = ['Leather', 'Metal'];
-const tagOptions = ['Watch', 'Style'];
+const statusOptions = ["In Stock", "Out of Stock"]
 
 export const ProductInfoDialog = (props) => {
     const {open, onClose, product} = props;
+    const {t} = useTranslation();
     const formik = useFormik({
         initialValues: {
-            brand: product?.brand || '',
-            chargeTax: product?.chargeTax || true,
+            imageUrl: product?.image || '',
+            image: '',
+            id: product?.id || true,
+            name: product?.name || '',
+            price: product?.price || '',
             description: product?.description || '',
-            displayName: product?.displayName || '',
-            composition: product?.composition || [],
-            sku: product?.sku || '',
-            submit: null,
-            tags: product?.tags || []
+            status: product?.status || '',
+            category: product?.category || '',
+            submit: "null"
         },
         validationSchema: Yup.object().shape({
-            brand: Yup.string().max(255).required('Brand is required'),
-            chargeTax: Yup.boolean(),
-            description: Yup.string().max(500).required('Description is required'),
-            displayName: Yup.string().max(255).required('Display name is required'),
-            composition: Yup.array(),
-            sku: Yup.string().max(255).required('SKU is required'),
-            tags: Yup.array()
+            imageUrl: Yup.string(),
+            id: Yup.string().required("Id is required"),
+            name: Yup.string().max(255).required('Name is required'),
+            description: Yup.string().max(500),
+            price: Yup.number().min(0).required("Price is required"),
+            category: Yup.string().required("Category is required"),
+            status: Yup.string().required("Status is required")
         }),
         onSubmit: async (values, helpers) => {
             try {
@@ -70,7 +75,7 @@ export const ProductInfoDialog = (props) => {
             }}
         >
             <DialogTitle>
-                Edit Product
+                {t("Edit Product")}
             </DialogTitle>
             <DialogContent>
                 <Grid
@@ -79,36 +84,84 @@ export const ProductInfoDialog = (props) => {
                 >
                     <Grid
                         item
-                        md={6}
+                        xs={12}
+                    >
+                        <Typography
+                            color="textPrimary"
+                            sx={{mb: 1.25}}
+                            variant="subtitle2"
+                        >
+                            {t("Image")}
+                        </Typography>
+                        {formik.values.imageUrl
+                            ? (
+                                <Box
+                                    sx={{
+                                        borderRadius: 1,
+                                        boxShadow: '0 0 0 1px rgba(24, 33, 77, 0.23)',
+                                        display: 'flex',
+                                        position: 'relative',
+                                        width: 'fit-content',
+                                        '& img': {
+                                            borderRadius: 1,
+                                            display: 'block',
+                                            maxWidth: 126
+                                        },
+                                        '&:hover': {
+                                            boxShadow: (theme) => `0 0 0 1px ${theme.palette.primary.main}`,
+                                            '& > button': {
+                                                display: 'block'
+                                            },
+                                            '& img': {
+                                                opacity: 0.3
+                                            }
+                                        }
+                                    }}
+                                >
+                                    <img
+                                        alt={formik.values.name}
+                                        src={formik.values.imageUrl}
+                                    />
+                                    <IconButton
+                                        color="error"
+                                        onClick={() => formik.setFieldValue('imageUrl', '')}
+                                        sx={{
+                                            display: 'none',
+                                            left: 0,
+                                            position: 'absolute',
+                                            top: 0
+                                        }}
+                                    >
+                                        <TrashIcon fontSize="small"/>
+                                    </IconButton>
+                                </Box>
+                            ) : (
+                                <ImageDropzone
+                                    onDrop={(files) => {
+                                        formik.setFieldValue('imageUrl', URL.createObjectURL(files[0]));
+                                        formik.setFieldValue('image', files[0]);
+                                    }}
+                                    sx={{
+                                        minHeight: 126,
+                                        maxWidth: 126
+                                    }}
+                                />
+                            )}
+                    </Grid>
+                    <Grid
+                        item
                         xs={12}
                     >
                         <InputField
                             disabled
-                            error={Boolean(formik.touched.brand && formik.errors.brand)}
+                            error={Boolean(formik.touched.id && formik.errors.id)}
                             fullWidth
-                            helperText={formik.touched.brand && formik.errors.brand}
-                            label="Brand name"
-                            name="brand"
+                            helperText={formik.touched.id && formik.errors.id}
+                            label="ID"
+                            name="id"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            value={formik.values.brand}
-                        />
-                    </Grid>
-                    <Grid
-                        item
-                        md={6}
-                        xs={12}
-                    >
-                        <InputField
-                            disabled
-                            error={Boolean(formik.touched.sku && formik.errors.sku)}
-                            fullWidth
-                            helperText={formik.touched.sku && formik.errors.sku}
-                            label="SKU"
-                            name="sku"
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            value={formik.values.sku}
+                            value={formik.values.id}
                         />
                     </Grid>
                     <Grid
@@ -116,14 +169,14 @@ export const ProductInfoDialog = (props) => {
                         xs={12}
                     >
                         <InputField
-                            error={Boolean(formik.touched.displayName && formik.errors.displayName)}
+                            error={Boolean(formik.touched.name && formik.errors.name)}
                             fullWidth
-                            helperText={formik.touched.displayName && formik.errors.displayName}
-                            label="Display name"
-                            name="displayName"
+                            helperText={formik.touched.name && formik.errors.name}
+                            label={t("Product name")}
+                            name="name"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            value={formik.values.displayName}
+                            value={formik.values.name}
                         />
                     </Grid>
                     <Grid
@@ -134,7 +187,7 @@ export const ProductInfoDialog = (props) => {
                             error={Boolean(formik.touched.description && formik.errors.description)}
                             fullWidth
                             helperText={formik.touched.description && formik.errors.description}
-                            label="Description"
+                            label={t("Description")}
                             multiline
                             name="description"
                             onBlur={formik.handleBlur}
@@ -148,61 +201,55 @@ export const ProductInfoDialog = (props) => {
                         xs={12}
                     >
                         <AutocompleteField
-                            error={Boolean(formik.touched.composition
-                                && formik.errors.composition)}
+                            error={Boolean(formik.touched.status && formik.errors.status)}
                             filterSelectedOptions
-                            helperText={formik.touched.composition && formik.errors.composition}
-                            label="Composition"
-                            multiple
+                            helperText={formik.touched.status && formik.errors.status}
+                            label={t("Status")}
                             onChange={(event, value) => {
-                                formik.setFieldValue('composition',
+                                formik.setFieldValue('status',
                                     value);
                             }}
-                            options={compositionOptions}
-                            placeholder="Feature"
-                            value={formik.values.composition}
+                            options={statusOptions}
+                            value={formik.values.status}
                         />
                     </Grid>
                     <Grid
                         item
                         xs={12}
                     >
-                        <AutocompleteField
-                            error={Boolean(formik.touched.tags && formik.errors.tags)}
-                            filterSelectedOptions
-                            helperText={formik.touched.tags && formik.errors.tags}
-                            label="Tags"
-                            multiple
-                            onChange={(event, value) => {
-                                formik.setFieldValue('tags', value);
-                            }}
-                            options={tagOptions}
-                            placeholder="Tag"
-                            value={formik.values.tags}
+                        <InputField
+                            error={Boolean(formik.touched.category && formik.errors.category)}
+                            fullWidth
+                            helperText={formik.touched.category && t(formik.errors.category)}
+                            label={t("Category")}
+                            name="category"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.category}
                         />
                     </Grid>
                     <Grid
                         item
-                        md={6}
-                        sx={{
-                            alignItems: 'center',
-                            display: 'flex'
-                        }}
                         xs={12}
                     >
-                        <Checkbox
-                            checked={formik.values.chargeTax}
-                            onChange={(event) => {
-                                formik.setFieldValue('chargeTax',
-                                    event.target.checked);
+                        <InputField
+                            error={Boolean(formik.touched.price && formik.errors.price)}
+                            helperText={formik.touched.price && t(formik.errors.price)}
+                            label={t("Price")}
+                            name="price"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            type="number"
+                            sx={{maxWidth: 236}}
+                            value={formik.values.price}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        {currency.symbol}
+                                    </InputAdornment>
+                                )
                             }}
                         />
-                        <Typography
-                            color="textPrimary"
-                            variant="body1"
-                        >
-                            Charge tax on this product
-                        </Typography>
                     </Grid>
                     {formik.errors.submit && (
                         <Grid
@@ -222,7 +269,7 @@ export const ProductInfoDialog = (props) => {
                     onClick={onClose}
                     variant="text"
                 >
-                    Cancel
+                    {t("Cancel")}
                 </Button>
                 <Button
                     color="primary"
@@ -231,7 +278,7 @@ export const ProductInfoDialog = (props) => {
                     }}
                     variant="contained"
                 >
-                    Save Changes
+                    {t("Save Changes")}
                 </Button>
             </DialogActions>
         </Dialog>

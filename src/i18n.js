@@ -101,10 +101,22 @@ const resources = {
             "Select Images": "Завантажити Фото",
             "Name is required": "Назва товару є обов'язковим полем",
             "price must be greater than or equal to 0": "Ціна повинна бути більшою або рівною 0",
+            "Category is required": "Категорія є обов'язковим полем",
+            "In Stock": "В наявності",
+            "Out of Stock": "Не в наявності",
+            "This action is not available on demo": "Ця дія поки в процесі розробки і не є доступною",
+            "Created Date": "Дата створення",
+            "General Information": "Деталі",
+            "Product Name": "Назва товару",
+            "Delete Selected": "Видалити вибрані",
+            "Edit Product": "Редагувати товар",
             Image: "Фото",
+            Category: "Категорія",
+            category: "Категорія",
             Description: "Опис",
             Upload: "Завантажити",
             Price: "Ціна",
+            price: "Ціна",
             Account: 'Аккаунт',
             Returning: 'Робили повернення',
             Activity: 'Активність',
@@ -172,7 +184,9 @@ const resources = {
             Menu: 'Меню',
             General: 'Загальні Налаштування',
             Settings: 'Налаштування',
-            Send: 'Надіслати'
+            Send: 'Надіслати',
+            Page: 'Сторінка',
+            of: "з"
         }
     }
 };

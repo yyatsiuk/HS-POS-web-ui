@@ -19,7 +19,7 @@ export const CustomerInfo = (props) => {
 
     const handleDelete = () => {
         handleCloseDeleteDialog();
-        toast.error('This action is not available on demo');
+        toast.error(t('This action is not available on demo'));
     };
 
     return (

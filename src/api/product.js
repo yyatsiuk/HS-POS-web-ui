@@ -17,7 +17,7 @@ const products = [
         currency: 'UAH',
         sku: 'DNOX52-K',
         category: 'shoes',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 5), 5), 35)
     },
     {
@@ -29,7 +29,7 @@ const products = [
         currency: 'UAH',
         sku: 'APWU13-N',
         category: 'shoes',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 40), 22), 146)
     },
     {
@@ -41,7 +41,7 @@ const products = [
         currency: 'UAH',
         sku: 'EIWZ36-M',
         category: 'jeans',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 7), 22), 19)
     },
     {
@@ -53,7 +53,7 @@ const products = [
         currency: 'UAH',
         sku: 'EBDM72-T',
         category: 'shoes',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 8), 23), 264)
     },
     {
@@ -65,7 +65,7 @@ const products = [
         currency: 'UAH',
         sku: 'RAKR75-P',
         category: 'shirts',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 17), 13), 8)
     },
     {
@@ -77,7 +77,7 @@ const products = [
         currency: 'UAH',
         sku: 'QKKH19-W',
         category: 'jeans',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 29), 19), 24)
     },
     {
@@ -89,7 +89,7 @@ const products = [
         currency: 'UAH',
         sku: 'TSQV38-X',
         category: 'jeans',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 47), 15), 172)
     },
     {
@@ -101,7 +101,7 @@ const products = [
         currency: 'UAH',
         sku: 'UUVH71-G',
         category: 'dresses',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 32), 11), 151)
     },
     {
@@ -113,7 +113,7 @@ const products = [
         currency: 'UAH',
         sku: 'GJCR37-T',
         category: 'watches',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 26), 24), 131)
     },
     {
@@ -125,7 +125,7 @@ const products = [
         currency: 'UAH',
         sku: 'UHIF12-Q',
         category: 'dresses',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 57), 11), 205)
     },
     {
@@ -137,7 +137,7 @@ const products = [
         currency: 'UAH',
         sku: 'DKRZ09-M',
         category: 'watches',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 38), 23), 123)
     },
     {
@@ -149,7 +149,7 @@ const products = [
         currency: 'UAH',
         sku: 'WSUT77-H',
         category: 'shoes',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 49), 12), 72)
     },
     {
@@ -161,7 +161,7 @@ const products = [
         currency: 'UAH',
         sku: 'TWTG39-I',
         category: 'jeans',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 45), 5), 103)
     },
     {
@@ -173,7 +173,7 @@ const products = [
         currency: 'UAH',
         sku: 'MJSC66-N',
         category: 'watches',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 55), 16), 286)
     },
     {
@@ -185,7 +185,7 @@ const products = [
         currency: 'UAH',
         sku: 'JVLO87-T',
         category: 'shirts',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 31), 16), 233)
     },
     {
@@ -197,7 +197,7 @@ const products = [
         currency: 'UAH',
         sku: 'TENG41-T',
         category: 'jeans',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 23), 13), 263)
     },
     {
@@ -209,7 +209,7 @@ const products = [
         currency: 'UAH',
         sku: 'FCSF15-T',
         category: 'jeans',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 34), 5), 151)
     },
     {
@@ -221,7 +221,7 @@ const products = [
         currency: 'UAH',
         sku: 'KKLB09-D',
         category: 'shirts',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 60), 13), 30)
     },
     {
@@ -233,7 +233,7 @@ const products = [
         currency: 'UAH',
         sku: 'OIQA42-G',
         category: 'watches',
-        status: 'published',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 33), 13), 254)
     },
     {
@@ -245,7 +245,7 @@ const products = [
         currency: 'UAH',
         sku: 'ZYPI54-Z',
         category: 'watches',
-        status: 'draft',
+        status: 'In Stock',
         updatedAt: subDays(subHours(subMinutes(now, 28), 19), 39)
     }
 ];
@@ -265,22 +265,9 @@ const product = {
     price: 160,
     size: 'fit',
     sku: 'KKLB09-D',
-    status: 'published',
+    status: 'In Stock',
     tags: ['Watch', 'Style'],
-    updatedAt: new Date(),
-    variants: [
-        {
-            id: '88327543',
-            createdAt: new Date(),
-            currency: 'eur',
-            description: 'The Core Collection. Our premium line of watches with a minimalist and timeless look. Designed in the UK and perfect for everyday use. This is our black on black leather. The stainless steel case has a brushed matt black finish with a subtle reflective dial. The hands and numbers are in a shiny gun metal finish',
-            image: '/static/product-10.png',
-            name: 'Brown Leather',
-            price: 69,
-            quantity: 100,
-            sku: 'B-283KD'
-        }
-    ]
+    updatedAt: new Date()
 };
 
 class ProductApi {

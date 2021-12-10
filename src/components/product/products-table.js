@@ -22,11 +22,22 @@ import {ResourceUnavailable} from '../resource-unavailable';
 import {Scrollbar} from '../scrollbar';
 import {Status} from '../status';
 import {ProductMenu} from './product-menu';
+import {useTranslation} from "react-i18next";
+import numeral from "numeral";
+import {currency} from "../../config";
 
 const columns = [
     {
         id: 'name',
         label: 'Name'
+    },
+    {
+        id: 'price',
+        label: 'price'
+    },
+    {
+        id: 'category',
+        label: 'category'
     },
     {
         id: 'updatedAt',
@@ -40,16 +51,16 @@ const columns = [
 
 const statusVariants = [
     {
-        color: 'info.main',
-        label: 'Draft',
-        value: 'draft'
+        label: "In Stock",
+        value: "In Stock",
+        color: "success.main"
     },
     {
-        color: 'success.main',
-        label: 'Published',
-        value: 'published'
+        label: "Out of Stock",
+        value: "outOfStock",
+        color: "warning.main"
     }
-];
+]
 
 export const ProductsTable = (props) => {
     const {
@@ -70,6 +81,7 @@ export const ProductsTable = (props) => {
     const displayLoading = isLoading;
     const displayError = Boolean(!isLoading && error);
     const displayUnavailable = Boolean(!isLoading && !error && !products.length);
+    const {t} = useTranslation();
 
     return (
         <Box
@@ -101,7 +113,7 @@ export const ProductsTable = (props) => {
                                         disabled={isLoading}
                                         onClick={(event) => onSortChange(event, column.id)}
                                     >
-                                        {column.label}
+                                        {t(column.label)}
                                     </TableSortLabel>
                                 </TableCell>
                             ))}
@@ -154,15 +166,14 @@ export const ProductsTable = (props) => {
                                                 >
                                                     {product.name}
                                                 </Link>
-                                                <Typography
-                                                    color="textSecondary"
-                                                    sx={{mt: 1}}
-                                                    variant="body2"
-                                                >
-                                                    12 in stock for 1 variant
-                                                </Typography>
                                             </Box>
                                         </Box>
+                                    </TableCell>
+                                    <TableCell>
+                                        {currency.symbol}{numeral(product.price).format(`0,0.00`)}
+                                    </TableCell>
+                                    <TableCell>
+                                        {t(product.category)}
                                     </TableCell>
                                     <TableCell>
                                         <div>
@@ -170,7 +181,7 @@ export const ProductsTable = (props) => {
                                                 color="inherit"
                                                 variant="body2"
                                             >
-                                                {format(product.updatedAt, 'dd MMM yyyy')}
+                                                {t("formattedDate", {date: new Date(product.updatedAt)})}
                                             </Typography>
                                             <Typography
                                                 color="textSecondary"
@@ -183,7 +194,7 @@ export const ProductsTable = (props) => {
                                     <TableCell>
                                         <Status
                                             color={statusVariant.color}
-                                            label={statusVariant.label}
+                                            label={t(statusVariant.label)}
                                         />
                                     </TableCell>
                                     <TableCell align="right">

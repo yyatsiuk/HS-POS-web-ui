@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
-import {format} from 'date-fns';
-import {Button, Card, CardHeader, Divider, useMediaQuery} from '@material-ui/core';
+import {Box, Button, Card, CardHeader, Divider, Typography, useMediaQuery} from '@material-ui/core';
 import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
+import {useTranslation} from "react-i18next";
+import {currency} from "../../config";
+import numeral from "numeral";
 
 export const ProductInfo = (props) => {
     const {onEdit, product, ...other} = props;
     const mdDown = useMediaQuery((theme) => theme.breakpoints.down('md'));
+    const {t} = useTranslation();
 
     const align = mdDown ? 'vertical' : 'horizontal';
 
@@ -22,18 +25,34 @@ export const ProductInfo = (props) => {
                         onClick={onEdit}
                         variant="text"
                     >
-                        Edit
+                        {t("Edit")}
                     </Button>
                 )}
-                title="General Information"
+                title={t("General Information")}
             />
             <Divider/>
             <PropertyList>
-                <PropertyListItem
-                    align={align}
-                    label="Brand Name"
-                    value={product.brand}
-                />
+                <PropertyListItem label={t("Image")} align={align}>
+                    <Box
+                        sx={{
+                            borderRadius: 1,
+                            boxShadow: '0 0 0 1px rgba(24, 33, 77, 0.23)',
+                            display: 'flex',
+                            position: 'relative',
+                            width: 'fit-content',
+                            '& img': {
+                                borderRadius: 1,
+                                display: 'block',
+                                maxWidth: 126
+                            }
+                        }}
+                    >
+                        <img
+                            alt={product.name}
+                            src={product.image}
+                        />
+                    </Box>
+                </PropertyListItem>
                 <PropertyListItem
                     align={align}
                     label="ID"
@@ -41,33 +60,38 @@ export const ProductInfo = (props) => {
                 />
                 <PropertyListItem
                     align={align}
-                    label="Display Name"
+                    label={t("Product Name")}
                     value={product.name}
                 />
                 <PropertyListItem
                     align={align}
-                    label="Description"
-                    value="Our premium line of watches with a minimalist and timeless look. Designed in the UK and perfect for everyday use. This is our black on black leather. The stainless steel case has a brushed matt black finish with a subtle reflective dial. The hands and numbers are in a shiny gun metal finish."
+                    label={t("Price")}
+                    value={`${currency.symbol}${numeral(product.price).format(`0,0.00`)}`}
                 />
                 <PropertyListItem
                     align={align}
-                    label="Created"
-                    value={format(product.createdAt, 'MMM dd, yyyy')}
+                    label={t("Description")}
+                    value={product.description}
                 />
                 <PropertyListItem
                     align={align}
-                    label="Composition"
-                    value={product.composition.join(', ')}
+                    label={t("Status")}
+                    value={t(product.status)}
                 />
                 <PropertyListItem
                     align={align}
-                    label="Tags"
+                    label={t("Category")}
                     value={product.tags.join(', ')}
                 />
                 <PropertyListItem
                     align={align}
-                    label="Updated"
-                    value={format(product.updatedAt, 'MMM dd, yyyy')}
+                    label={t("Created Date")}
+                    value={t("formattedDate", {date: new Date(product.createdAt)})}
+                />
+                <PropertyListItem
+                    align={align}
+                    label={t("Updated")}
+                    value={t("formattedDate", {date: new Date(product.updatedAt)})}
                 />
             </PropertyList>
         </Card>

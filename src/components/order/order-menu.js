@@ -17,12 +17,12 @@ export const OrderMenu = (props) => {
 
     const handleRefund = () => {
         handleClose();
-        toast.error('This action is not available on demo');
+        toast.error(t('This action is not available on demo'));
     };
 
     const handleDelete = () => {
         handleClose();
-        toast.error('This action is not available on demo');
+        toast.error(t('This action is not available on demo'));
     };
 
     return (

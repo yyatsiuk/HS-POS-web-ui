@@ -2,8 +2,7 @@ import {createContext, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 const initialSettings = {
-    direction: 'ltr',
-    language: 'en',
+    language: 'ukr',
     pinSidebar: true,
     theme: 'light'
 };

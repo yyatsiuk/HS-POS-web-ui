@@ -26,19 +26,13 @@ export const ProductCreateDialog = (props) => {
     const formik = useFormik({
         initialValues: {
             description: '',
+            category: '',
             name: '',
             imageUrl: '',
             image: null,
             price: 0,
             submit: 'null'
         },
-        validationSchema: Yup.object().shape({
-            description: Yup.string().max(500),
-            name: Yup.string().max(255).required('Name is required'),
-            price: Yup.number().min(0).required("Price is required"),
-            imageUrl: Yup.string(),
-            image: Yup.string()
-        }),
         onSubmit: async (values, helpers) => {
             console.log("Test")
             try {
@@ -54,7 +48,15 @@ export const ProductCreateDialog = (props) => {
                 helpers.setErrors({submit: err.message});
                 helpers.setSubmitting(false);
             }
-        }
+        },
+        validationSchema: Yup.object().shape({
+            description: Yup.string().max(500),
+            name: Yup.string().max(255).required('Name is required'),
+            category: Yup.string().required("Category is required"),
+            price: Yup.number().min(0).required("Price is required"),
+            imageUrl: Yup.string(),
+            image: Yup.string()
+        })
     });
 
     return (
@@ -87,6 +89,21 @@ export const ProductCreateDialog = (props) => {
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.name}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <InputField
+                            error={Boolean(formik.touched.category && formik.errors.category)}
+                            fullWidth
+                            helperText={formik.touched.category && t(formik.errors.category)}
+                            label={t("Category")}
+                            name="category"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.category}
                         />
                     </Grid>
                     <Grid

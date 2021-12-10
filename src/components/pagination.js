@@ -3,6 +3,7 @@ import {Box, IconButton, Typography} from '@material-ui/core';
 import {styled} from '@material-ui/core/styles';
 import {ChevronLeft as ChevronLeftIcon} from '../icons/chevron-left';
 import {ChevronRight as ChevronRightIcon} from '../icons/chevron-right';
+import {useTranslation} from "react-i18next";
 
 const PaginationRoot = styled('div')((({theme}) => ({
     alignItems: 'center',
@@ -17,6 +18,7 @@ export const Pagination = (props) => {
     const pagesCount = Math.ceil(rowsCount / pageSize);
     const isFirstPage = page === 1;
     const isLastPage = page >= pagesCount;
+    const {t} = useTranslation();
 
     const handlePreviousPage = () => {
         onPageChange?.(page - 1);
@@ -38,7 +40,7 @@ export const Pagination = (props) => {
                     variant="body2"
                     whiteSpace="nowrap"
                 >
-                    Page
+                    {t("Page")}
                     {' '}
                     <Typography
                         color="textPrimary"
@@ -48,7 +50,7 @@ export const Pagination = (props) => {
                     >
                         {page}
                     </Typography>
-                    of
+                    {t("of")}
                     {' '}
                     <Typography
                         color="textPrimary"

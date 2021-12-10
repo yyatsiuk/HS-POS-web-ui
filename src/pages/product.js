@@ -1,16 +1,11 @@
 import {useCallback, useEffect, useState} from 'react';
 import {Link as RouterLink, Outlet, useLocation} from 'react-router-dom';
-import toast from 'react-hot-toast';
 import {Box, Button, Container, Divider, Skeleton, Tab, Tabs, Typography} from '@material-ui/core';
 import {productApi} from '../api/product';
-import {ActionsMenu} from '../components/actions-menu';
-import {ConfirmationDialog} from '../components/confirmation-dialog';
-import {Status} from '../components/status';
-import {useDialog} from '../hooks/use-dialog';
 import {useMounted} from '../hooks/use-mounted';
 import {ArrowLeft as ArrowLeftIcon} from '../icons/arrow-left';
 import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamation-outlined';
-import {ProductVariantDialog} from "../components/product/product-variant-dialog";
+import {useTranslation} from "react-i18next";
 
 // NOTE: This should be generated based on product data because "/1" represents "/:id" from routing
 // //  strategy where ":id" is dynamic depending on current product id
@@ -24,13 +19,8 @@ const tabs = [
 export const Product = () => {
     const mounted = useMounted();
     const location = useLocation();
-    const [
-        discontinueDialogOpen,
-        handleOpenDiscontinueDialog,
-        handleCloseDiscontinueDialog
-    ] = useDialog();
-    const [archiveOpen, handleOpenArchiveDialog, handleCloseArchiveDialog] = useDialog();
     const [productState, setProductState] = useState({isLoading: true});
+    const {t} = useTranslation();
 
     const getProduct = useCallback(async () => {
         setProductState(() => ({isLoading: true}));
@@ -59,35 +49,6 @@ export const Product = () => {
     useEffect(() => {
         getProduct().catch(console.error);
     }, []);
-
-    const handleSendInvoice = () => {
-        toast.error('This action is not available on demo');
-    };
-
-    const handleDiscontinueProduct = () => {
-        handleCloseDiscontinueDialog();
-        toast.error('This action is not available on demo');
-    };
-
-    const handleArchiveProduct = () => {
-        handleCloseArchiveDialog();
-        toast.error('This action is not available on demo');
-    };
-
-    const actions = [
-        {
-            label: 'Send Invoice to Customer',
-            onClick: handleSendInvoice
-        },
-        {
-            label: 'Discontinue Product',
-            onClick: handleOpenDiscontinueDialog
-        },
-        {
-            label: 'Archive Product',
-            onClick: handleOpenArchiveDialog
-        }
-    ];
 
     const renderContent = () => {
         if (productState.isLoading) {
@@ -136,7 +97,7 @@ export const Product = () => {
                             to="/dashboard/products"
                             variant="text"
                         >
-                            Products
+                            {t("Products")}
                         </Button>
                     </Box>
                     <Box
@@ -151,14 +112,6 @@ export const Product = () => {
                         >
                             {productState.data.name}
                         </Typography>
-                        <Box sx={{flexGrow: 1}}/>
-                        <ActionsMenu actions={actions}/>
-                    </Box>
-                    <Box sx={{mt: 2}}>
-                        <Status
-                            color="success.main"
-                            label="Published"
-                        />
                     </Box>
                     <Tabs
                         allowScrollButtonsMobile
@@ -170,7 +123,7 @@ export const Product = () => {
                             <Tab
                                 component={RouterLink}
                                 key={option.href}
-                                label={option.label}
+                                label={t(option.label)}
                                 to={option.href}
                             />
                         ))}
@@ -178,22 +131,6 @@ export const Product = () => {
                     <Divider/>
                 </Box>
                 <Outlet/>
-                <ConfirmationDialog
-                    message="Are you sure you want to discontinue this product? This can't be undone."
-                    onCancel={handleCloseDiscontinueDialog}
-                    onConfirm={handleDiscontinueProduct}
-                    open={discontinueDialogOpen}
-                    title="Discontinue Product"
-                    variant="error"
-                />
-                <ConfirmationDialog
-                    message="Are you sure you want to archive this order? This can't be undone."
-                    onCancel={handleCloseArchiveDialog}
-                    onConfirm={handleArchiveProduct}
-                    open={archiveOpen}
-                    title="Archive Product"
-                    variant="error"
-                />
             </>
         );
     };

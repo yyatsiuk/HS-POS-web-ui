@@ -69,7 +69,7 @@ export const OrderStatus = (props) => {
 
     const handleMark = () => {
         handleCloseMarkDialog();
-        toast.error('This action is not available on demo');
+        toast.error(t('This action is not available on demo'));
     };
 
     return (

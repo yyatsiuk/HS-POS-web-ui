@@ -9,6 +9,7 @@ import {ActionList} from '../action-list';
 import {ActionListItem} from '../action-list-item';
 import {ConfirmationDialog} from '../confirmation-dialog';
 import {StatusSelect} from '../status-select';
+import {useTranslation} from "react-i18next";
 
 const statusOptions = [
     {
@@ -18,8 +19,8 @@ const statusOptions = [
     },
     {
         color: 'success.main',
-        label: 'Published',
-        value: 'published'
+        label: 'In Stock',
+        value: 'In Stock'
     }
 ];
 
@@ -27,22 +28,23 @@ export const ProductStatus = (props) => {
     const {product, ...other} = props;
     const [duplicateDialogOpen, handleOpenDuplicateDialog, handleCloseDuplicateDialog] = useDialog();
     const [status, setStatus] = useState(product.status);
+    const {t} = useTranslation();
 
     const handleStatusChange = (event) => {
         setStatus(event.target.value);
     };
 
     const handleSaveChanges = () => {
-        toast.success('Changes saved');
+        toast.success(t('Changes saved'));
     };
 
     const handlePreview = () => {
-        toast.error('This action is not available on demo');
+        toast.error(t('This action is not available on demo'));
     };
 
     const handleDuplicate = () => {
         handleCloseDuplicateDialog();
-        toast.error('This action is not available on demo');
+        toast.error(t('This action is not available on demo'));
     };
 
     return (

@@ -42,7 +42,7 @@ export const BulkActionsMenu = (props) => {
                 }}
             >
                 <MenuItem onClick={handleDelete}>
-                    {`Delete Selected (${selectedCount})`}
+                    {t("Delete Selected")}{`(${selectedCount})`}
                 </MenuItem>
             </Menu>
         </>
