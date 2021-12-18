@@ -71,7 +71,7 @@ export const AccountPopover = (props) => {
                 }}
             >
                 <Avatar
-                    src="/static/user-chen_simmons.png"
+                    src="/static/user-yaroslav-yatsiuk.png"
                     variant="rounded"
                     sx={{
                         height: 40,
@@ -103,7 +103,7 @@ export const AccountPopover = (props) => {
                             sx={{color: 'primary.contrastText'}}
                             variant="subtitle2"
                         >
-                            Kate Heida
+                            Ярослав Яцюк
                         </Typography>
                     </div>
                     <ChevronDownIcon
@@ -136,12 +136,12 @@ export const AccountPopover = (props) => {
                         <ListItemAvatar>
                             <Avatar
                                 variant="rounded"
-                                src="/static/user-chen_simmons.png"
+                                src="/static/user-yaroslav-yatsiuk.png"
                             />
                         </ListItemAvatar>
                         <ListItemText
-                            primary="Kate Heida"
-                            secondary="HEIDA LLC"
+                            primary="Ярослав Яцюк"
+                            secondary="CEO"
                         />
                     </ListItem>
                     <li>

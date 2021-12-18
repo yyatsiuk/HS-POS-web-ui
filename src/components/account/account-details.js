@@ -11,7 +11,7 @@ export const AccountDetails = (props) => {
   const formik = useFormik({
     initialValues: {
       email: 'chen.simmons@acmecorp.com',
-      fullName: 'Kate Heida',
+      fullName: 'Ярослав Яцюк',
       jobTitle: 'Operation',
       submit: null
     },
@@ -72,7 +72,7 @@ export const AccountDetails = (props) => {
                   }}
                 >
                   <Avatar
-                    src="/static/user-chen_simmons.png"
+                    src="/static/user-yaroslav-yatsiuk.png"
                     sx={{
                       height: 64,
                       mr: 2,

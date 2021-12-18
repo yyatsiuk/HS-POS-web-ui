@@ -8,37 +8,19 @@ const orders = [
     {
         id: '5273',
         createdAt: new Date('2021-06-02T14:32:45.475Z'),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
         address: 'м.Тернопіль',
         customer: {
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            instagram: "https://instagram.com/username3?utm_medium=copy_link",
             phone: '6035550123',
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна'
+            firstName: 'Sean',
+            lastName: 'Picott',
+            middleName: 'J'
         },
         courier: {
             name: 'Nova Poshta',
             branchNumber: '4',
         },
         discountAmount: 0,
-        lineItems: [
-            {
-                currency: 'UAH',
-                currencySymbol: '$',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
-        ],
-        paymentMethod: 'debit',
         paymentStatus: 'paid',
         status: 'delivered',
         trackingCode: 'KDO020021',
@@ -48,15 +30,13 @@ const orders = [
     {
         id: '9265',
         createdAt: new Date('2021-05-12T20:10:45.475Z'),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
-        address: 'с. Гусятин, Тернопільська обл.',
+        address: 'м. Збараж, Тернопільська обл.',
         customer: {
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            instagram: "https://instagram.com/username2?utm_medium=copy_link",
             phone: '6035550123',
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна'
+            firstName: 'Eda',
+            lastName: 'Annies',
+            middleName: 'E'
         },
         courier: {
             name: 'Nova Poshta',
@@ -64,21 +44,7 @@ const orders = [
         },
         discountAmount: 0,
         lineItems: [
-            {
-                currency: 'UAH',
-                currencySymbol: '$',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
         ],
-        paymentMethod: 'paypal',
         paymentStatus: 'paid',
         status: 'complete',
         trackingCode: null,
@@ -88,199 +54,69 @@ const orders = [
     {
         id: '9266',
         createdAt: new Date('2021-02-21T12:12:45.475Z'),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
-        address: 'с. Гадинківці, Тернопільська обл.',
+        address: 'м. Львів',
         customer: {
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+            instagram: "https://instagram.com/username1?utm_medium=copy_link",
             phone: '6035550123',
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна'
+            firstName: 'Fabiano',
+            lastName: 'Jorioz',
+            middleName: 'K'
         },
         courier: {
             name: 'Nova Poshta',
             branchNumber: '2',
         },
         discountAmount: 0,
-        lineItems: [
-            {
-                currency: 'UAH',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
-        ],
-        paymentMethod: 'creditCard',
         paymentStatus: 'paid',
         status: 'inProgress',
         totalAmount: 631,
         updatedAt: new Date('2021-02-21T12:12:45.475Z')
-    },
-    {
-        id: '1090',
-        createdAt: new Date('2021-09-09T10:10:45.475Z'),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
-        address: 'м. Збараж, Тернопільська обл.',
-        customer: {
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
-            phone: '6035550123',
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна'
-        },
-        courier: {
-            name: 'Nova Poshta',
-            branchNumber: '1',
-        },
-        discountAmount: 0,
-        lineItems: [
-            {
-                currency: 'UAH',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
-        ],
-        paymentMethod: 'stripe',
-        paymentStatus: 'paid',
-        status: 'shipped',
-        trackingCode: null,
-        totalAmount: 100,
-        updatedAt: new Date('2021-09-09T10:10:45.475Z')
-    },
-    {
-        id: '1111',
-        createdAt: new Date('2021-05-21T02:02:45.475Z'),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
-        address: 'м. Збараж, Тернопільська обл.',
-        customer: {
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
-            phone: '6035550123',
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна'
-        },
-        courier: {
-            name: 'Nova Poshta',
-            branchNumber: '7',
-        },
-        discountAmount: 0,
-        lineItems: [
-            {
-                currency: 'UAH',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
-        ],
-        paymentId: 'OTIK283L',
-        paymentMethod: 'debit',
-        paymentStatus: 'paid',
-        status: 'returned',
-        trackingCode: null,
-        totalAmount: 60,
-        updatedAt: new Date('2021-05-21T02:02:45.475Z')
-    },
-    {
-        id: '2475',
-        createdAt: new Date('2021-05-11T02:02:45.475Z'),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
-        address: 'м. Збараж, Тернопільська обл.',
-        customer: {
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
-            phone: '6035550123',
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна'
-        },
-        courier: {
-            name: 'Nova Poshta',
-            branchNumber: '6',
-        },
-        discountAmount: 0,
-        lineItems: [
-            {
-                currency: 'UAH',
-                discountAmount: 0,
-                image: '/static/product-01.png',
-                name: 'Watch with Leather Strap',
-                quantity: 1,
-                sku: 'BBAK01-A',
-                subtotalAmount: 160,
-                taxAmount: 32.5,
-                totalAmount: 192.5,
-                unitAmount: 160
-            }
-        ],
-        paymentMethod: 'paypal',
-        paymentStatus: 'paid',
-        status: 'placed',
-        trackingCode: null,
-        totalAmount: 1200,
-        updatedAt: new Date('2021-05-11T02:02:45.475Z')
     }
 ];
 
 const order = {
     id: '5273',
-    createdAt: new Date('2021-06-02T14:32:45.475Z'),
-    currency: 'UAH',
-    currencySymbol: '\u20B4',
-    address: 'м. Збараж, Тернопільська обл.',
+    createdAt: new Date('2021-12-11T14:32:45.475Z'),
+    address: 'м. Тернопіль',
     customer: {
-        instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
+        instagram: "https://instagram.com/username3?utm_medium=copy_link",
         phone: '6035550123',
-        firstName: 'Чайка',
-        lastName: 'Чайківська',
-        middleName: 'Іванівна'
+        firstName: 'Sean',
+        lastName: 'Picott',
+        middleName: 'Johnson'
     },
     courier: {
         name: 'Nova Poshta',
-        branchNumber: '5',
+        branchNumber: '4',
     },
     discountAmount: 0,
     lineItems: [
         {
-            currency: 'UAH',
             discountAmount: 0,
             image: '/static/product-05.png',
-            name: 'Червоні Капці',
+            name: 'Кросівки Nike Red v1',
             quantity: 1,
-            sku: 'BBAK01-A',
+            id: 'H000001',
             totalAmount: 1000,
             unitAmount: 1000
+        },
+        {
+            discountAmount: 0,
+            image: '/static/product-04.png',
+            name: 'Кросівки Sneakers Red v1',
+            quantity: 1,
+            id: 'H000002',
+            totalAmount: 800,
+            unitAmount: 800
         }
     ],
-    paymentMethod: 'debit',
     paymentStatus: 'paid',
     status: 'delivered',
     trackingCode: 'KDO020021',
-    subtotalAmount: 1000,
+    subtotalAmount: 1800,
     prepayment: 100,
-    totalAmount: 900,
-    updatedAt: new Date('2021-06-02T14:32:45.475Z')
+    totalAmount: 1700,
+    updatedAt: new Date('2021-12-11T14:32:45.475Z')
 };
 
 class OrderApi {

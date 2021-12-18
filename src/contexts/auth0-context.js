@@ -80,7 +80,7 @@ export const AuthProvider = (props) => {
                                 id: user.sub,
                                 avatar: user.picture,
                                 email: user.email,
-                                name: 'Kate Heida'
+                                name: 'Ярослав Яцюк'
                             }
                         }
                     });
@@ -126,7 +126,7 @@ export const AuthProvider = (props) => {
                         id: user.sub,
                         avatar: user.picture,
                         email: user.email,
-                        name: 'Kate Heida',
+                        name: 'Ярослав Яцюк',
                         plan: 'Premium'
                     }
                 }

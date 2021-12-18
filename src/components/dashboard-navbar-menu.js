@@ -7,7 +7,6 @@ import {Cog as CogIcon} from '../icons/cog';
 import {CustomCube as CubeIcon} from '../icons/custom-cube';
 import {CustomShoppingCart as ShoppingCartIcon} from '../icons/custom-shopping-cart';
 import {CustomUsers as UsersIcon} from '../icons/custom-users';
-import {DocumentText as DocumentTextIcon} from '../icons/document-text';
 
 const items = [
     {

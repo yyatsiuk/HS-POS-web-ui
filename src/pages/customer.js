@@ -9,11 +9,12 @@ import {Cash as CashIcon} from '../icons/cash';
 import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamation-outlined';
 import {ShoppingCart as ShoppingCartIcon} from '../icons/shopping-cart';
 import {useTranslation} from "react-i18next";
+import {currency} from "../config"
 
 // NOTE: This should be generated based on user data
 const stats = [
     {
-        content: 'Зереєстрований з: Apr 2021',
+        content: 'Зереєстрований з: 04.09.2021',
         icon: (
             <CalendarIcon
                 fontSize="small"
@@ -22,7 +23,7 @@ const stats = [
         )
     },
     {
-        content: 'К-сть замовлень: 17',
+        content: 'К-сть замовлень: 3',
         icon: (
             <ShoppingCartIcon
                 fontSize="small"
@@ -31,7 +32,7 @@ const stats = [
         )
     },
     {
-        content: 'Витрачено: $69.00',
+        content: `Витрачено: ${currency.symbol}2530.00`,
         icon: (
             <CashIcon
                 fontSize="small"
