@@ -5,9 +5,9 @@ import {wait} from '../utils/wait';
 const users = [
     {
         id: '5e86809283e28b96d2d38537',
-        avatar: '/static/user-yaroslav-yatsiuk.png',
-        email: 'yatsyuk.yaroslav@gmail.com',
-        name: 'Ярослав Яцюк',
+        avatar: '/static/user-chen_simmons.png',
+        email: 'demo@devias.io',
+        name: 'Kate Heida',
         password: 'Password123!'
     }
 ];

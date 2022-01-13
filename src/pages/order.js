@@ -54,15 +54,15 @@ export const Order = () => {
     }, []);
 
     const handleMark = () => {
-        toast.error(t('This action is not available on demo'));
+        toast.error('This action is not available on demo');
     };
 
     const handleCancel = () => {
-        toast.error(t('This action is not available on demo'));
+        toast.error('This action is not available on demo');
     };
 
     const handleDelete = () => {
-        toast.error(t('This action is not available on demo'));
+        toast.error('This action is not available on demo');
     };
 
     const actions = [

@@ -17,7 +17,7 @@ import {LanguagePopover} from './laguage-popover';
 const organizations = [
     {
         id: '3828312374',
-        name: 'MY COMPANY'
+        name: 'HEIDA LTD.'
     }
 ];
 

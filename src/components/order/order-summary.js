@@ -3,7 +3,6 @@ import numeral from 'numeral';
 import {Avatar, Box, Table, TableBody, TableCell, TableHead, TableRow, Typography} from '@material-ui/core';
 import {Scrollbar} from '../scrollbar';
 import {useTranslation} from "react-i18next";
-import {currency} from "../../config";
 
 export const OrderSummary = (props) => {
   const { order, ...other } = props;
@@ -61,19 +60,19 @@ export const OrderSummary = (props) => {
                       color="textSecondary"
                       variant="body2"
                     >
-                      {`ID: ${lineItem.id}`}
+                      {`SKU: ${lineItem.sku}`}
                     </Typography>
                   </div>
                 </Box>
               </TableCell>
               <TableCell>
-                {`${currency.symbol}${numeral(lineItem.unitAmount).format(0,0.00)}`}
+                {`${order.currencySymbol}${numeral(lineItem.unitAmount).format(0,0.00)}`}
               </TableCell>
               <TableCell>
                 {lineItem.quantity}
               </TableCell>
               <TableCell>
-                {`${currency.symbol}${numeral(lineItem.totalAmount).format(0,0.00)}`}
+                {`${order.currencySymbol}${numeral(lineItem.totalAmount).format(0,0.00)}`}
               </TableCell>
             </TableRow>
           ))}
@@ -84,7 +83,7 @@ export const OrderSummary = (props) => {
             <TableCell />
             <TableCell />
             <TableCell>
-              {`${currency.symbol}${numeral(order.subtotalAmount).format(0,0.00)}`}
+              {`${order.currencySymbol}${numeral(order.subtotalAmount).format(0,0.00)}`}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -94,7 +93,7 @@ export const OrderSummary = (props) => {
             <TableCell />
             <TableCell />
             <TableCell>
-              {`${currency.symbol}${numeral(order.prepayment).format(0,0.00)}`}
+              {`${order.currencySymbol}${numeral(order.prepayment).format(0,0.00)}`}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -104,7 +103,7 @@ export const OrderSummary = (props) => {
             <TableCell />
             <TableCell />
             <TableCell>
-              {`${currency.symbol}${numeral(order.discountAmount).format(0,0.00)}`}
+              {`${order.currencySymbol}${numeral(order.discountAmount).format(0,0.00)}`}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -123,7 +122,7 @@ export const OrderSummary = (props) => {
                 color="textPrimary"
                 variant="subtitle2"
               >
-                {`${currency.symbol}${numeral(order.totalAmount).format(0,0.00)}`}
+                {`${order.currencySymbol}${numeral(order.totalAmount).format(0,0.00)}`}
               </Typography>
             </TableCell>
           </TableRow>
