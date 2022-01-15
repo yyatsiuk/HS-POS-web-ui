@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, FormHelperText, Grid} from '@material-ui/core';
 import {InputField} from '../input-field';
 import {useTranslation} from "react-i18next";
+import {customerApi} from "../../api/customer";
 
 export const CustomerDialog = (props) => {
     const {customer, open, onClose, ...other} = props;
@@ -27,10 +28,17 @@ export const CustomerDialog = (props) => {
         }),
         onSubmit: async (values, helpers) => {
             try {
+                await customerApi.crateCustomer({
+                    address: values.address,
+                    fullName: values.fullName,
+                    instagram: values.instagram,
+                    phone: values.phone
+                });
                 toast.success(`Customer ${customer ? 'updated' : 'created'}`);
                 helpers.resetForm();
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
+                onClose();
             } catch (err) {
                 console.error(err);
                 helpers.setStatus({success: false});

@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import {Link as RouterLink, Outlet, useLocation} from 'react-router-dom';
+import {Link as RouterLink, Outlet, useLocation, useParams} from 'react-router-dom';
 import {Box, Button, Container, Divider, Grid, Skeleton, Tab, Tabs, Typography} from '@material-ui/core';
 import {customerApi} from '../api/customer';
 import {useMounted} from '../hooks/use-mounted';
@@ -57,6 +57,7 @@ const tabs = [
 export const Customer = () => {
     const mounted = useMounted();
     const location = useLocation();
+    const {customerId} = useParams()
     const [customerState, setCustomerState] = useState({isLoading: true});
     const {t} = useTranslation();
 
@@ -64,7 +65,8 @@ export const Customer = () => {
         setCustomerState(() => ({isLoading: true}));
 
         try {
-            const result = await customerApi.getCustomer();
+            const result = await customerApi.getCustomer(customerId);
+            console.log(result);
 
             if (mounted.current) {
                 setCustomerState(() => ({

@@ -9,15 +9,17 @@ import {ResourceError} from '../components/resource-error';
 import {ResourceLoading} from '../components/resource-loading';
 import gtm from '../lib/gtm';
 import useHttp from "../hooks/use-http";
+import {useParams} from "react-router-dom";
 
 export const CustomerSummary = () => {
+    const {customerId} = useParams();
     const [customerState, setCustomerState] = useState({isLoading: true});
     const [ordersState, setOrdersState] = useState({isLoading: true});
     const [notesState, setNotesState] = useState({isLoading: true});
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
     const requestMethod = useHttp()
 
-    const getCustomer = () => customerApi.getCustomer();
+    const getCustomer = () => customerApi.getCustomer(customerId);
     const getCustomerOrders = () => customerApi.getCustomerOrders();
     const getCustomerNotes = () => customerApi.getCustomerNotes();
 

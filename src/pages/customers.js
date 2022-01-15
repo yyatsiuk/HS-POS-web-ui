@@ -40,6 +40,12 @@ export const Customers = () => {
     });
 
     useEffect(() => {
+        if (!openCreateDialog) {
+            requestMethod(getCustomers, setCustomersState).catch(console.error);
+        }
+    }, [openCreateDialog]);
+
+    useEffect(() => {
         requestMethod(getCustomers, setCustomersState).catch(console.error);
     }, [controller]);
 

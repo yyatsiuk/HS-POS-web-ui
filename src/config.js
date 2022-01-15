@@ -30,3 +30,7 @@ export const firebaseConfig = {
 export const currency = {
   symbol: "\u20B4"
 }
+
+export const coreApi = {
+  customersUrl: "http://localhost:9901/pos-core/api/customers"
+}

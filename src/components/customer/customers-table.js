@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import Proptypes from 'prop-types';
 import {Link as RouterLink} from 'react-router-dom';
-import {format} from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import {
     Avatar,
     Box,
@@ -139,7 +139,7 @@ export const CustomersTable = (props) => {
                                         <Link
                                             color="inherit"
                                             component={RouterLink}
-                                            to="/dashboard/customers/1"
+                                            to={`/dashboard/customers/${customer.id}`}
                                             underline="none"
                                             variant="subtitle2"
                                         >
@@ -156,7 +156,7 @@ export const CustomersTable = (props) => {
                                     </Link>
                                 </TableCell>
                                 <TableCell>
-                                    {format(customer.createdAt, 'dd/MM/yyyy HH:mm')}
+                                    {format(parseISO(customer.createdAt), 'dd/MM/yyyy HH:mm')}
                                 </TableCell>
                                 <TableCell align="right">
                                     <CustomerMenu/>

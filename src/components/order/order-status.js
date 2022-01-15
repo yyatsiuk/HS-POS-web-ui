@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import toast from 'react-hot-toast';
 import PropTypes from 'prop-types';
-import {format} from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import {Button, Card, CardContent, CardHeader, Divider, Typography} from '@material-ui/core';
 import {useDialog} from '../../hooks/use-dialog';
 import {CheckCircle as CheckCircleIcon} from '../../icons/check-circle';
@@ -101,7 +101,7 @@ export const OrderStatus = (props) => {
                         }}
                         variant="caption"
                     >
-                        {`${t("Updated")} ${format(new Date(order.updatedAt), 'dd/MM/yyyy HH:mm')}`}
+                        {`${t("Updated")} ${format(parseISO(order.updatedAt), 'dd/MM/yyyy HH:mm')}`}
                     </Typography>
                     <Divider sx={{my: 2}}/>
                     <OrderTimeline status={status} createdAt={new Date(order.createdAt)}/>
