@@ -7,7 +7,6 @@ import {Cog as CogIcon} from '../icons/cog';
 import {CustomCube as CubeIcon} from '../icons/custom-cube';
 import {CustomShoppingCart as ShoppingCartIcon} from '../icons/custom-shopping-cart';
 import {CustomUsers as UsersIcon} from '../icons/custom-users';
-import {DocumentText as DocumentTextIcon} from '../icons/document-text';
 
 const items = [
     {
@@ -19,11 +18,11 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/customers/1',
+                href: '/dashboard/customers/:id',
                 title: 'Summary'
             },
             {
-                href: '/dashboard/customers/1/orders',
+                href: '/dashboard/customers/:id/orders',
                 title: 'Orders'
             }
         ]
@@ -37,7 +36,7 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/orders/1',
+                href: '/dashboard/orders/:id',
                 title: 'Summary'
             },
             {
@@ -55,7 +54,7 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/products/1',
+                href: '/dashboard/products/:id',
                 title: 'Summary'
             }
         ]

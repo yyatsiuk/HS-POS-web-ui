@@ -159,7 +159,7 @@ export const CustomersTable = (props) => {
                                     {format(parseISO(customer.createdAt), 'dd/MM/yyyy HH:mm')}
                                 </TableCell>
                                 <TableCell align="right">
-                                    <CustomerMenu/>
+                                    <CustomerMenu customerId={customer.id}/>
                                 </TableCell>
                             </TableRow>
                         ))}

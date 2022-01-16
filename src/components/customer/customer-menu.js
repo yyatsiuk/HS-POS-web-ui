@@ -4,15 +4,16 @@ import {IconButton, Menu, MenuItem} from '@material-ui/core';
 import {usePopover} from '../../hooks/use-popover';
 import {DotsVertical as DotsVerticalIcon} from '../../icons/dots-vertical';
 import {useTranslation} from "react-i18next";
+import Proptypes from "prop-types";
 
-export const CustomerMenu = (props) => {
+export const CustomerMenu = ({customerId, ...props}) => {
     const navigate = useNavigate();
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
     const {t} = useTranslation();
 
     const handleEdit = () => {
         handleClose();
-        navigate('/dashboard/customers/1');
+        navigate(`/dashboard/customers/${customerId}`);
     };
 
     const handleDelete = () => {
@@ -51,4 +52,8 @@ export const CustomerMenu = (props) => {
             </Menu>
         </>
     );
+};
+
+CustomerMenu.propTypes = {
+    customerId: Proptypes.number
 };

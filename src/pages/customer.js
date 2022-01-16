@@ -41,15 +41,13 @@ const stats = [
     }
 ];
 
-// NOTE: This should be generated based on user data because "/1" represents "/:id" from routing
-//  strategy where ":id" is dynamic depending on current customer id
 const tabs = [
     {
-        href: '/dashboard/customers/1',
+        href: "/dashboard/customers/{id}",
         label: 'Summary'
     },
     {
-        href: '/dashboard/customers/1/orders',
+        href: "/dashboard/customers/{id}/orders",
         label: 'Orders'
     }
 ];
@@ -57,7 +55,7 @@ const tabs = [
 export const Customer = () => {
     const mounted = useMounted();
     const location = useLocation();
-    const {customerId} = useParams()
+    const {customerId} = useParams();
     const [customerState, setCustomerState] = useState({isLoading: true});
     const {t} = useTranslation();
 
@@ -65,8 +63,7 @@ export const Customer = () => {
         setCustomerState(() => ({isLoading: true}));
 
         try {
-            const result = await customerApi.getCustomer(customerId);
-            console.log(result);
+            const result = await customerApi.getCustomer(customerId === ":id" ? null : customerId);
 
             if (mounted.current) {
                 setCustomerState(() => ({
@@ -189,7 +186,7 @@ export const Customer = () => {
                     <Tabs
                         allowScrollButtonsMobile
                         sx={{mt: 4}}
-                        value={tabs.findIndex((tab) => tab.href === location.pathname)}
+                        value={tabs.findIndex((tab) => tab.href.replace("{id}", customerId) === location.pathname)}
                         variant="scrollable"
                     >
                         {tabs.map((option) => (
@@ -197,7 +194,7 @@ export const Customer = () => {
                                 component={RouterLink}
                                 key={option.href}
                                 label={t(option.label)}
-                                to={option.href}
+                                to={option.href.replace("{id}", customerId)}
                             />
                         ))}
                     </Tabs>

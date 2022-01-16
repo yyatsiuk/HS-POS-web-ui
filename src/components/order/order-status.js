@@ -101,7 +101,7 @@ export const OrderStatus = (props) => {
                         }}
                         variant="caption"
                     >
-                        {`${t("Updated")} ${format(parseISO(order.updatedAt), 'dd/MM/yyyy HH:mm')}`}
+                        {`${t("Updated")} ${format(new Date(order.updatedAt), 'dd/MM/yyyy HH:mm')}`}
                     </Typography>
                     <Divider sx={{my: 2}}/>
                     <OrderTimeline status={status} createdAt={new Date(order.createdAt)}/>

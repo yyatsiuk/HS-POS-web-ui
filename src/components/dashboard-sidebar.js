@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {matchPath, useLocation} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import PropTypes, {exact} from 'prop-types';
 import {Box, Divider, Drawer, IconButton, List} from '@material-ui/core';
 import {DashboardSidebarItem} from './dashboard-sidebar-item';
 import {Scrollbar} from './scrollbar';
@@ -21,7 +21,7 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/orders/1',
+                href: '/dashboard/orders/:id',
                 title: 'Summary'
             },
             {
@@ -39,11 +39,11 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/customers/1',
+                href: '/dashboard/customers/:id',
                 title: 'Summary'
             },
             {
-                href: '/dashboard/customers/1/orders',
+                href: '/dashboard/customers/:id/orders',
                 title: 'Orders'
             }
         ]
@@ -57,7 +57,7 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/products/1',
+                href: '/dashboard/products/:id',
                 title: 'Summary'
             }
         ]
@@ -95,7 +95,8 @@ export const DashboardSidebar = (props) => {
         items.forEach((item) => {
             if (item.items) {
                 for (let index = 0; index < item.items.length; index++) {
-                    const active = matchPath({path: item.items[index].href, end: true}, pathname);
+                    const active = matchPath({path: item.items[index].href}, pathname);
+                    console.log(active);
 
                     if (active) {
                         setActiveItem(item);

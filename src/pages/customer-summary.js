@@ -19,7 +19,7 @@ export const CustomerSummary = () => {
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
     const requestMethod = useHttp()
 
-    const getCustomer = () => customerApi.getCustomer(customerId);
+    const getCustomer = () => customerApi.getCustomer(customerId === ":id" ? null : customerId);
     const getCustomerOrders = () => customerApi.getCustomerOrders();
     const getCustomerNotes = () => customerApi.getCustomerNotes();
 
