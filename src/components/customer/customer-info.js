@@ -11,15 +11,28 @@ import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
 import {stringAvatar} from "../../utils/input-formatter";
 import {useTranslation} from "react-i18next";
+import {customerApi} from "../../api/customer";
+import {useNavigate} from "react-router-dom";
 
 export const CustomerInfo = (props) => {
     const {customer, onEdit, ...other} = props;
     const [deleteDialogOpen, handleOpenDeleteDialog, handleCloseDeleteDialog] = useDialog();
     const {t} = useTranslation();
+    const navigate = useNavigate();
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
+        try {
+            await customerApi.deleteCustomer(customer.id);
+        } catch (error) {
+            toast.success(t("An error occurred during customer deletion"));
+            handleCloseDeleteDialog();
+            return;
+        }
+
+        toast.success(t(`Customer was successfully deleted`));
         handleCloseDeleteDialog();
-        toast.error(t('This action is not available on demo'));
+
+        navigate("/dashboard/customers")
     };
 
     return (

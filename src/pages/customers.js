@@ -69,6 +69,17 @@ export const Customers = () => {
         });
     };
 
+    const handleDelete = (id) => {
+        setCustomersState(prevState => {
+            return {
+                ...prevState, data: {
+                    customers: prevState.data.customers.filter(customer => customer.id !== id),
+                    customersCount: prevState.data.customersCount - 1
+                }
+            }
+        });
+    };
+
     const handleFiltersApply = (newFilters) => {
         const parsedFilters = newFilters.map((filter) => ({
             property: filter.property.name,
@@ -186,6 +197,7 @@ export const Customers = () => {
                             selectedCustomers={selectedCustomers}
                             sort={controller.sort}
                             sortBy={controller.sortBy}
+                            onDelete={handleDelete}
                         />
                     </Card>
                 </Container>

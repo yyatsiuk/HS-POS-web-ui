@@ -5,8 +5,9 @@ import {usePopover} from '../../hooks/use-popover';
 import {DotsVertical as DotsVerticalIcon} from '../../icons/dots-vertical';
 import {useTranslation} from "react-i18next";
 import Proptypes from "prop-types";
+import {customerApi} from "../../api/customer";
 
-export const CustomerMenu = ({customerId, ...props}) => {
+export const CustomerMenu = ({customerId, onDelete, ...props}) => {
     const navigate = useNavigate();
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
     const {t} = useTranslation();
@@ -16,9 +17,17 @@ export const CustomerMenu = ({customerId, ...props}) => {
         navigate(`/dashboard/customers/${customerId}`);
     };
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
+        try {
+            await customerApi.deleteCustomer(customerId);
+        } catch (error) {
+            toast.success(t("An error occurred during customer deletion"));
+            return;
+        }
+
         handleClose();
-        toast.error(t('This action is not available on demo'));
+        onDelete(customerId)
+        toast.success(t("Customer was successfully deleted"));
     };
 
     return (

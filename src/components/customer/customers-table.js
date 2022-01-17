@@ -61,7 +61,8 @@ export const CustomersTable = (props) => {
         page,
         selectedCustomers,
         sort,
-        sortBy
+        sortBy,
+        onDelete
     } = props;
     const [customers, setCustomers] = useState(customersProp);
     const {t} = useTranslation();
@@ -159,7 +160,7 @@ export const CustomersTable = (props) => {
                                     {format(parseISO(customer.createdAt), 'dd/MM/yyyy HH:mm')}
                                 </TableCell>
                                 <TableCell align="right">
-                                    <CustomerMenu customerId={customer.id}/>
+                                    <CustomerMenu customerId={customer.id} onDelete={onDelete}/>
                                 </TableCell>
                             </TableRow>
                         ))}

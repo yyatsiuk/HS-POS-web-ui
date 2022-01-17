@@ -96,7 +96,6 @@ export const DashboardSidebar = (props) => {
             if (item.items) {
                 for (let index = 0; index < item.items.length; index++) {
                     const active = matchPath({path: item.items[index].href}, pathname);
-                    console.log(active);
 
                     if (active) {
                         setActiveItem(item);

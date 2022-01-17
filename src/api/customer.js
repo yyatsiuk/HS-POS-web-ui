@@ -146,6 +146,17 @@ class CustomerApi {
         }
     }
 
+    async deleteCustomer(id) {
+        try {
+            await fetch(`${coreApi.customersUrl}/${id}`, {
+                method: "DELETE"
+            });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
+        }
+    }
+
     async getCustomerOrders(options = {}) {
         if (throttle) {
             await wait(throttle);
