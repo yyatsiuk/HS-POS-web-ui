@@ -9,10 +9,10 @@ const now = new Date();
 
 const emptyCustomer = {
     id: null,
-    address: "",
-    instagram: "",
-    fullName: 'FistName LastName',
-    phone: "",
+    address: "Україна, Тернопіль",
+    instagram: "https://instagram.com/instagram?utm_medium=copy_link",
+    fullName: "Ім'я Прізвище",
+    phone: "0980000000",
 }
 
 const customerOrders = [
