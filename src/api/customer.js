@@ -124,7 +124,25 @@ class CustomerApi {
             });
             console.log(response.headers.location);
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
+        }
+    }
+
+    async updateCustomer(payload, id) {
+        try {
+            const response = await fetch(`${coreApi.customersUrl}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
         }
     }
 

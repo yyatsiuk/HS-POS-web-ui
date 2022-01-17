@@ -92,6 +92,7 @@ export const CustomerSummary = () => {
                     customer={customerState.data}
                     onClose={() => setOpenInfoDialog(false)}
                     open={openInfoDialog}
+                    onUpdate={setCustomerState}
                 />
             </>
         );

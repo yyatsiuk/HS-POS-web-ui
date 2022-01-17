@@ -2,13 +2,13 @@ import {useCallback, useEffect, useState} from 'react';
 import {Link as RouterLink, Outlet, useLocation, useParams} from 'react-router-dom';
 import {Box, Button, Container, Divider, Grid, Skeleton, Tab, Tabs, Typography} from '@material-ui/core';
 import {customerApi} from '../api/customer';
-import {useMounted} from '../hooks/use-mounted';
 import {ArrowLeft as ArrowLeftIcon} from '../icons/arrow-left';
 import {Calendar as CalendarIcon} from '../icons/calendar';
 import {Cash as CashIcon} from '../icons/cash';
 import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamation-outlined';
 import {ShoppingCart as ShoppingCartIcon} from '../icons/shopping-cart';
 import {useTranslation} from "react-i18next";
+import useHttp from "../hooks/use-http";
 
 // NOTE: This should be generated based on user data
 const stats = [
@@ -53,34 +53,16 @@ const tabs = [
 ];
 
 export const Customer = () => {
-    const mounted = useMounted();
     const location = useLocation();
     const {customerId} = useParams();
     const [customerState, setCustomerState] = useState({isLoading: true});
     const {t} = useTranslation();
+    const requestMethod = useHttp();
+
+    const getCustomerById = () => customerApi.getCustomer(customerId === ":id" ? null : customerId);
 
     const getCustomer = useCallback(async () => {
-        setCustomerState(() => ({isLoading: true}));
-
-        try {
-            const result = await customerApi.getCustomer(customerId === ":id" ? null : customerId);
-
-            if (mounted.current) {
-                setCustomerState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setCustomerState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
+        requestMethod(getCustomerById, setCustomerState).catch(console.error);
     }, []);
 
     useEffect(() => {

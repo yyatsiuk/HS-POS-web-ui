@@ -9,11 +9,12 @@ import {useTranslation} from "react-i18next";
 import {customerApi} from "../../api/customer";
 
 export const CustomerDialog = (props) => {
-    const {customer, open, onClose, ...other} = props;
+    const {customer, open, onClose, onUpdate, ...other} = props;
     const {t} = useTranslation();
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            id: customer?.id || null,
             address: customer?.address || '',
             instagram: customer?.instagram || '',
             fullName: customer?.fullName || '',
@@ -28,12 +29,26 @@ export const CustomerDialog = (props) => {
         }),
         onSubmit: async (values, helpers) => {
             try {
-                await customerApi.crateCustomer({
-                    address: values.address,
-                    fullName: values.fullName,
-                    instagram: values.instagram,
-                    phone: values.phone
-                });
+                if (customer) {
+                    console.log(customer);
+                    const updatedCustomer = await customerApi.updateCustomer({
+                        createdAt: customer.createdAt,
+                        address: values.address,
+                        fullName: values.fullName,
+                        instagram: values.instagram,
+                        phone: values.phone
+                    }, values.id);
+
+                    onUpdate({data: updatedCustomer});
+                } else {
+                    await customerApi.crateCustomer({
+                        address: values.address,
+                        fullName: values.fullName,
+                        instagram: values.instagram,
+                        phone: values.phone
+                    });
+                }
+
                 toast.success(`Customer ${customer ? 'updated' : 'created'}`);
                 helpers.resetForm();
                 helpers.setStatus({success: true});
