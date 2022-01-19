@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
-import { currency } from '../../config';
+import {currency} from '../../config';
 
 import {
     Box,
@@ -12,13 +12,30 @@ import {
     DialogContent,
     DialogTitle,
     FormHelperText,
-    Grid, IconButton, InputAdornment,
+    Grid,
+    IconButton,
+    InputAdornment, MenuItem,
     Typography
 } from '@material-ui/core';
 import {InputField} from '../input-field';
 import {Trash as TrashIcon} from "../../icons/trash";
 import {ImageDropzone} from "../image-dropzone";
 import {useTranslation} from "react-i18next";
+import {imageApi} from "../../api/imge";
+import {productApi} from "../../api/product";
+import {AutocompleteField} from "../autocomplete-field";
+
+const IMAGE_TYPE = "PRODUCT";
+const statusOptions = [
+    {
+        label: "In Stock",
+        value: "IN_STOCK"
+    },
+    {
+        label: "Out of Stock",
+        value: "OUT_OF_STOCK"
+    }
+]
 
 export const ProductCreateDialog = (props) => {
     const {open, onClose, ...other} = props;
@@ -31,12 +48,29 @@ export const ProductCreateDialog = (props) => {
             imageUrl: '',
             image: null,
             price: 0,
+            status: '',
             submit: 'null'
         },
+        validationSchema: Yup.object().shape({
+            description: Yup.string().max(500),
+            name: Yup.string().max(255).required('Name is required'),
+            category: Yup.string().required("Category is required"),
+            price: Yup.number().min(0).required("Price is required"),
+            imageUrl: Yup.string(),
+            status: Yup.string().required("Status is required")
+        }),
         onSubmit: async (values, helpers) => {
-            console.log("Test")
             try {
                 console.log(values);
+                const imageUrl = await imageApi.uploadImage(values.image, IMAGE_TYPE);
+                await productApi.createProduct({
+                    name: values.name,
+                    imageUrl: imageUrl,
+                    description: values.description,
+                    price: values.price,
+                    category: values.category,
+                    status: values.status
+                });
                 toast.success('Product created');
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
@@ -48,15 +82,7 @@ export const ProductCreateDialog = (props) => {
                 helpers.setErrors({submit: err.message});
                 helpers.setSubmitting(false);
             }
-        },
-        validationSchema: Yup.object().shape({
-            description: Yup.string().max(500),
-            name: Yup.string().max(255).required('Name is required'),
-            category: Yup.string().required("Category is required"),
-            price: Yup.number().min(0).required("Price is required"),
-            imageUrl: Yup.string(),
-            image: Yup.string()
-        })
+        }
     });
 
     return (
@@ -105,6 +131,31 @@ export const ProductCreateDialog = (props) => {
                             onChange={formik.handleChange}
                             value={formik.values.category}
                         />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <InputField
+                            error={Boolean(formik.touched.status && formik.errors.status)}
+                            fullWidth
+                            helperText={formik.touched.status && formik.errors.status}
+                            label={t("Status")}
+                            name="status"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            select
+                            value={formik.values.status}
+                        >
+                            {statusOptions.map((option) => (
+                                <MenuItem
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {t(option.label)}
+                                </MenuItem>
+                            ))}
+                        </InputField>
                     </Grid>
                     <Grid
                         item

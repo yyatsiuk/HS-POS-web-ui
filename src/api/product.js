@@ -1,5 +1,5 @@
 import {subDays, subHours, subMinutes} from 'date-fns';
-import {throttle} from '../config';
+import {coreApi, throttle} from '../config';
 import {applyFilters} from '../utils/apply-filters';
 import {applyPagination} from '../utils/apply-pagination';
 import {applySort} from '../utils/apply-sort';
@@ -312,6 +312,23 @@ class ProductApi {
         }
 
         return Promise.resolve(product);
+    }
+
+    async createProduct(payload) {
+        try {
+            console.log(payload);
+            const response = await fetch(coreApi.productsUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+            console.log(response.headers.location);
+        } catch (error) {
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
+        }
     }
 }
 

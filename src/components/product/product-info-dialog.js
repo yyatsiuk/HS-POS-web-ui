@@ -10,17 +10,22 @@ import {
     DialogContent,
     DialogTitle,
     FormHelperText,
-    Grid, IconButton,
-    InputAdornment, Typography
+    Grid,
+    IconButton,
+    InputAdornment,
+    Typography
 } from '@material-ui/core';
 import {AutocompleteField} from '../autocomplete-field';
 import {InputField} from '../input-field';
 import {useTranslation} from "react-i18next";
-import {currency} from "../../config";
+import {coreApi, currency} from "../../config";
 import {Trash as TrashIcon} from "../../icons/trash";
 import {ImageDropzone} from "../image-dropzone";
+import {imageApi} from "../../api/imge";
+import {productApi} from "../../api/product";
 
 const statusOptions = ["In Stock", "Out of Stock"]
+const IMAGE_TYPE = "PRODUCT";
 
 export const ProductInfoDialog = (props) => {
     const {open, onClose, product} = props;
@@ -48,6 +53,16 @@ export const ProductInfoDialog = (props) => {
         }),
         onSubmit: async (values, helpers) => {
             try {
+
+                const imageLocation = await imageApi.uploadImage(values.image, IMAGE_TYPE);
+                await productApi.createProduct({
+                    name: values.name,
+                    imageUrl: imageLocation,
+                    description: values.description,
+                    price: values.price,
+                    category: values.category,
+                    status: values.status
+                });
                 toast.success('Product updated');
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
