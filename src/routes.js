@@ -32,7 +32,6 @@ const Orders = Loadable(lazy(() => import('./pages/orders').then((module) => ({d
 const OrderCreate = Loadable(lazy(() => import('./pages/order-create').then((module) => ({default: module.OrderCreate}))));
 
 const Products = Loadable(lazy(() => import('./pages/products').then((module) => ({default: module.Products}))));
-const ProductSummary = Loadable(lazy(() => import('./pages/product-summary').then((module) => ({default: module.ProductSummary}))));
 
 const AccountGeneral = Loadable(lazy(() => import('./pages/account-general').then((module) => ({default: module.AccountGeneral}))));
 
