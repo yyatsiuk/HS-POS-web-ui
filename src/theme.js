@@ -1,8 +1,4 @@
-import {
-  alpha,
-  createTheme as createMuiTheme,
-  responsiveFontSizes
-} from '@material-ui/core/styles';
+import {alpha, createTheme as createMuiTheme, responsiveFontSizes} from '@material-ui/core/styles';
 import {
   darkBackground,
   darkError,
@@ -23,7 +19,7 @@ import {
   lightText,
   lightWarning
 } from './colors';
-import { XCircle as XCircleIcon } from './icons/x-circle';
+import {XCircle as XCircleIcon} from './icons/x-circle';
 
 const { breakpoints } = createMuiTheme();
 

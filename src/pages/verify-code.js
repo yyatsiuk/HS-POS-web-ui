@@ -1,26 +1,26 @@
-import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
+import {useEffect} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {Link as RouterLink, useLocation, useNavigate} from 'react-router-dom';
+import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {
-  AppBar,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  FormHelperText,
-  Grid,
-  Toolbar,
-  Typography
+    AppBar,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Container,
+    FormHelperText,
+    Grid,
+    Toolbar,
+    Typography
 } from '@material-ui/core';
-import { ProductFeatures } from '../components/auth/product-features';
-import { InputField } from '../components/input-field';
-import { Logo } from '../components/logo';
-import { useSettings } from '../contexts/settings-context';
-import { useAuth } from '../hooks/use-auth';
-import { useMounted } from '../hooks/use-mounted';
+import {ProductFeatures} from '../components/auth/product-features';
+import {InputField} from '../components/input-field';
+import {Logo} from '../components/logo';
+import {useSettings} from '../contexts/settings-context';
+import {useAuth} from '../hooks/use-auth';
+import {useMounted} from '../hooks/use-mounted';
 import gtm from '../lib/gtm';
 
 export const VerifyCode = () => {

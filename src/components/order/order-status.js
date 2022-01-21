@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import toast from 'react-hot-toast';
 import PropTypes from 'prop-types';
-import {format, parseISO} from 'date-fns';
+import {format} from 'date-fns';
 import {Button, Card, CardContent, CardHeader, Divider, Typography} from '@material-ui/core';
 import {useDialog} from '../../hooks/use-dialog';
 import {CheckCircle as CheckCircleIcon} from '../../icons/check-circle';

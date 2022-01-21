@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {Box, Button, Card, CardHeader, Divider, Typography, useMediaQuery} from '@material-ui/core';
+import {Box, Button, Card, CardHeader, Divider, useMediaQuery} from '@material-ui/core';
 import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
 import {useTranslation} from "react-i18next";

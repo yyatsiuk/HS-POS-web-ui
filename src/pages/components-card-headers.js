@@ -1,16 +1,8 @@
-import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import {
-  Box,
-  Button,
-  Card,
-  CardHeader,
-  Container,
-  IconButton,
-  Typography
-} from '@material-ui/core';
-import { ChevronDown as ChevronDownIcon } from '../icons/chevron-down';
-import { DotsVertical as DotsVerticalIcon } from '../icons/dots-vertical';
+import {useEffect} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {Box, Button, Card, CardHeader, Container, IconButton, Typography} from '@material-ui/core';
+import {ChevronDown as ChevronDownIcon} from '../icons/chevron-down';
+import {DotsVertical as DotsVerticalIcon} from '../icons/dots-vertical';
 import gtm from '../lib/gtm';
 
 export const ComponentsCardHeaders = () => {

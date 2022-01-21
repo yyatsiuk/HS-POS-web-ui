@@ -3,7 +3,7 @@ export const extractInstagramName = (link) => {
         .split("?")[0];
 }
 
-const stringToColor = (string) =>{
+const stringToColor = (string) => {
     let hash = 0;
     let i;
 

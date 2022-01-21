@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {matchPath, useLocation} from 'react-router-dom';
-import PropTypes, {exact} from 'prop-types';
+import PropTypes from 'prop-types';
 import {Box, Divider, Drawer, IconButton, List} from '@material-ui/core';
 import {DashboardSidebarItem} from './dashboard-sidebar-item';
 import {Scrollbar} from './scrollbar';

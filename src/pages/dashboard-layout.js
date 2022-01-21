@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom';
-import { useMediaQuery } from '@material-ui/core';
-import { styled } from '@material-ui/core/styles';
-import { Footer } from '../components/footer';
-import { DashboardNavbar } from '../components/dashboard-navbar';
-import { DashboardSidebar } from '../components/dashboard-sidebar';
-import { useSettings } from '../contexts/settings-context';
+import {Outlet} from 'react-router-dom';
+import {useMediaQuery} from '@material-ui/core';
+import {styled} from '@material-ui/core/styles';
+import {Footer} from '../components/footer';
+import {DashboardNavbar} from '../components/dashboard-navbar';
+import {DashboardSidebar} from '../components/dashboard-sidebar';
+import {useSettings} from '../contexts/settings-context';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,

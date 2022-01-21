@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Box, Card, CardContent, Container, Grid, Toolbar } from '@material-ui/core';
-import { ProductFeatures } from '../components/auth/product-features';
-import { RegisterAmplify } from '../components/auth/register-amplify';
-import { RegisterAuth0 } from '../components/auth/register-auth0';
-import { RegisterFirebase } from '../components/auth/register-firebase';
-import { RegisterJwt } from '../components/auth/register-jwt';
-import { useSettings } from '../contexts/settings-context';
-import { Logo } from '../components/logo';
-import { useAuth } from '../hooks/use-auth';
+import {useEffect} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {Link as RouterLink} from 'react-router-dom';
+import {AppBar, Box, Card, CardContent, Container, Grid, Toolbar} from '@material-ui/core';
+import {ProductFeatures} from '../components/auth/product-features';
+import {RegisterAmplify} from '../components/auth/register-amplify';
+import {RegisterAuth0} from '../components/auth/register-auth0';
+import {RegisterFirebase} from '../components/auth/register-firebase';
+import {RegisterJwt} from '../components/auth/register-jwt';
+import {useSettings} from '../contexts/settings-context';
+import {Logo} from '../components/logo';
+import {useAuth} from '../hooks/use-auth';
 import gtm from '../lib/gtm';
 
 export const Register = () => {

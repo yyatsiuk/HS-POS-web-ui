@@ -1,20 +1,11 @@
-import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import {
-  Box,
-  Breadcrumbs,
-  Button,
-  Card,
-  Container,
-  Grid,
-  Link,
-  Typography
-} from '@material-ui/core';
-import { ArrowLeft as ArrowLeftIcon } from '../icons/arrow-left';
-import { Calendar as CalendarIcon } from '../icons/calendar';
-import { Link as LinkIcon } from '../icons/link';
-import { OfficeBuilding as OfficeBuildingIcon } from '../icons/office-building';
-import { Plus as PlusIcon } from '../icons/plus';
+import {useEffect} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {Box, Breadcrumbs, Button, Card, Container, Grid, Link, Typography} from '@material-ui/core';
+import {ArrowLeft as ArrowLeftIcon} from '../icons/arrow-left';
+import {Calendar as CalendarIcon} from '../icons/calendar';
+import {Link as LinkIcon} from '../icons/link';
+import {OfficeBuilding as OfficeBuildingIcon} from '../icons/office-building';
+import {Plus as PlusIcon} from '../icons/plus';
 import gtm from '../lib/gtm';
 
 export const ComponentsPageHeaders = () => {
