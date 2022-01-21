@@ -1,49 +1,38 @@
 import {useCallback, useEffect, useState} from 'react';
-import {Link as RouterLink, Outlet, useLocation} from 'react-router-dom';
+import {Link as RouterLink, Outlet, useLocation, useParams} from 'react-router-dom';
 import {Box, Button, Container, Divider, Skeleton, Tab, Tabs, Typography} from '@material-ui/core';
 import {productApi} from '../api/product';
-import {useMounted} from '../hooks/use-mounted';
 import {ArrowLeft as ArrowLeftIcon} from '../icons/arrow-left';
 import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamation-outlined';
 import {useTranslation} from "react-i18next";
+import useHttp from "../hooks/use-http";
+import {ProductSummary} from "./product-summary";
+import gtm from "../lib/gtm";
 
 // NOTE: This should be generated based on product data because "/1" represents "/:id" from routing
 // //  strategy where ":id" is dynamic depending on current product id
 const tabs = [
     {
-        href: '/dashboard/products/1',
+        href: '/dashboard/products/{id}',
         label: 'Summary'
     }
 ];
 
 export const Product = () => {
-    const mounted = useMounted();
+    const {productId} = useParams();
     const location = useLocation();
     const [productState, setProductState] = useState({isLoading: true});
     const {t} = useTranslation();
+    const requestMethod = useHttp();
+
+    const getProductById = () => productApi.getProduct(productId === ":id" ? null : productId);
 
     const getProduct = useCallback(async () => {
-        setProductState(() => ({isLoading: true}));
+        requestMethod(getProductById, setProductState).catch(console.error);
+    }, []);
 
-        try {
-            const result = await productApi.getProduct();
-
-            if (mounted.current) {
-                setProductState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setProductState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
+    useEffect(() => {
+        gtm.push({event: 'page_view'});
     }, []);
 
     useEffect(() => {
@@ -116,7 +105,7 @@ export const Product = () => {
                     <Tabs
                         allowScrollButtonsMobile
                         sx={{mt: 4}}
-                        value={tabs.findIndex((tab) => tab.href === location.pathname)}
+                        value={tabs.findIndex((tab) => tab.href.replace("{id}", productId) === location.pathname)}
                         variant="scrollable"
                     >
                         {tabs.map((option) => (
@@ -124,13 +113,19 @@ export const Product = () => {
                                 component={RouterLink}
                                 key={option.href}
                                 label={t(option.label)}
-                                to={option.href}
+                                to={option.href.replace("{id}", productId)}
                             />
                         ))}
                     </Tabs>
                     <Divider/>
                 </Box>
                 <Outlet/>
+                <ProductSummary
+                    product={productState.data}
+                    onProductUpdate={setProductState}
+                    isLoading={productState.isLoading}
+                    error={productState.error}
+                />
             </>
         );
     };

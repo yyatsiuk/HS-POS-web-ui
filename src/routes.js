@@ -122,13 +122,7 @@ const routes = [
                     },
                     {
                         path: ':productId',
-                        element: <Product/>,
-                        children: [
-                            {
-                                path: '',
-                                element: <ProductSummary/>
-                            }
-                        ]
+                        element: <Product/>
                     }
                 ]
             }

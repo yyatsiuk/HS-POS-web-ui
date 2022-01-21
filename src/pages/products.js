@@ -21,6 +21,7 @@ export const Products = () => {
         view: 'all'
     });
     const [productsState, setProductsState] = useState({isLoading: true});
+    const [categoriesState, setCategoriesState] = useState({isLoading: true});
     const [
         selectedProducts,
         handleSelect,
@@ -38,10 +39,30 @@ export const Products = () => {
         sortBy: controller.sortBy,
         view: controller.view
     });
+    const getCategories = () => productApi.getAllCategories();
+
+    useEffect(() => {
+        if (!openCreateDialog) {
+            httpRequest(getProducts, setProductsState).catch(console.error);
+            httpRequest(getCategories, setCategoriesState).catch(console.error);
+        }
+    }, [openCreateDialog]);
 
     useEffect(() => {
         httpRequest(getProducts, setProductsState).catch(console.error);
+        httpRequest(getCategories, setCategoriesState).catch(console.error);
     }, [controller]);
+
+    const handleDelete = (id) => {
+        setProductsState(prevState => {
+            return {
+                ...prevState, data: {
+                    products: prevState.data.products.filter(product => product.id !== id),
+                    productsCount: prevState.data.productsCount - 1
+                }
+            }
+        });
+    };
 
     useEffect(() => {
         gtm.push({event: 'page_view'});
@@ -180,6 +201,7 @@ export const Products = () => {
                             selectedProducts={selectedProducts}
                             sort={controller.sort}
                             sortBy={controller.sortBy}
+                            onDelete={handleDelete}
                         />
                     </Card>
                 </Container>
@@ -187,6 +209,7 @@ export const Products = () => {
             <ProductCreateDialog
                 onClose={() => setOpenCreateDialog(false)}
                 open={openCreateDialog}
+                categories={categoriesState.data || []}
             />
         </>
     );

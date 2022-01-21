@@ -13,26 +13,36 @@ import {
     Grid,
     IconButton,
     InputAdornment,
+    MenuItem,
     Typography
 } from '@material-ui/core';
-import {AutocompleteField} from '../autocomplete-field';
 import {InputField} from '../input-field';
 import {useTranslation} from "react-i18next";
-import {coreApi, currency} from "../../config";
+import {currency} from "../../config";
 import {Trash as TrashIcon} from "../../icons/trash";
 import {ImageDropzone} from "../image-dropzone";
 import {imageApi} from "../../api/imge";
 import {productApi} from "../../api/product";
 
-const statusOptions = ["In Stock", "Out of Stock"]
+const statusOptions = [
+    {
+        label: "In Stock",
+        value: "IN_STOCK"
+    },
+    {
+        label: "Out of Stock",
+        value: "OUT_OF_STOCK"
+    }
+]
+
 const IMAGE_TYPE = "PRODUCT";
 
 export const ProductInfoDialog = (props) => {
-    const {open, onClose, product} = props;
+    const {open, onClose, product, onUpdate} = props;
     const {t} = useTranslation();
     const formik = useFormik({
         initialValues: {
-            imageUrl: product?.image || '',
+            imageUrl: product?.imageUrl || '',
             image: '',
             id: product?.id || true,
             name: product?.name || '',
@@ -40,6 +50,7 @@ export const ProductInfoDialog = (props) => {
             description: product?.description || '',
             status: product?.status || '',
             category: product?.category || '',
+            createdAt: product?.createdAt || '',
             submit: "null"
         },
         validationSchema: Yup.object().shape({
@@ -53,16 +64,24 @@ export const ProductInfoDialog = (props) => {
         }),
         onSubmit: async (values, helpers) => {
             try {
+                console.log(values);
+                let imageUrl = values.imageUrl;
+                if (values.image) {
+                    imageUrl = await imageApi.uploadImage(values.image, IMAGE_TYPE)
+                }
 
-                const imageLocation = await imageApi.uploadImage(values.image, IMAGE_TYPE);
-                await productApi.createProduct({
+                const payload = {
                     name: values.name,
-                    imageUrl: imageLocation,
+                    imageUrl: imageUrl,
                     description: values.description,
                     price: values.price,
                     category: values.category,
+                    createdAt: values.createdAt,
                     status: values.status
-                });
+                }
+                const productUpdated = await productApi.updateProduct(payload, values.id);
+
+                onUpdate({data: productUpdated});
                 toast.success('Product updated');
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
@@ -215,18 +234,26 @@ export const ProductInfoDialog = (props) => {
                         item
                         xs={12}
                     >
-                        <AutocompleteField
+                        <InputField
                             error={Boolean(formik.touched.status && formik.errors.status)}
-                            filterSelectedOptions
+                            fullWidth
                             helperText={formik.touched.status && formik.errors.status}
                             label={t("Status")}
-                            onChange={(event, value) => {
-                                formik.setFieldValue('status',
-                                    value);
-                            }}
-                            options={statusOptions}
+                            name="status"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            select
                             value={formik.values.status}
-                        />
+                        >
+                            {statusOptions.map((option) => (
+                                <MenuItem
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {t(option.label)}
+                                </MenuItem>
+                            ))}
+                        </InputField>
                     </Grid>
                     <Grid
                         item

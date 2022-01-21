@@ -110,6 +110,7 @@ const resources = {
             "Product Name": "Назва товару",
             "Delete Selected": "Видалити вибрані",
             "Edit Product": "Редагувати товар",
+            "Product was successfully deleted": "Товар було успішно видалено",
             Image: "Фото",
             Category: "Категорія",
             category: "Категорія",

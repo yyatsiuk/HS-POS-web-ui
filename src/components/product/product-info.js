@@ -6,10 +6,25 @@ import {useTranslation} from "react-i18next";
 import {currency} from "../../config";
 import numeral from "numeral";
 
+const statusVariants = [
+    {
+        label: "In Stock",
+        value: "IN_STOCK",
+        color: "success.main"
+    },
+    {
+        label: "Out of Stock",
+        value: "OUT_OF_STOCK",
+        color: "warning.main"
+    }
+]
+
 export const ProductInfo = (props) => {
     const {onEdit, product, ...other} = props;
     const mdDown = useMediaQuery((theme) => theme.breakpoints.down('md'));
     const {t} = useTranslation();
+
+    const status = statusVariants.find((variant) => variant.value === product.status);
 
     const align = mdDown ? 'vertical' : 'horizontal';
 
@@ -49,7 +64,7 @@ export const ProductInfo = (props) => {
                     >
                         <img
                             alt={product.name}
-                            src={product.image}
+                            src={product.imageUrl}
                         />
                     </Box>
                 </PropertyListItem>
@@ -76,12 +91,12 @@ export const ProductInfo = (props) => {
                 <PropertyListItem
                     align={align}
                     label={t("Status")}
-                    value={t(product.status)}
+                    value={t(status.label)}
                 />
                 <PropertyListItem
                     align={align}
                     label={t("Category")}
-                    value={product.tags.join(', ')}
+                    value={product.category}
                 />
                 <PropertyListItem
                     align={align}

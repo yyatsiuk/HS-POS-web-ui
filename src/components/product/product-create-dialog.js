@@ -14,7 +14,8 @@ import {
     FormHelperText,
     Grid,
     IconButton,
-    InputAdornment, MenuItem,
+    InputAdornment,
+    MenuItem,
     Typography
 } from '@material-ui/core';
 import {InputField} from '../input-field';
@@ -23,7 +24,6 @@ import {ImageDropzone} from "../image-dropzone";
 import {useTranslation} from "react-i18next";
 import {imageApi} from "../../api/imge";
 import {productApi} from "../../api/product";
-import {AutocompleteField} from "../autocomplete-field";
 
 const IMAGE_TYPE = "PRODUCT";
 const statusOptions = [
@@ -38,7 +38,7 @@ const statusOptions = [
 ]
 
 export const ProductCreateDialog = (props) => {
-    const {open, onClose, ...other} = props;
+    const {open, onClose, categories, ...other} = props;
     const {t} = useTranslation();
     const formik = useFormik({
         initialValues: {
@@ -71,6 +71,7 @@ export const ProductCreateDialog = (props) => {
                     category: values.category,
                     status: values.status
                 });
+
                 toast.success('Product created');
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
@@ -127,10 +128,20 @@ export const ProductCreateDialog = (props) => {
                             helperText={formik.touched.category && t(formik.errors.category)}
                             label={t("Category")}
                             name="category"
+                            select
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.category}
-                        />
+                        >
+                            {categories.map((prodCategory) => (
+                                <MenuItem
+                                    key={prodCategory}
+                                    value={prodCategory}
+                                >
+                                    {t(prodCategory)}
+                                </MenuItem>
+                            ))}
+                        </InputField>
                     </Grid>
                     <Grid
                         item

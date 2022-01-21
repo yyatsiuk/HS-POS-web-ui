@@ -1,6 +1,6 @@
 import Proptypes from 'prop-types';
 import {Link as RouterLink} from 'react-router-dom';
-import {format} from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import {
     Avatar,
     Box,
@@ -52,12 +52,12 @@ const columns = [
 const statusVariants = [
     {
         label: "In Stock",
-        value: "In Stock",
+        value: "IN_STOCK",
         color: "success.main"
     },
     {
         label: "Out of Stock",
-        value: "outOfStock",
+        value: "OUT_OF_STOCK",
         color: "warning.main"
     }
 ]
@@ -75,7 +75,8 @@ export const ProductsTable = (props) => {
         productsCount,
         selectedProducts,
         sort,
-        sortBy
+        sortBy,
+        onDelete
     } = props;
 
     const displayLoading = isLoading;
@@ -98,10 +99,10 @@ export const ProductsTable = (props) => {
                             <TableCell padding="checkbox">
                                 <Checkbox
                                     checked={products.length > 0
-                                    && selectedProducts.length === products.length}
+                                        && selectedProducts.length === products.length}
                                     disabled={isLoading}
                                     indeterminate={selectedProducts.length > 0
-                                    && selectedProducts.length < products.length}
+                                        && selectedProducts.length < products.length}
                                     onChange={onSelectAll}
                                 />
                             </TableCell>
@@ -148,7 +149,7 @@ export const ProductsTable = (props) => {
                                         >
                                             <Avatar
                                                 alt={product.name}
-                                                src={product.image}
+                                                src={product.imageUrl}
                                                 sx={{
                                                     width: 64,
                                                     height: 64
@@ -160,7 +161,7 @@ export const ProductsTable = (props) => {
                                                     color="inherit"
                                                     component={RouterLink}
                                                     sx={{display: 'block'}}
-                                                    to="/dashboard/products/1"
+                                                    to={`/dashboard/products/${product.id}`}
                                                     underline="none"
                                                     variant="subtitle2"
                                                 >
@@ -187,7 +188,7 @@ export const ProductsTable = (props) => {
                                                 color="textSecondary"
                                                 variant="body2"
                                             >
-                                                {format(product.updatedAt, 'HH:mm')}
+                                                {format(parseISO(product.updatedAt), 'HH:mm')}
                                             </Typography>
                                         </div>
                                     </TableCell>
@@ -198,7 +199,7 @@ export const ProductsTable = (props) => {
                                         />
                                     </TableCell>
                                     <TableCell align="right">
-                                        <ProductMenu/>
+                                        <ProductMenu productId={product.id} onDelete={onDelete}/>
                                     </TableCell>
                                 </TableRow>
                             );
