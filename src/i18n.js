@@ -98,10 +98,12 @@ const resources = {
             "Comment text...": "Текст коментаря...",
             "Create Product": "Створити товар",
             "Product name": "Назва товару",
-            "Select Images": "Завантажити Фото",
+            "Select images": "Вибрати фото",
             "Name is required": "Назва товару є обов'язковим полем",
             "price must be greater than or equal to 0": "Ціна повинна бути більшою або рівною 0",
             "Category is required": "Категорія є обов'язковим полем",
+            "Status is required": "Статус є обов'язковим полем",
+            "Price is required": "Ціна є обов'язковим полем",
             "In Stock": "В наявності",
             "Out of Stock": "Не в наявності",
             "This action is not available on demo": "Ця дія поки в процесі розробки і не є доступною",
@@ -187,7 +189,11 @@ const resources = {
             Settings: 'Налаштування',
             Send: 'Надіслати',
             Page: 'Сторінка',
-            of: "з"
+            of: "з",
+            Electronics: "Електроніка",
+            Books: "Книги",
+            Code: "Код"
+
         }
     }
 };

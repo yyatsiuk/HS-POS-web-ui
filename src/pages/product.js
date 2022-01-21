@@ -22,13 +22,16 @@ export const Product = () => {
     const {productId} = useParams();
     const location = useLocation();
     const [productState, setProductState] = useState({isLoading: true});
+    const [categoriesState, setCategoriesState] = useState({isLoading: true});
     const {t} = useTranslation();
     const requestMethod = useHttp();
 
     const getProductById = () => productApi.getProduct(productId === ":id" ? null : productId);
+    const getCategories = () => productApi.getAllCategories();
 
     const getProduct = useCallback(async () => {
         requestMethod(getProductById, setProductState).catch(console.error);
+        requestMethod(getCategories, setCategoriesState).catch(console.error);
     }, []);
 
     useEffect(() => {
@@ -122,6 +125,7 @@ export const Product = () => {
                 <Outlet/>
                 <ProductSummary
                     product={productState.data}
+                    categories={categoriesState.data || []}
                     onProductUpdate={setProductState}
                     isLoading={productState.isLoading}
                     error={productState.error}

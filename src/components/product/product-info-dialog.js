@@ -38,13 +38,14 @@ const statusOptions = [
 const IMAGE_TYPE = "PRODUCT";
 
 export const ProductInfoDialog = (props) => {
-    const {open, onClose, product, onUpdate} = props;
+    const {open, onClose, product, categories, onUpdate} = props;
     const {t} = useTranslation();
     const formik = useFormik({
         initialValues: {
             imageUrl: product?.imageUrl || '',
             image: '',
-            id: product?.id || true,
+            id: product?.id || '',
+            code: product?.code || '',
             name: product?.name || '',
             price: product?.price || '',
             description: product?.description || '',
@@ -72,6 +73,7 @@ export const ProductInfoDialog = (props) => {
 
                 const payload = {
                     name: values.name,
+                    code: values.code,
                     imageUrl: imageUrl,
                     description: values.description,
                     price: values.price,
@@ -188,14 +190,14 @@ export const ProductInfoDialog = (props) => {
                     >
                         <InputField
                             disabled
-                            error={Boolean(formik.touched.id && formik.errors.id)}
+                            error={Boolean(formik.touched.code && formik.errors.code)}
                             fullWidth
-                            helperText={formik.touched.id && formik.errors.id}
-                            label="ID"
-                            name="id"
+                            helperText={formik.touched.code && formik.errors.code}
+                            label={t("Code")}
+                            name="code"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
-                            value={formik.values.id}
+                            value={formik.values.code}
                         />
                     </Grid>
                     <Grid
@@ -265,10 +267,20 @@ export const ProductInfoDialog = (props) => {
                             helperText={formik.touched.category && t(formik.errors.category)}
                             label={t("Category")}
                             name="category"
+                            select
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.category}
-                        />
+                        >
+                            {categories.map((prodCategory) => (
+                                <MenuItem
+                                    key={prodCategory}
+                                    value={prodCategory}
+                                >
+                                    {t(prodCategory)}
+                                </MenuItem>
+                            ))}
+                        </InputField>
                     </Grid>
                     <Grid
                         item

@@ -150,7 +150,7 @@ export const ProductCreateDialog = (props) => {
                         <InputField
                             error={Boolean(formik.touched.status && formik.errors.status)}
                             fullWidth
-                            helperText={formik.touched.status && formik.errors.status}
+                            helperText={formik.touched.status && t(formik.errors.status)}
                             label={t("Status")}
                             name="status"
                             onBlur={formik.handleBlur}
@@ -175,7 +175,7 @@ export const ProductCreateDialog = (props) => {
                         <InputField
                             error={Boolean(formik.touched.description && formik.errors.description)}
                             fullWidth
-                            helperText={formik.touched.description && formik.errors.description}
+                            helperText={formik.touched.description && t(formik.errors.description)}
                             label={t("Description")}
                             multiline
                             name="description"

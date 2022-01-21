@@ -6,7 +6,7 @@ import {ProductInfoDialog} from '../components/product/product-info-dialog';
 import {ResourceError} from '../components/resource-error';
 import {ResourceLoading} from '../components/resource-loading';
 
-export const ProductSummary = ({isLoading, error, product, onProductUpdate}) => {
+export const ProductSummary = ({isLoading, error, product, categories, onProductUpdate}) => {
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
 
     const renderContent = () => {
@@ -46,6 +46,7 @@ export const ProductSummary = ({isLoading, error, product, onProductUpdate}) => 
                     onClose={() => setOpenInfoDialog(false)}
                     open={openInfoDialog}
                     product={product}
+                    categories={categories}
                     onUpdate={onProductUpdate}
                 />
             </>

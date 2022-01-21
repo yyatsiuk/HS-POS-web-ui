@@ -70,8 +70,8 @@ export const ProductInfo = (props) => {
                 </PropertyListItem>
                 <PropertyListItem
                     align={align}
-                    label="ID"
-                    value={product.id}
+                    label={t("Code")}
+                    value={product.code}
                 />
                 <PropertyListItem
                     align={align}
@@ -96,7 +96,7 @@ export const ProductInfo = (props) => {
                 <PropertyListItem
                     align={align}
                     label={t("Category")}
-                    value={product.category}
+                    value={t(product.category)}
                 />
                 <PropertyListItem
                     align={align}
