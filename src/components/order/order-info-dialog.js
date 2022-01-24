@@ -64,8 +64,8 @@ export const OrderInfoDialog = (props) => {
     enableReinitialize: true,
     initialValues: {
       address: order?.address || '',
-      courierName: order?.courier.name || '',
-      courierBranchNumber: order?.courier.branchNumber || '',
+      courierName: order?.courier || '',
+      courierBranchNumber: order?.branchNumber || '',
       instagram: order?.customer.instagram || '',
       phone: order?.customer.phone || '',
       status: order?.status || '',

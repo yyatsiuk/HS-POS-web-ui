@@ -89,7 +89,7 @@ export const OrderInfo = (props) => {
                     <PropertyList>
                         <PropertyListItem
                             label={t("Customer")}
-                            value={`${order.customer.lastName} ${order.customer.firstName} ${order.customer.middleName}`}
+                            value={`${order.customer.fullName}`}
                         />
                         <PropertyListItem
                             label="Instagram"
@@ -120,7 +120,7 @@ export const OrderInfo = (props) => {
                             value={
                                 <Fragment>
                                     <div>{order.address}</div>
-                                    <div>{`${t(order.courier.name)} #${order.courier.branchNumber}`}</div>
+                                    <div>{`${t(order.courier)} #${order.branchNumber}`}</div>
                                 </Fragment>
                             }
                         />

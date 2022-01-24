@@ -238,7 +238,7 @@ export const CustomerOrders = () => {
                                                     underline="none"
                                                     variant="inherit"
                                                 >
-                                                    {`${order.customer.lastName} ${order.customer.firstName} ${order.customer.middleName}`}
+                                                    {`${order.customer.fullName}`}
                                                 </Link>
                                             </TableCell>
                                             <TableCell>
@@ -255,7 +255,7 @@ export const CustomerOrders = () => {
                                                     color="textSecondary"
                                                     variant="inherit"
                                                 >
-                                                    {`${t(order.courier.name)}, #${order.courier.branchNumber}`}
+                                                    {`${t(order.courier)}, #${order.branchNumber}`}
                                                 </Typography>
                                             </TableCell>
                                             <TableCell>

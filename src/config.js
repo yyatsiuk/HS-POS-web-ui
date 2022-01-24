@@ -35,5 +35,6 @@ export const coreApi = {
   customersUrl: "http://localhost:9901/pos-core/api/customers",
   productsUrl: "http://localhost:9901/pos-core/api/products",
   productCategoriesUrl: "http://localhost:9901/pos-core/api/products/categories",
-  imageUploadUrl: "http://localhost:9901/pos-core/api/images/upload"
+  imageUploadUrl: "http://localhost:9901/pos-core/api/images/upload",
+  ordersUrl: "http://localhost:9901/pos-core/api/orders"
 }

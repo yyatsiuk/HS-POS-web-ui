@@ -23,6 +23,7 @@ import {Scrollbar} from '../scrollbar';
 import {Status} from '../status';
 import {OrderMenu} from './order-menu';
 import {useTranslation} from "react-i18next";
+import {currency} from "../../config";
 
 const columns = [
     {
@@ -59,37 +60,37 @@ const statusVariants = [
     {
         color: 'warning.main',
         label: 'Placed',
-        value: 'placed'
+        value: 'PLACED'
     },
     {
         color: 'secondary.dark',
         label: 'In Progress',
-        value: 'inProgress'
+        value: 'IN_PROGRESS'
     },
     {
         color: 'secondary.light',
         label: "Ready for Shipment",
-        value: "ready"
+        value: "READY_FOR_SHIPMENT"
     },
     {
         color: 'info.dark',
         label: 'Shipped',
-        value: 'shipped'
+        value: 'SHIPPED'
     },
     {
         color: 'info.light',
         label: 'Delivered',
-        value: 'delivered'
+        value: 'DELIVERED'
     },
     {
         color: 'success.main',
         label: 'Complete',
-        value: 'complete'
+        value: 'COMPLETE'
     },
     {
         color: 'error.main',
         label: 'Returned',
-        value: 'returned'
+        value: 'RETURNED'
     }
 ];
 
@@ -132,7 +133,7 @@ export const OrdersTable = (props) => {
                                     checked={orders.length > 0 && selectedOrders.length === orders.length}
                                     disabled={isLoading}
                                     indeterminate={selectedOrders.length > 0
-                                    && selectedOrders.length < orders.length}
+                                        && selectedOrders.length < orders.length}
                                     onChange={onSelectAll}
                                 />
                             </TableCell>
@@ -203,7 +204,7 @@ export const OrdersTable = (props) => {
                                             underline="none"
                                             variant="inherit"
                                         >
-                                            {`${order.customer.lastName} ${order.customer.firstName} ${order.customer.middleName}`}
+                                            {`${order.customer.fullName}`}
                                         </Link>
                                     </TableCell>
                                     <TableCell>
@@ -220,7 +221,7 @@ export const OrdersTable = (props) => {
                                             color="textSecondary"
                                             variant="inherit"
                                         >
-                                            {`${t(order.courier.name)}, #${order.courier.branchNumber}`}
+                                            {`${t(order.courier)}, #${order.branchNumber}`}
                                         </Typography>
                                     </TableCell>
                                     <TableCell>
@@ -230,7 +231,7 @@ export const OrdersTable = (props) => {
                                         />
                                     </TableCell>
                                     <TableCell>
-                                        {order.currencySymbol}{numeral(order.totalAmount).format(`0,0.00`)}
+                                        {currency.symbol}{numeral(order.totalAmount).format(`0,0.00`)}
                                     </TableCell>
                                     <TableCell align="right">
                                         <OrderMenu/>
