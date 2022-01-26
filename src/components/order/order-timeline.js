@@ -31,7 +31,7 @@ const getDotStyles = (value) => {
 
 // NOTE: Items should be generated on order data to display information such as ordered date
 const getItems = (status) => {
-  const statusMapping = ['placed', 'inProgress', 'ready', 'shipped', 'delivered', 'complete', 'returned'];
+  const statusMapping = ['PLACED', 'IN_PROGRESS', 'READY_FOR_SHIPMENT', 'SHIPPED', 'DELIVERED', 'COMPLETE', 'RETURNED'];
   const currentStatusIndex = statusMapping.indexOf(status) + 1;
   const items = [
     { title: 'Placed at' },
@@ -56,7 +56,7 @@ const getItems = (status) => {
 };
 
 export const OrderTimeline = (props) => {
-  const { status, ...other } = props;
+  const { status, createdAt, ...other } = props;
   const items = getItems(status);
   const {t} = useTranslation();
 
@@ -103,7 +103,7 @@ export const OrderTimeline = (props) => {
                   : 'textSecondary'}
                 variant="overline"
               >
-                {item.title === 'Placed at' ? t(item.title, {date: props.createdAt}) : t(item.title)}
+                {item.title === 'Placed at' ? t(item.title, {date: createdAt}) : t(item.title)}
               </Typography>
             </TimelineContent>
           </TimelineItem>
@@ -124,7 +124,7 @@ export const OrderTimeline = (props) => {
 };
 
 OrderTimeline.propTypes = {
-  status: PropTypes.oneOf(['placed', 'inProgress', 'ready', 'shipped', 'delivered', 'complete', 'returned']).isRequired,
+  status: PropTypes.oneOf(['PLACED', 'IN_PROGRESS', 'READY_FOR_SHIPMENT', 'SHIPPED', 'DELIVERED', 'COMPLETE', 'RETURNED']).isRequired,
 
   createdAt: PropTypes.object.isRequired
 };

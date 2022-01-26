@@ -175,7 +175,10 @@ export const OrdersTable = (props) => {
                                         <Link
                                             color="inherit"
                                             component={RouterLink}
-                                            to="/dashboard/orders/1"
+                                            state={{
+                                                orders
+                                            }}
+                                            to={`/dashboard/orders/${order.id}`}
                                             underline="none"
                                             variant="subtitle2"
                                         >
@@ -200,7 +203,7 @@ export const OrdersTable = (props) => {
                                         <Link
                                             color="inherit"
                                             component={RouterLink}
-                                            to="/dashboard/customers/1"
+                                            to={ `/dashboard/customers/${order.customer.id}`}
                                             underline="none"
                                             variant="inherit"
                                         >

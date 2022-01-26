@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import {Link as RouterLink} from 'react-router-dom';
+import {Link as RouterLink, useLocation, useParams} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import {Box, Button, Container, Grid, Skeleton, Typography} from '@material-ui/core';
@@ -9,40 +9,31 @@ import {OrderInfo} from '../components/order/order-info';
 import {OrderInfoDialog} from '../components/order/order-info-dialog';
 import {OrderLineItems} from '../components/order/order-line-items';
 import {OrderStatus} from '../components/order/order-status';
-import {useMounted} from '../hooks/use-mounted';
 import {ArrowLeft as ArrowLeftIcon} from '../icons/arrow-left';
 import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamation-outlined';
 import gtm from '../lib/gtm';
 import {useTranslation} from "react-i18next";
+import useHttp from "../hooks/use-http";
 
 export const Order = () => {
-    const mounted = useMounted();
+    // const location = useLocation();
+    const {orderId} = useParams();
     const [orderState, setOrderState] = useState({isLoading: true});
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
+    const requestMethod = useHttp();
     const {t} = useTranslation();
+    // const orders = location.state?.orders;
+    // const order = orders?.find(or => or.id === orderId);
+
+    const getOrderById = () => orderApi.getOrderById(orderId === ":id" ? null : orderId);
 
     const getOrder = useCallback(async () => {
-        setOrderState(() => ({isLoading: true}));
-
-        try {
-            const result = await orderApi.getOrder();
-
-            if (mounted.current) {
-                setOrderState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setOrderState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
+        // if (!order) {
+            requestMethod(getOrderById, setOrderState).catch(console.error);
+        // } else {
+        //     setOrderState({data: order})
+        // }
+        // console.log(orderState.data);
     }, []);
 
     useEffect(() => {

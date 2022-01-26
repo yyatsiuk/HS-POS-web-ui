@@ -62,5 +62,5 @@ PropertyListItem.propTypes = {
     component: PropTypes.elementType,
     children: PropTypes.node,
     label: PropTypes.string.isRequired,
-    value: PropTypes.string
+    value: PropTypes.any
 };

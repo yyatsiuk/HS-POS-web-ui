@@ -9,54 +9,57 @@ import {extractInstagramName} from "../../utils/input-formatter";
 const statusVariants = [
     {
         label: 'Placed',
-        value: 'placed'
+        value: 'PLACED'
     },
     {
         label: 'In Progress',
-        value: 'inProgress'
+        value: 'IN_PROGRESS'
     },
     {
         label: "Ready for Shipment",
-        value: "ready"
+        value: "READY_FOR_SHIPMENT"
     },
     {
         label: 'Shipped',
-        value: 'shipped'
+        value: 'SHIPPED'
     },
     {
         label: 'Delivered',
-        value: 'delivered'
+        value: 'DELIVERED'
     },
     {
         label: 'Complete',
-        value: 'complete'
+        value: 'COMPLETE'
     },
     {
         label: 'Returned',
-        value: 'returned'
+        value: 'RETURNED'
     }
 ];
 
 const paymentStatusVariants = [
     {
         label: 'Paid',
-        value: 'paid'
+        value: 'PAID'
     },
     {
         label: 'Unpaid',
-        value: 'unpaid'
+        value: 'UNPAID'
     },
     {
         label: 'Prepayment',
-        value: 'prepayment'
+        value: 'PREPAYMENT'
     }
 ]
 
 
 export const OrderInfo = (props) => {
     const {order, onEdit, ...other} = props;
+    console.log(order);
     const statusVariant = statusVariants.find((variant) => variant.value === order.status);
     const paymentVariant = paymentStatusVariants.find((paymentStatus) => paymentStatus.value === order.paymentStatus);
+    console.log(paymentVariant.label);
+    console.log(statusVariant.label);
     const {t} = useTranslation();
 
     return (
@@ -117,12 +120,7 @@ export const OrderInfo = (props) => {
                         />
                         <PropertyListItem
                             label={t("Delivery Address")}
-                            value={
-                                <Fragment>
-                                    <div>{order.address}</div>
-                                    <div>{`${t(order.courier)} #${order.branchNumber}`}</div>
-                                </Fragment>
-                            }
+                            value={`${order.address}, ${t(order.courier)} #${order.branchNumber}`}
                         />
                     </PropertyList>
                     <PropertyListItem

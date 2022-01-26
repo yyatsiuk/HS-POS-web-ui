@@ -33,7 +33,7 @@ export const OrderSummary = (props) => {
                 </TableHead>
                 <TableBody>
                     {order.lineItems.map((lineItem) => (
-                        <TableRow key={lineItem.sku}>
+                        <TableRow key={lineItem.code}>
                             <TableCell>
                                 <Box
                                     sx={{
@@ -42,7 +42,7 @@ export const OrderSummary = (props) => {
                                     }}
                                 >
                                     <Avatar
-                                        src={lineItem.image}
+                                        src={lineItem.imageUrl}
                                         sx={{
                                             height: 48,
                                             mr: 2,
@@ -61,7 +61,7 @@ export const OrderSummary = (props) => {
                                             color="textSecondary"
                                             variant="body2"
                                         >
-                                            {`SKU: ${lineItem.sku}`}
+                                            {`Code: ${lineItem.code}`}
                                         </Typography>
                                     </div>
                                 </Box>
@@ -94,7 +94,7 @@ export const OrderSummary = (props) => {
                         <TableCell/>
                         <TableCell/>
                         <TableCell>
-                            {`${currency.symbol}${numeral(order.prepayment).format(0, 0.00)}`}
+                            {`${currency.symbol}${numeral(order.prepaymentAmount).format(0, 0.00)}`}
                         </TableCell>
                     </TableRow>
                     <TableRow>

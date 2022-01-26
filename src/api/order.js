@@ -1,8 +1,7 @@
-import {coreApi, throttle} from '../config';
+import {coreApi} from '../config';
 import {applyFilters} from '../utils/apply-filters';
 import {applyPagination} from '../utils/apply-pagination';
 import {applySort} from '../utils/apply-sort';
-import {wait} from '../utils/wait';
 
 // const orders = [
 //     {
@@ -321,12 +320,19 @@ class OrderApi {
         });
     }
 
-    async getOrder() {
-        if (throttle) {
-            await wait(throttle);
+    async getOrderById(orderId) {
+        if (orderId === null) {
+            return order;
+        }
+        try {
+            const url = `${coreApi.ordersUrl}/${orderId}`;
+            const response = await fetch(url);
+            return await response.json();
+        } catch (error) {
+            console.log(error);
         }
 
-        return Promise.resolve(order);
+        return null;
     }
 }
 

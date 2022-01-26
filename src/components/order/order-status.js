@@ -16,37 +16,37 @@ const statusOptions = [
     {
         color: 'warning.main',
         label: 'Placed',
-        value: 'placed'
+        value: 'PLACED'
     },
     {
         color: 'secondary.dark',
         label: 'In Progress',
-        value: 'inProgress'
+        value: 'IN_PROGRESS'
     },
     {
         color: 'secondary.light',
         label: "Ready for Shipment",
-        value: "ready"
+        value: "READY_FOR_SHIPMENT"
     },
     {
         color: 'info.dark',
         label: 'Shipped',
-        value: 'shipped'
+        value: 'SHIPPED'
     },
     {
         color: 'info.light',
         label: 'Delivered',
-        value: 'delivered'
+        value: 'DELIVERED'
     },
     {
         color: 'success.main',
         label: 'Complete',
-        value: 'complete'
+        value: 'COMPLETE'
     },
     {
         color: 'error.main',
         label: 'Returned',
-        value: 'returned'
+        value: 'RETURNED'
     }
 ];
 
@@ -104,7 +104,7 @@ export const OrderStatus = (props) => {
                         {`${t("Updated")} ${format(new Date(order.updatedAt), 'dd/MM/yyyy HH:mm')}`}
                     </Typography>
                     <Divider sx={{my: 2}}/>
-                    <OrderTimeline status={status} createdAt={new Date(order.createdAt)}/>
+                    <OrderTimeline status={status} createdAt={new Date(order.createdAt) }/>
                 </CardContent>
                 <Divider/>
                 <ActionList>

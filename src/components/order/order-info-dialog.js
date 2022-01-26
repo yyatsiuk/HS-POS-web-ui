@@ -18,31 +18,31 @@ import {useTranslation} from "react-i18next";
 const statusOptions = [
   {
     label: 'Placed',
-    value: 'placed'
+    value: 'PLACED'
   },
   {
     label: 'In Progress',
-    value: 'inProgress'
+    value: 'IN_PROGRESS'
   },
   {
     label: "Ready for Shipment",
-    value: "ready"
+    value: "READY_FOR_SHIPMENT"
   },
   {
     label: 'Shipped',
-    value: 'shipped'
+    value: 'SHIPPED'
   },
   {
     label: 'Delivered',
-    value: 'delivered'
+    value: 'DELIVERED'
   },
   {
     label: 'Complete',
-    value: 'complete'
+    value: 'COMPLETE'
   },
   {
     label: 'Returned',
-    value: 'returned'
+    value: 'RETURNED'
   }
 ];
 

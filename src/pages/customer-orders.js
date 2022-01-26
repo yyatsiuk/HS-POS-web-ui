@@ -63,37 +63,37 @@ const statusVariants = [
     {
         color: 'warning.main',
         label: 'Placed',
-        value: 'placed'
+        value: 'PLACED'
     },
     {
         color: 'secondary.dark',
         label: 'In Progress',
-        value: 'inProgress'
+        value: 'IN_PROGRESS'
     },
     {
         color: 'secondary.light',
         label: "Ready for Shipment",
-        value: "ready"
+        value: "READY_FOR_SHIPMENT"
     },
     {
         color: 'info.dark',
         label: 'Shipped',
-        value: 'shipped'
+        value: 'SHIPPED'
     },
     {
         color: 'info.light',
         label: 'Delivered',
-        value: 'delivered'
+        value: 'DELIVERED'
     },
     {
         color: 'success.main',
         label: 'Complete',
-        value: 'complete'
+        value: 'COMPLETE'
     },
     {
         color: 'error.main',
         label: 'Returned',
-        value: 'returned'
+        value: 'RETURNED'
     }
 ];
 
