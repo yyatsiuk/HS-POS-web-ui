@@ -1,5 +1,5 @@
 import {Fragment, useEffect, useState} from 'react';
-import {Link as RouterLink} from 'react-router-dom';
+import {Link as RouterLink, useNavigate} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -32,6 +32,7 @@ import {AutocompleteField} from "../components/autocomplete-field";
 import {ResourceLoading} from "../components/resource-loading";
 import {ResourceError} from "../components/resource-error";
 import {currency} from "../config";
+import {orderApi} from "../api/order";
 
 const courierOptions = [
     {
@@ -49,6 +50,7 @@ export const OrderCreate = () => {
     const [productsState, setProductsState] = useState({isLoading: true});
     const requestMethod = useHttp();
     const {t} = useTranslation();
+    const navigate = useNavigate();
 
     const getCustomers = () => customerApi.getCustomers({});
     const getProducts = () => productApi.getProducts({});
@@ -64,7 +66,7 @@ export const OrderCreate = () => {
         initialValues: {
             customer: {
                 id: '',
-                fullName: ''
+                fullName: '',
             },
             phone: '',
             courierName: 'Nova Poshta',
@@ -76,7 +78,8 @@ export const OrderCreate = () => {
                     id: '',
                     name: '',
                     price: '',
-                    quantity: 1
+                    quantity: 1,
+                    discountAmount: 0
                 }
             ],
             note: '',
@@ -103,9 +106,28 @@ export const OrderCreate = () => {
         onSubmit: async (values, helpers) => {
             try {
                 console.log(values)
+
+                const payload =
+                    {
+                        customerId: values.customer.id,
+                        address: values.deliveryAddress,
+                        courier: values.courierName,
+                        branchNumber: values.courierBranchNumber,
+                        prepaymentAmount: values.prepayment,
+                        items: values.items.map(item => {
+                            return {
+                                productId: item.id,
+                                quantity: item.quantity,
+                                discountAmount: item.discountAmount
+                            }
+                        })
+                    }
+
+                await orderApi.createOrder(payload);
                 toast.success('Invoice created');
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
+                navigate("/dashboard/orders");
             } catch (err) {
                 console.error(err);
                 helpers.setStatus({success: false});
@@ -136,7 +158,7 @@ export const OrderCreate = () => {
     const totalPriceTmp = formik.values.items.reduce((acc, item) => acc
         + (Number.parseFloat(item.price) * item.quantity), 0);
 
-    const totalPriceMinusPrepayment = totalPriceTmp - formik.values.prepayment;
+    const totalPriceMinusPrepayment = (totalPriceTmp - formik.values.prepayment);
 
     const getItemError = (index, property) => formik?.touched?.items
         && formik?.errors?.items
@@ -185,7 +207,7 @@ export const OrderCreate = () => {
                                     error={Boolean(formik.touched.customer && formik.errors.customer)}
                                     fullWidth
                                     filterSelectedOptions
-                                    helperText={formik.touched.customer && formik.errors.customer}
+                                    helperText={formik.touched.customer && t(formik.errors.customer)}
                                     label={t("Customer")}
                                     name="customer"
                                     onBlur={formik.handleBlur}
@@ -260,7 +282,7 @@ export const OrderCreate = () => {
                                     name="courierBranchNumber"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
-                                    placeholder="12"
+                                    placeholder="#"
                                     value={formik.values.courierBranchNumber}
                                 />
                             </Grid>
@@ -324,7 +346,14 @@ export const OrderCreate = () => {
                                                         formik.setFieldValue(`items[${index}].price`, value.price);
                                                     }
                                                 }}
-                                                isOptionEqualToValue={(option, value) => option.label === value}
+                                                isOptionEqualToValue={(option, value) => {
+                                                    console.log(value);
+                                                    if (value === null || value === undefined) {
+                                                        return true;
+                                                    } else {
+                                                        return option.label === value;
+                                                    }
+                                                }}
                                                 placeholder={t("Item Name")}
                                                 options={products}
                                             />

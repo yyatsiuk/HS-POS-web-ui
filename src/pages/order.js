@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import {Link as RouterLink, useLocation, useParams} from 'react-router-dom';
+import {Link as RouterLink, useParams} from 'react-router-dom';
 import {Helmet} from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import {Box, Button, Container, Grid, Skeleton, Typography} from '@material-ui/core';
@@ -16,26 +16,19 @@ import {useTranslation} from "react-i18next";
 import useHttp from "../hooks/use-http";
 
 export const Order = () => {
-    // const location = useLocation();
     const {orderId} = useParams();
     const [orderState, setOrderState] = useState({isLoading: true});
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
     const requestMethod = useHttp();
     const {t} = useTranslation();
-    // const orders = location.state?.orders;
-    // const order = orders?.find(or => or.id === orderId);
 
     const getOrderById = () => orderApi.getOrderById(orderId === ":id" ? null : orderId);
 
     const getOrder = useCallback(async () => {
-        // if (!order) {
-            requestMethod(getOrderById, setOrderState).catch(console.error);
-        // } else {
-        //     setOrderState({data: order})
-        // }
-        // console.log(orderState.data);
+        requestMethod(getOrderById, setOrderState).catch(console.error);
     }, []);
 
+    console.log(orderState.data);
     useEffect(() => {
         getOrder().catch(console.error);
     }, []);

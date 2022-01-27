@@ -242,41 +242,28 @@ import {applySort} from '../utils/apply-sort';
 // ];
 
 const order = {
-    id: '5273',
-    createdAt: new Date('2021-06-02T14:32:45.475Z'),
-    currencySymbol: '\u20B4',
-    address: 'м. Збараж, Тернопільська обл.',
-    customer: {
-        instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link",
-        phone: '6035550123',
-        firstName: 'Чайка',
-        lastName: 'Чайківська',
-        middleName: 'Іванівна'
+    "id": "0",
+    "lineItems": [],
+    "prepaymentAmount": 0,
+    "subtotalAmount": 0,
+    "totalAmount": 0,
+    "customer": {
+        "id": 7,
+        "fullName": "Ім'я Прізвище",
+        "instagram": "https://instagram.com/test?utm_medium=copy_link",
+        "address": "Ternopil",
+        "phone": "0680000000",
+        "createdAt": "2022-01-17T15:42:18.497451",
+        "updatedAt": "2022-01-21T22:08:43.055751"
     },
-    courier: {
-        name: 'Nova Poshta',
-        branchNumber: '5',
-    },
-    discountAmount: 0,
-    lineItems: [
-        {
-            discountAmount: 0,
-            image: '/static/product-05.png',
-            name: 'Червоні Капці',
-            quantity: 1,
-            sku: 'BBAK01-A',
-            totalAmount: 1000,
-            unitAmount: 1000
-        }
-    ],
-    paymentMethod: 'debit',
-    paymentStatus: 'paid',
-    status: 'delivered',
-    trackingCode: 'KDO020021',
-    subtotalAmount: 1000,
-    prepayment: 100,
-    totalAmount: 900,
-    updatedAt: new Date('2021-06-02T14:32:45.475Z')
+    "status": "PLACED",
+    "paymentStatus": "UNPAID",
+    "address": "м. Тернопіль",
+    "courier": "Nova Poshta",
+    "branchNumber": "12",
+    "trackingCode": null,
+    "createdAt": "2022-01-27T22:21:59.525072",
+    "updatedAt": "2022-01-27T22:21:59.526215"
 };
 
 class OrderApi {
@@ -330,9 +317,24 @@ class OrderApi {
             return await response.json();
         } catch (error) {
             console.log(error);
+            throw error;
         }
+    }
 
-        return null;
+    async createOrder(payload) {
+        try {
+            const response = await fetch(coreApi.ordersUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
+        }
     }
 }
 
