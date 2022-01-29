@@ -3,7 +3,6 @@ import {Box, Button, Card, CardHeader, Divider, Grid, Link} from '@material-ui/c
 import {PropertyList} from '../property-list';
 import {PropertyListItem} from '../property-list-item';
 import {useTranslation} from "react-i18next";
-import {Fragment} from 'react'
 import {extractInstagramName} from "../../utils/input-formatter";
 
 const statusVariants = [

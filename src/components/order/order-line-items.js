@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import {Card, CardHeader, Divider} from '@material-ui/core';
+import {Button, Card, CardHeader, Divider} from '@material-ui/core';
 import {OrderSummary} from './order-summary';
 import {useTranslation} from "react-i18next";
 
 export const OrderLineItems = (props) => {
-  const { order, ...other } = props;
+  const { order, onEdit, ...other } = props;
   const {t} = useTranslation();
 
   return (
@@ -12,7 +12,18 @@ export const OrderLineItems = (props) => {
       variant="outlined"
       {...other}
     >
-      <CardHeader title={t("Line Items")} />
+      <CardHeader
+          action={(
+              <Button
+                  color="primary"
+                  variant="text"
+                  onClick={onEdit}
+              >
+                {t("Edit")}
+              </Button>
+          )}
+          title={t("Line Items")} />
+
       <Divider />
       <OrderSummary order={order} />
     </Card>

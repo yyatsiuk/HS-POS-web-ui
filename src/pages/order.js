@@ -14,18 +14,24 @@ import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamati
 import gtm from '../lib/gtm';
 import {useTranslation} from "react-i18next";
 import useHttp from "../hooks/use-http";
+import {OrderItemsDialog} from "../components/order/order-items-dialog";
+import {productApi} from "../api/product";
 
 export const Order = () => {
     const {orderId} = useParams();
     const [orderState, setOrderState] = useState({isLoading: true});
+    const [productsState, setProductsState] = useState({isLoading: true});
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
+    const [openItemsDialog, setOpenItemsDialog] = useState(false);
     const requestMethod = useHttp();
     const {t} = useTranslation();
 
     const getOrderById = () => orderApi.getOrderById(orderId === ":id" ? null : orderId);
+    const getProducts = () => productApi.getProducts({});
 
     const getOrder = useCallback(async () => {
         requestMethod(getOrderById, setOrderState).catch(console.error);
+        requestMethod(getProducts, setProductsState).catch(console.error);
     }, []);
 
     console.log(orderState.data);
@@ -65,7 +71,7 @@ export const Order = () => {
     ];
 
     const renderContent = () => {
-        if (orderState.isLoading) {
+        if (orderState.isLoading || productsState.isLoading) {
             return (
                 <Box sx={{py: 4}}>
                     <Skeleton height={42}/>
@@ -155,7 +161,9 @@ export const Order = () => {
                             item
                             xs={12}
                         >
-                            <OrderLineItems order={orderState.data}/>
+                            <OrderLineItems
+                                onEdit={() => setOpenItemsDialog(true)}
+                                order={orderState.data}/>
                         </Grid>
                     </Grid>
                     <Grid
@@ -178,6 +186,13 @@ export const Order = () => {
                     onClose={() => setOpenInfoDialog(false)}
                     open={openInfoDialog}
                     order={orderState.data}
+                />
+                <OrderItemsDialog
+                    onClose={() => setOpenItemsDialog(false)}
+                    open={openItemsDialog}
+                    lineItems={orderState.data?.lineItems}
+                    products={productsState.data?.products}
+                    orderId={orderState.data?.id}
                 />
             </>
         );
