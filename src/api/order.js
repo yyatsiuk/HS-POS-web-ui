@@ -350,14 +350,19 @@ class OrderApi {
 
     async partialUpdateOrder(orderId, payload) {
         try {
-            await fetch(`${coreApi.ordersUrl}/${orderId}`, {
+            const requestBody = JSON.stringify(payload);
+            const response = await fetch(`${coreApi.ordersUrl}/${orderId}`, {
                 method: "PATCH",
                 headers: {
+                    Accept: 'application/json',
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(payload)
+                body: requestBody
             });
+
+            return await response.json();
         } catch (error) {
+            console.log("Inside catch block");
             console.error(error);
             throw new Error("Unsuccessful response from the server")
         }

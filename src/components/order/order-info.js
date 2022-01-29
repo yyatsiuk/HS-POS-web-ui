@@ -57,8 +57,6 @@ export const OrderInfo = (props) => {
     console.log(order);
     const statusVariant = statusVariants.find((variant) => variant.value === order.status);
     const paymentVariant = paymentStatusVariants.find((paymentStatus) => paymentStatus.value === order.paymentStatus);
-    console.log(paymentVariant.label);
-    console.log(statusVariant.label);
     const {t} = useTranslation();
 
     return (

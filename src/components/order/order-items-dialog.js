@@ -25,7 +25,7 @@ import numeral from 'numeral';
 import {orderApi} from "../../api/order";
 
 export const OrderItemsDialog = (props) => {
-    const {open, onClose, products, lineItems, orderId} = props;
+    const {open, onClose, onUpdate, products, lineItems, orderId} = props;
     const {t} = useTranslation();
 
     const items = lineItems.map(it => {
@@ -61,8 +61,7 @@ export const OrderItemsDialog = (props) => {
         onSubmit: async (values, helpers) => {
             try {
 
-                console.log(values);
-                await orderApi.partialUpdateOrder(orderId, {
+                const updatedOrder = await orderApi.partialUpdateOrder(orderId, {
                     items: values.items.map(item => {
                         return {
                             productId: item.id,
@@ -72,9 +71,21 @@ export const OrderItemsDialog = (props) => {
                     })
                 });
 
+                console.log(updatedOrder);
                 toast.success(t('Order updated'));
                 helpers.setStatus({success: true});
                 helpers.setSubmitting(false);
+                console.log("OnUpdate");
+                onUpdate(prevState => {
+                    return {
+                        ...prevState, data: {
+                            ...prevState.data,
+                            lineItems: updatedOrder.lineItems,
+                            totalAmount: updatedOrder.totalAmount,
+                            subtotalAmount: updatedOrder.subtotalAmount
+                        }
+                    }
+                });
                 onClose();
             } catch (err) {
                 console.error(err);

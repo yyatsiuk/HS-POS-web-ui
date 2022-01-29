@@ -193,6 +193,7 @@ export const Order = () => {
                     lineItems={orderState.data?.lineItems}
                     products={productsState.data?.products}
                     orderId={orderState.data?.id}
+                    onUpdate={setOrderState}
                 />
             </>
         );
