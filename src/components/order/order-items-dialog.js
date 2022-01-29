@@ -143,8 +143,6 @@ export const OrderItemsDialog = (props) => {
                     spacing={2}
                 >
                     {formik.values.items.map((item, index) => {
-                        const totalPrice = Number.parseFloat(item.price) * item.quantity;
-
                         return (
                             // eslint-disable-next-line react/no-array-index-key
                             <Fragment key={index}>
