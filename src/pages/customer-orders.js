@@ -209,7 +209,7 @@ export const CustomerOrders = () => {
                                                 <Link
                                                     color="inherit"
                                                     component={RouterLink}
-                                                    to="/dashboard/orders/1"
+                                                    to={`/dashboard/orders/${order.id}`}
                                                     underline="none"
                                                     variant="subtitle2"
                                                 >
@@ -234,7 +234,7 @@ export const CustomerOrders = () => {
                                                 <Link
                                                     color="inherit"
                                                     component={RouterLink}
-                                                    to="/dashboard/customers/1"
+                                                    to={`/dashboard/customers/${order.customer.id}`}
                                                     underline="none"
                                                     variant="inherit"
                                                 >

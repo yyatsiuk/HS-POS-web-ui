@@ -107,7 +107,8 @@ export const OrdersTable = (props) => {
         page,
         selectedOrders,
         sort,
-        sortBy
+        sortBy,
+        onDelete
     } = props;
     const {t} = useTranslation();
 
@@ -237,7 +238,7 @@ export const OrdersTable = (props) => {
                                         {currency.symbol}{numeral(order.totalAmount).format(`0,0.00`)}
                                     </TableCell>
                                     <TableCell align="right">
-                                        <OrderMenu/>
+                                        <OrderMenu orderId={order.id} onDelete={onDelete}/>
                                     </TableCell>
                                 </TableRow>
                             );

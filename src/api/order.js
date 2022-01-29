@@ -301,10 +301,10 @@ class OrderApi {
         const sortedOrders = applySort(filteredOrders, sort, sortBy);
         const paginatedOrders = applyPagination(sortedOrders, page);
 
-        return Promise.resolve({
+        return {
             orders: paginatedOrders,
             ordersCount: filteredOrders.length
-        });
+        };
     }
 
     async getOrderById(orderId) {
@@ -336,6 +336,33 @@ class OrderApi {
             throw new Error("Unsuccessful response from the server")
         }
     }
+
+    async deleteOrder(orderId) {
+        try {
+            await fetch(`${coreApi.ordersUrl}/${orderId}`, {
+                method: "DELETE"
+            });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
+        }
+    }
+
+    async partialUpdateOrder(orderId, payload) {
+        try {
+            await fetch(`${coreApi.ordersUrl}/${orderId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Unsuccessful response from the server")
+        }
+    }
+
 }
 
 export const orderApi = new OrderApi();

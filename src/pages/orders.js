@@ -105,6 +105,17 @@ export const Orders = () => {
         }
     };
 
+    const handleDelete = (id) => {
+        setOrdersState(prevState => {
+            return {
+                ...prevState, data: {
+                    orders: prevState.data.orders.filter(order => order.id !== id),
+                    ordersCount: prevState.data.ordersCount - 1
+                }
+            }
+        });
+    };
+
     return (
         <>
             <Helmet>
@@ -184,6 +195,7 @@ export const Orders = () => {
                             selectedOrders={selectedOrders}
                             sort={controller.sort}
                             sortBy={controller.sortBy}
+                            onDelete={handleDelete}
                         />
                     </Card>
                 </Container>

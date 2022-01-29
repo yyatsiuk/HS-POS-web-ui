@@ -21,12 +21,12 @@ const items = [
                 title: 'List'
             },
             {
-                href: '/dashboard/orders/:id',
-                title: 'Summary'
-            },
-            {
                 href: '/dashboard/orders/create',
                 title: 'Create'
+            },
+            {
+                href: '/dashboard/orders/:id',
+                title: 'Summary'
             }
         ]
     },

@@ -4,15 +4,16 @@ import {IconButton, Menu, MenuItem} from '@material-ui/core';
 import {usePopover} from '../../hooks/use-popover';
 import {DotsVertical as DotsVerticalIcon} from '../../icons/dots-vertical';
 import {useTranslation} from "react-i18next";
+import {orderApi} from "../../api/order";
 
-export const OrderMenu = (props) => {
+export const OrderMenu = ({orderId, onDelete, ...props}) => {
     const navigate = useNavigate();
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
     const {t} = useTranslation();
 
     const handleEdit = () => {
         handleClose();
-        navigate('/dashboard/orders/1');
+        navigate(`/dashboard/orders/${orderId}`);
     };
 
     const handleRefund = () => {
@@ -20,9 +21,17 @@ export const OrderMenu = (props) => {
         toast.error(t('This action is not available on demo'));
     };
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
+        try {
+            await orderApi.deleteOrder(orderId);
+        } catch (error) {
+            toast.success(t("An error occurred during order deletion"));
+            return;
+        }
+
         handleClose();
-        toast.error(t('This action is not available on demo'));
+        onDelete(orderId)
+        toast.success(t("Order was successfully deleted"));
     };
 
     return (

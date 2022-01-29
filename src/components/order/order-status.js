@@ -11,6 +11,8 @@ import {ConfirmationDialog} from '../confirmation-dialog';
 import {StatusSelect} from '../status-select';
 import {OrderTimeline} from './order-timeline';
 import {useTranslation} from "react-i18next";
+import {orderApi} from "../../api/order";
+import {useParams} from "react-router-dom";
 
 const statusOptions = [
     {
@@ -52,6 +54,7 @@ const statusOptions = [
 
 export const OrderStatus = (props) => {
     const {order, ...other} = props;
+    const {orderId} = useParams();
     const [markDialogOpen, handleOpenMarkDialog, handleCloseMarkDialog] = useDialog();
     const [status, setStatus] = useState(order?.status || '');
     const [newStatus, setNewStatus] = useState(order?.status || '');
@@ -62,8 +65,9 @@ export const OrderStatus = (props) => {
         setNewStatus(event.target.value);
     };
 
-    const handleSaveChanges = () => {
+    const handleSaveChanges = async () => {
         setStatus(newStatus);
+        await orderApi.partialUpdateOrder(orderId, {status: newStatus});
         toast.success('Changes saved');
     };
 
@@ -104,7 +108,7 @@ export const OrderStatus = (props) => {
                         {`${t("Updated")} ${format(new Date(order.updatedAt), 'dd/MM/yyyy HH:mm')}`}
                     </Typography>
                     <Divider sx={{my: 2}}/>
-                    <OrderTimeline status={status} createdAt={new Date(order.createdAt) }/>
+                    <OrderTimeline status={status} createdAt={new Date(order.createdAt)}/>
                 </CardContent>
                 <Divider/>
                 <ActionList>
