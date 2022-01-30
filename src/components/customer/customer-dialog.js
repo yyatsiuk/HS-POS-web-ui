@@ -135,7 +135,7 @@ export const CustomerDialog = (props) => {
                         <InputField
                             error={Boolean(formik.touched.address && formik.errors.address)}
                             fullWidth
-                            helperText={formik.touched.address && formik.errors.address}
+                            helperText={formik.touched.address && t(formik.errors.address)}
                             label={t("Address")}
                             name="address"
                             onBlur={formik.handleBlur}

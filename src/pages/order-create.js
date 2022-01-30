@@ -105,7 +105,6 @@ export const OrderCreate = () => {
         }),
         onSubmit: async (values, helpers) => {
             try {
-                console.log(values)
 
                 const payload =
                     {

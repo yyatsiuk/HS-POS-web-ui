@@ -122,6 +122,7 @@ export const OrderInfoDialog = (props) => {
             <InputField
               error={Boolean(formik.touched.instagram && formik.errors.instagram)}
               fullWidth
+              disabled
               helperText={formik.touched.instagram && formik.errors.instagram}
               label="Instagram"
               name="instagram"
@@ -135,14 +136,14 @@ export const OrderInfoDialog = (props) => {
             xs={12}
           >
             <InputField
-              error={Boolean(formik.touched.address && formik.errors.address)}
-              fullWidth
-              helperText={formik.touched.address && formik.errors.address}
-              label={t("Delivery Address")}
-              name="deliveryAddress"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.address}
+                error={Boolean(formik.touched.address && formik.errors.address)}
+                fullWidth
+                helperText={formik.touched.address && t(formik.errors.address)}
+                label={t("Delivery Address")}
+                name="address"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.address}
             />
           </Grid>
           <Grid
@@ -152,7 +153,7 @@ export const OrderInfoDialog = (props) => {
             <InputField
                 error={Boolean(formik.touched.courierName && formik.errors.courierName)}
                 fullWidth
-                helperText={formik.touched.courierName && formik.errors.courierName}
+                helperText={formik.touched.courierName && t(formik.errors.courierName)}
                 label={t("Courier")}
                 name="courierName"
                 onBlur={formik.handleBlur}
@@ -177,7 +178,7 @@ export const OrderInfoDialog = (props) => {
             <InputField
                 error={Boolean(formik.touched.courierBranchNumber && formik.errors.courierBranchNumber)}
                 fullWidth
-                helperText={formik.touched.courierBranchNumber && formik.errors.courierBranchNumber}
+                helperText={formik.touched.courierBranchNumber && t(formik.errors.courierBranchNumber)}
                 label={t("Branch Number")}
                 name="courierBranchNumber"
                 onBlur={formik.handleBlur}
@@ -192,7 +193,7 @@ export const OrderInfoDialog = (props) => {
             <InputField
               error={Boolean(formik.touched.phone && formik.errors.phone)}
               fullWidth
-              helperText={formik.touched.phone && formik.errors.phone}
+              helperText={formik.touched.phone && t(formik.errors.phone)}
               label={t("Phone")}
               name="phone"
               onBlur={formik.handleBlur}
@@ -207,7 +208,7 @@ export const OrderInfoDialog = (props) => {
             <InputField
               error={Boolean(formik.touched.status && formik.errors.status)}
               fullWidth
-              helperText={formik.touched.status && formik.errors.status}
+              helperText={formik.touched.status && t(formik.errors.status)}
               label={t("Status")}
               name="status"
               onBlur={formik.handleBlur}

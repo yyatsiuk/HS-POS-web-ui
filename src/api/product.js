@@ -25,7 +25,6 @@ class ProductApi {
         try {
             const response = await fetch(coreApi.productsUrl);
             products = await response.json();
-            console.log(products);
         } catch (error) {
             console.log(error);
             return products;
@@ -77,7 +76,6 @@ class ProductApi {
 
     async createProduct(payload) {
         try {
-            console.log(payload);
             const response = await fetch(coreApi.productsUrl, {
                 method: "POST",
                 headers: {
@@ -85,7 +83,6 @@ class ProductApi {
                 },
                 body: JSON.stringify(payload)
             });
-            console.log(response.headers.location);
         } catch (error) {
             console.error(error);
             throw new Error("Unsuccessful response from the server")
@@ -94,7 +91,6 @@ class ProductApi {
 
     async updateProduct(payload, id) {
         try {
-            console.log(payload);
             const response = await fetch(`${coreApi.productsUrl}/${id}`, {
                 method: "PUT",
                 headers: {
