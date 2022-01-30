@@ -15,27 +15,30 @@ const emptyCustomer = {
     phone: "0980000000",
 }
 
-const customerOrders = [
+const defaultCusomterOrders = [
     {
-        id: '5273',
-        createdAt: new Date(),
-        currency: 'UAH',
-        currencySymbol: '\u20B4',
-        address: 'м.Тернопіль',
-        customer: {
-            firstName: 'Чайка',
-            lastName: 'Чайківська',
-            middleName: 'Іванівна',
-            phone: '6035550123',
-            instagram: "https://instagram.com/ruslana_heida?utm_medium=copy_link"
+        "id": "0",
+        "lineItems": [],
+        "prepaymentAmount": 0,
+        "subtotalAmount": 0,
+        "totalAmount": 0,
+        "customer": {
+            "id": 7,
+            "fullName": "Ім'я Прізвище",
+            "instagram": "https://instagram.com/test?utm_medium=copy_link",
+            "address": "Ternopil",
+            "phone": "0680000000",
+            "createdAt": "2022-01-17T15:42:18.497451",
+            "updatedAt": "2022-01-21T22:08:43.055751"
         },
-        courier: {
-            name: 'Nova Poshta',
-            branchNumber: '4',
-        },
-        status: 'delivered',
-        totalAmount: 192.5,
-        updatedAt: new Date()
+        "status": "PLACED",
+        "paymentStatus": "UNPAID",
+        "address": "м. Тернопіль",
+        "courier": "Nova Poshta",
+        "branchNumber": "12",
+        "trackingCode": null,
+        "createdAt": "2022-01-27T22:21:59.525072",
+        "updatedAt": "2022-01-27T22:21:59.526215"
     }
 ];
 
@@ -108,9 +111,8 @@ class CustomerApi {
             return await response.json();
         } catch (error) {
             console.log(error);
+            throw new Error("Unsuccessful response from the server")
         }
-
-        return null;
     }
 
     async crateCustomer(payload) {
@@ -157,9 +159,18 @@ class CustomerApi {
         }
     }
 
-    async getCustomerOrders(options = {}) {
-        if (throttle) {
-            await wait(throttle);
+    async getCustomerOrders(customerId, options = {}) {
+        if (!customerId) {
+            return defaultCusomterOrders;
+        }
+
+        let customerOrders = [];
+        try {
+            const response = await fetch(`${coreApi.customersUrl}/${customerId}/orders`);
+            customerOrders = await response.json()
+        } catch (error) {
+            console.log(error);
+            throw new Error("Unsuccessful response from the server")
         }
 
         const {sort, sortBy} = options;

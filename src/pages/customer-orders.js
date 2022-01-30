@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {Link as RouterLink} from 'react-router-dom';
+import {Link as RouterLink, useParams} from 'react-router-dom';
 import {format} from 'date-fns';
 import numeral from 'numeral';
 import {
@@ -21,11 +21,11 @@ import {ResourceError} from '../components/resource-error';
 import {ResourceUnavailable} from '../components/resource-unavailable';
 import {Scrollbar} from '../components/scrollbar';
 import {Status} from '../components/status';
-import {useMounted} from '../hooks/use-mounted';
 import gtm from '../lib/gtm';
 import {OrderMenu} from "../components/order/order-menu";
 import {useTranslation} from "react-i18next";
 import {currency} from "../config";
+import useHttp from "../hooks/use-http";
 
 const columns = [
     {
@@ -98,39 +98,22 @@ const statusVariants = [
 ];
 
 export const CustomerOrders = () => {
-    const mounted = useMounted();
     const [controller, setController] = useState({
         sort: 'desc',
         sortBy: 'createdAt'
     });
+    const {customerId} = useParams();
     const [ordersState, setOrdersState] = useState({isLoading: true});
+    const httpRequest = useHttp();
     const {t} = useTranslation();
 
+    const getCustomerOrders = () => customerApi.getCustomerOrders(customerId === ":id" ? null : customerId, {
+        sort: controller.sort,
+        sortBy: controller.sortBy
+    });
+
     const getOrders = useCallback(async () => {
-        setOrdersState(() => ({isLoading: true}));
-
-        try {
-            const result = await customerApi.getCustomerOrders({
-                sort: controller.sort,
-                sortBy: controller.sortBy
-            });
-
-            if (mounted.current) {
-                setOrdersState(() => ({
-                    isLoading: false,
-                    data: result
-                }));
-            }
-        } catch (err) {
-            console.error(err);
-
-            if (mounted.current) {
-                setOrdersState(() => ({
-                    isLoading: false,
-                    error: err.message
-                }));
-            }
-        }
+        httpRequest(getCustomerOrders, setOrdersState).catch(console.error)
     }, [controller]);
 
     useEffect(() => {

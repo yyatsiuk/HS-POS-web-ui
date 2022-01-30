@@ -59,6 +59,7 @@ export const Customer = () => {
     const {t} = useTranslation();
     const requestMethod = useHttp();
 
+    console.log(customerId);
     const getCustomerById = () => customerApi.getCustomer(customerId === ":id" ? null : customerId);
 
     const getCustomer = useCallback(async () => {
