@@ -1,31 +1,33 @@
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Box, Typography} from '@material-ui/core';
-import {generateResourceId} from '../../utils/generate-resource-id';
 import {CustomerNote} from './customer-note';
 import {CustomerNoteAdd} from './customer-note-add';
 import {useTranslation} from "react-i18next";
+import {useAuth} from "../../hooks/use-auth";
+import {customerApi} from "../../api/customer";
+import {useParams} from "react-router-dom";
 
 export const CustomerNotes = (props) => {
     const {notes: notesProp, ...other} = props;
     const [notes, setNotes] = useState(notesProp || []);
+    const {user} = useAuth();
+    const {customerId} = useParams();
     const {t} = useTranslation();
 
-    const handleNoteSend = (content) => {
+    const handleNoteSend = async (content) => {
+        const note = await customerApi.createNote(customerId, {
+            senderId: user?.id,
+            content,
+        });
+
         setNotes((prevNotes) => [
-            {
-                id: generateResourceId(),
-                senderId: '1',
-                senderName: 'Kate Heida',
-                senderAvatar: '/static/user-chen_simmons.png',
-                content,
-                createdAt: new Date()
-            },
-            ...prevNotes
+            note, ...prevNotes
         ]);
     };
 
-    const handleNoteDelete = (noteId) => {
+    const handleNoteDelete = async (noteId) => {
+        await customerApi.deleteNote(customerId, noteId);
         setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
     };
 
@@ -53,7 +55,7 @@ export const CustomerNotes = (props) => {
                     <CustomerNote
                         content={note.content}
                         createdAt={note.createdAt}
-                        deletable={note.senderId === '1'} // NOTE: ID 1 is the logged in user
+                        deletable={note.senderId === user.id}
                         id={note.id}
                         key={note.id}
                         onDelete={handleNoteDelete}

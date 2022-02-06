@@ -118,6 +118,9 @@ const resources = {
             "Log In": "Вхід",
             "Sign Up": "Реєстрація",
             "Forgot password": "Забувся пароль",
+            "Please check your email and password": "Електронна пошта або пароль не вірні",
+            "Password is required": "Пароль є обов'язковим полем",
+            "Email is required": "Електронна адреса є ов'язковм полем",
 
             Login: "Логін",
             Password: "Пароль",

@@ -21,7 +21,7 @@ export const CustomerSummary = () => {
 
     const getCustomer = () => customerApi.getCustomer(customerId === ":id" ? null : customerId);
     const getCustomerOrders = () => customerApi.getCustomerOrders();
-    const getCustomerNotes = () => customerApi.getCustomerNotes();
+    const getCustomerNotes = () => customerApi.getCustomerNotes(customerId);
 
     useEffect(() => {
         requestMethod(getCustomer, setCustomerState).catch(console.error);

@@ -1,9 +1,8 @@
 import {subMinutes} from 'date-fns';
-import {coreApi, throttle} from '../config';
+import {coreApi} from '../config';
 import {applyFilters} from '../utils/apply-filters';
 import {applyPagination} from '../utils/apply-pagination';
 import {applySort} from '../utils/apply-sort';
-import {wait} from '../utils/wait';
 
 const now = new Date();
 
@@ -208,12 +207,55 @@ class CustomerApi {
         return Promise.resolve(sortedOrders);
     }
 
-    async getCustomerNotes() {
-        if (throttle) {
-            await wait(throttle);
+    async getCustomerNotes(customerId) {
+        try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const url = `${coreApi.customersUrl}/${customerId}/notes`;
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            return await response.json();
+        } catch (error) {
+            console.log(error);
+            throw new Error("Unsuccessful response from the server")
         }
+    }
 
-        return Promise.resolve(customerNotes);
+    async createNote(customerId, payload) {
+        try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const url = `${coreApi.customersUrl}/${customerId}/notes`;
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
+                },
+                body: JSON.stringify(payload)
+            });
+            return await response.json();
+        } catch (error) {
+            console.log(error);
+            throw new Error("Unsuccessful response from the server")
+        }
+    }
+
+    async deleteNote(customerId, noteId) {
+        try {
+            const accessToken = window.localStorage.getItem('accessToken');
+            const url = `${coreApi.customersUrl}/${customerId}/notes/${noteId}`;
+            await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
+            });
+        } catch (error) {
+            console.log(error);
+            throw new Error("Unsuccessful response from the server")
+        }
     }
 }
 

@@ -3,15 +3,6 @@ import {decode, JWT_EXPIRES_IN, JWT_SECRET, sign} from '../utils/jwt';
 import {wait} from '../utils/wait';
 import {coreApi} from "../config";
 
-const users = [
-    {
-        id: '5e86809283e28b96d2d38537',
-        avatarUrl: '/static/user-chen_simmons.png',
-        email: 'demo@devias.io',
-        fullName: 'Kate Heida',
-        password: 'Password123!'
-    }
-];
 
 class AuthApi {
     async login({email, password}) {
@@ -53,8 +44,6 @@ class AuthApi {
                     password
                 };
 
-                users.push(user);
-
                 const accessToken = sign({userId: user.id}, JWT_SECRET, {expiresIn: JWT_EXPIRES_IN});
 
                 resolve(accessToken);
@@ -85,7 +74,9 @@ class AuthApi {
                 id: user.id,
                 avatar: user.avatarUrl,
                 email: user.email,
-                name: user.fullName
+                name: user.fullName,
+                position: user.position,
+
             }
         } catch (error) {
             console.log(error);

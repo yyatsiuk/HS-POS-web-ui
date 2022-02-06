@@ -13,9 +13,9 @@ export const AccountDetails = (props) => {
   console.log(user);
   const formik = useFormik({
     initialValues: {
-      email: 'chen.simmons@acmecorp.com',
-      fullName: 'Kate Heida',
-      jobTitle: 'Operation',
+      email: user?.email || "",
+      fullName: user?.name || "",
+      jobTitle: user?.position || "",
       submit: null
     },
     validationSchema: Yup.object().shape({

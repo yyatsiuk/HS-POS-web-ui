@@ -97,13 +97,13 @@ export const AccountPopover = (props) => {
                             }}
                             variant="caption"
                         >
-                            CEO
+                            {user.position}
                         </Typography>
                         <Typography
                             sx={{color: 'primary.contrastText'}}
                             variant="subtitle2"
                         >
-                            Kate Heida
+                            {user.name}
                         </Typography>
                     </div>
                     <ChevronDownIcon
@@ -140,7 +140,7 @@ export const AccountPopover = (props) => {
                             />
                         </ListItemAvatar>
                         <ListItemText
-                            primary="Kate Heida"
+                            primary={user.name}
                             secondary="HEIDA LLC"
                         />
                     </ListItem>

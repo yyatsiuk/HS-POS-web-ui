@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {formatDistanceToNowStrict} from 'date-fns';
+import {formatDistanceToNowStrict, parseISO} from 'date-fns';
 import {Avatar, Box, Button, Card, Typography} from '@material-ui/core';
 import {useTranslation} from "react-i18next";
 
@@ -57,7 +57,7 @@ export const CustomerNote = (props) => {
                         color="textSecondary"
                         variant="caption"
                     >
-                        {`${formatDistanceToNowStrict(createdAt)} ago`}
+                        {`${formatDistanceToNowStrict(parseISO(createdAt))} ago`}
                     </Typography>
                     <Box sx={{flexGrow: 1}}/>
                     {deletable && (
@@ -78,9 +78,9 @@ export const CustomerNote = (props) => {
 
 CustomerNote.propTypes = {
     content: PropTypes.string.isRequired,
-    createdAt: PropTypes.instanceOf(Date).isRequired,
+    createdAt: PropTypes.string,
     deletable: PropTypes.bool,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     onDelete: PropTypes.func,
     senderAvatar: PropTypes.string.isRequired,
     senderName: PropTypes.string.isRequired,

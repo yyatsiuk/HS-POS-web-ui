@@ -79,7 +79,7 @@ export const LoginJwt = () => {
                         autoFocus
                         error={Boolean(formik.touched.email && formik.errors.email)}
                         fullWidth
-                        helperText={formik.touched.email && formik.errors.email}
+                        helperText={formik.touched.email && t(formik.errors.email)}
                         label={t("Email address")}
                         name="email"
                         onBlur={formik.handleBlur}
@@ -95,7 +95,7 @@ export const LoginJwt = () => {
                     <InputField
                         error={Boolean(formik.touched.password && formik.errors.password)}
                         fullWidth
-                        helperText={formik.touched.password && formik.errors.password}
+                        helperText={formik.touched.password && t(formik.errors.password)}
                         label={t("Password")}
                         name="password"
                         onBlur={formik.handleBlur}
@@ -110,7 +110,7 @@ export const LoginJwt = () => {
                         xs={12}
                     >
                         <FormHelperText error>
-                            {formik.errors.submit}
+                            {t(formik.errors.submit)}
                         </FormHelperText>
                     </Grid>
                 )}
