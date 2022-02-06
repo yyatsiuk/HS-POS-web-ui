@@ -4,10 +4,13 @@ import toast from 'react-hot-toast';
 import {Avatar, Box, Button, Card, CardContent, FormHelperText, Grid, Typography} from '@material-ui/core';
 import {InputField} from '../input-field';
 import {useTranslation} from "react-i18next";
+import {useAuth} from "../../hooks/use-auth";
 
 
 export const AccountDetails = (props) => {
   const {t} = useTranslation();
+  const {user} = useAuth();
+  console.log(user);
   const formik = useFormik({
     initialValues: {
       email: 'chen.simmons@acmecorp.com',
@@ -72,7 +75,7 @@ export const AccountDetails = (props) => {
                   }}
                 >
                   <Avatar
-                    src="/static/user-chen_simmons.png"
+                    src={user.avatar}
                     sx={{
                       height: 64,
                       mr: 2,

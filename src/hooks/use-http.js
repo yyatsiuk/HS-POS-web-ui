@@ -1,10 +1,17 @@
 import {useCallback} from 'react';
 import {useMounted} from "./use-mounted";
+import {isJWTValid} from "../utils/jwt";
+import {useAuth} from "./use-auth";
 
 const useHttp = () => {
     const mounted = useMounted();
+    const {logout} = useAuth();
 
     return useCallback(async (fetchMethod, setState) => {
+        if (isJWTValid()) {
+            await logout();
+        }
+
         setState(() => ({
             isLoading: true,
             error: null

@@ -26,48 +26,10 @@ export const sign = (payload, privateKey, header) => {
 // Since we create a fake signed token, we have to implement a fake jwt decode
 // platform to simulate "jwt-decode" library.
 export const decode = (token) => {
-    // const [encodedHeader, encodedPayload, signature] = token.split('.');
-    // const header = JSON.parse(atob(encodedHeader));
-    // const payload = JSON.parse(atob(encodedPayload));
-    // const now = new Date();
-    //
-    // if (now < header.expiresIn) {
-    //     throw new Error('Expired token');
-    // }
-    //
-    // const verifiedSignature = btoa(Array
-    //     .from(encodedPayload)
-    //     .map((item, key) => (String.fromCharCode(item.charCodeAt(0) ^ JWT_SECRET[key
-    //     % JWT_SECRET.length].charCodeAt(0))))
-    //     .join(''));
-    //
-    // if (verifiedSignature !== signature) {
-    //     throw new Error('Invalid signature');
-    // }
-
-
     return jwt_decode(token);
 };
 
-export const verify = (token, privateKey) => {
-    const [encodedHeader, encodedPayload, signature] = token.split('.');
-    const header = JSON.parse(atob(encodedHeader));
-    const payload = JSON.parse(atob(encodedPayload));
-    const now = new Date();
+export const isJWTValid = () => {
+    return decode(window.localStorage.getItem('accessToken')).exp * 1000 < Date.now();
+}
 
-    if (now < header.expiresIn) {
-        throw new Error('Expired token');
-    }
-
-    const verifiedSignature = btoa(Array
-        .from(encodedPayload)
-        .map((item, key) => (String.fromCharCode(item.charCodeAt(0) ^ privateKey[key
-        % privateKey.length].charCodeAt(0))))
-        .join(''));
-
-    if (verifiedSignature !== signature) {
-        throw new Error('Invalid signature');
-    }
-
-    return payload;
-};

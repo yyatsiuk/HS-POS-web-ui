@@ -40,7 +40,7 @@ export const AccountPopover = (props) => {
     } = props;
     const {t, i18n} = useTranslation();
     const navigate = useNavigate();
-    const {logout} = useAuth();
+    const {logout, user} = useAuth();
     const [anchorRef, open, handleOpen, handleClose] = usePopover();
 
     const handleLanguageChange = (event) => {
@@ -71,7 +71,7 @@ export const AccountPopover = (props) => {
                 }}
             >
                 <Avatar
-                    src="/static/user-chen_simmons.png"
+                    src={user.avatar}
                     variant="rounded"
                     sx={{
                         height: 40,
@@ -136,7 +136,7 @@ export const AccountPopover = (props) => {
                         <ListItemAvatar>
                             <Avatar
                                 variant="rounded"
-                                src="/static/user-chen_simmons.png"
+                                src={user.avatar}
                             />
                         </ListItemAvatar>
                         <ListItemText

@@ -115,6 +115,12 @@ const resources = {
             "Product was successfully deleted": "Товар було успішно видалено",
             "Order was successfully deleted": "Замовлення було успішно видалено",
             "Edit Order Items": "Редагувати товари замовлення",
+            "Log In": "Вхід",
+            "Sign Up": "Реєстрація",
+            "Forgot password": "Забувся пароль",
+
+            Login: "Логін",
+            Password: "Пароль",
             Image: "Фото",
             Category: "Категорія",
             category: "Категорія",

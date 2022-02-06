@@ -47,7 +47,7 @@ const customerNotes = [
         id: '2',
         content: 'Дуже вредна чайка!',
         createdAt: subMinutes(now, 78),
-        senderAvatar: '/static/user-chen_simmons.png',
+        senderAvatar: 's3://heida-pos/products/images/user-kate-heida.png',
         senderId: '1',
         senderName: 'Kate Heida'
     }

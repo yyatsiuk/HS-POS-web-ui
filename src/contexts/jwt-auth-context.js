@@ -1,6 +1,7 @@
 import {createContext, useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
 import {authApi} from '../api/auth';
+import {isJWTValid} from "../utils/jwt";
 
 const initialState = {
     isAuthenticated: false,
@@ -66,6 +67,10 @@ export const AuthProvider = (props) => {
                 const accessToken = window.localStorage.getItem('accessToken');
 
                 if (accessToken) {
+                    if (isJWTValid()) {
+                        await logout();
+                    }
+
                     const user = await authApi.me(accessToken);
 
                     dispatch({
@@ -101,7 +106,6 @@ export const AuthProvider = (props) => {
 
     const login = async (email, password) => {
         const accessToken = await authApi.login({email, password});
-        console.log("Invoking authApi.me(accessToken)", accessToken);
         const user = await authApi.me(accessToken);
         console.log(user);
 

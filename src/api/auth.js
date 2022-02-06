@@ -69,6 +69,7 @@ class AuthApi {
         // Decode access token
 
         const decodedToken = decode(accessToken);
+
         const userId = decodedToken.sub;
 
         try {
@@ -78,7 +79,8 @@ class AuthApi {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            const user = response.json();
+            const user = await response.json();
+            console.log(user);
             return {
                 id: user.id,
                 avatar: user.avatarUrl,
