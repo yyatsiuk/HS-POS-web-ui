@@ -101,7 +101,9 @@ export const AuthProvider = (props) => {
 
     const login = async (email, password) => {
         const accessToken = await authApi.login({email, password});
+        console.log("Invoking authApi.me(accessToken)", accessToken);
         const user = await authApi.me(accessToken);
+        console.log(user);
 
         localStorage.setItem('accessToken', accessToken);
 

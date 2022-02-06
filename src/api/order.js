@@ -32,7 +32,12 @@ class OrderApi {
     async getOrders(options) {
         let orders = [];
         try {
-            const response = await fetch(coreApi.ordersUrl);
+            const accessToken = window.localStorage.getItem('accessToken');
+            const response = await fetch(coreApi.ordersUrl, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             orders = await response.json()
         } catch (error) {
             console.log(error);
@@ -74,8 +79,13 @@ class OrderApi {
             return order;
         }
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const url = `${coreApi.ordersUrl}/${orderId}`;
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             return await response.json();
         } catch (error) {
             console.log(error);
@@ -85,10 +95,12 @@ class OrderApi {
 
     async createOrder(payload) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const response = await fetch(coreApi.ordersUrl, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
                 },
                 body: JSON.stringify(payload)
             });
@@ -101,8 +113,12 @@ class OrderApi {
 
     async deleteOrder(orderId) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             await fetch(`${coreApi.ordersUrl}/${orderId}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
             });
         } catch (error) {
             console.error(error);
@@ -112,12 +128,14 @@ class OrderApi {
 
     async partialUpdateOrder(orderId, payload) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const requestBody = JSON.stringify(payload);
             const response = await fetch(`${coreApi.ordersUrl}/${orderId}`, {
                 method: "PATCH",
                 headers: {
                     Accept: 'application/json',
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
                 },
                 body: requestBody
             });

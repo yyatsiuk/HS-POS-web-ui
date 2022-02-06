@@ -23,7 +23,12 @@ class ProductApi {
     async getProducts(options) {
         let products = [];
         try {
-            const response = await fetch(coreApi.productsUrl);
+            const accessToken = window.localStorage.getItem('accessToken');
+            const response = await fetch(coreApi.productsUrl, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             products = await response.json();
         } catch (error) {
             console.log(error);
@@ -66,7 +71,12 @@ class ProductApi {
         }
 
         try {
-            const response = await fetch(`${coreApi.productsUrl}/${id}`);
+            const accessToken = window.localStorage.getItem('accessToken');
+            const response = await fetch(`${coreApi.productsUrl}/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             return await response.json();
         } catch (error) {
             console.log(error);
@@ -76,10 +86,12 @@ class ProductApi {
 
     async createProduct(payload) {
         try {
-            const response = await fetch(coreApi.productsUrl, {
+            const accessToken = window.localStorage.getItem('accessToken');
+            await fetch(coreApi.productsUrl, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
                 },
                 body: JSON.stringify(payload)
             });
@@ -91,10 +103,12 @@ class ProductApi {
 
     async updateProduct(payload, id) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const response = await fetch(`${coreApi.productsUrl}/${id}`, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
                 },
                 body: JSON.stringify(payload)
             });
@@ -109,7 +123,12 @@ class ProductApi {
     async getAllCategories() {
         let categories = [];
         try {
-            const response = await fetch(coreApi.productCategoriesUrl);
+            const accessToken = window.localStorage.getItem('accessToken');
+            const response = await fetch(coreApi.productCategoriesUrl, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             categories = await response.json();
         } catch (error) {
             console.log(error);
@@ -121,8 +140,12 @@ class ProductApi {
 
     async deleteProduct(productId) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             await fetch(`${coreApi.productsUrl}/${productId}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
             });
         } catch (error) {
             console.error(error);

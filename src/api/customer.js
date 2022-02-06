@@ -57,7 +57,12 @@ class CustomerApi {
     async getCustomers(options) {
         let customers = [];
         try {
-            const response = await fetch(coreApi.customersUrl);
+            const accessToken = window.localStorage.getItem('accessToken');
+            const response = await fetch(coreApi.customersUrl, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             customers = await response.json()
         } catch (error) {
             console.log(error);
@@ -106,8 +111,13 @@ class CustomerApi {
             return emptyCustomer;
         }
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const url = `${coreApi.customersUrl}/${customerId}`;
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             return await response.json();
         } catch (error) {
             console.log(error);
@@ -117,10 +127,12 @@ class CustomerApi {
 
     async crateCustomer(payload) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const response = await fetch(coreApi.customersUrl, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
                 },
                 body: JSON.stringify(payload)
             });
@@ -133,10 +145,12 @@ class CustomerApi {
 
     async updateCustomer(payload, id) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             const response = await fetch(`${coreApi.customersUrl}/${id}`, {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
                 },
                 body: JSON.stringify(payload)
             });
@@ -150,8 +164,12 @@ class CustomerApi {
 
     async deleteCustomer(id) {
         try {
+            const accessToken = window.localStorage.getItem('accessToken');
             await fetch(`${coreApi.customersUrl}/${id}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
             });
         } catch (error) {
             console.error(error);
@@ -166,7 +184,12 @@ class CustomerApi {
 
         let customerOrders = [];
         try {
-            const response = await fetch(`${coreApi.customersUrl}/${customerId}/orders`);
+            const accessToken = window.localStorage.getItem('accessToken');
+            const response = await fetch(`${coreApi.customersUrl}/${customerId}/orders`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
             customerOrders = await response.json()
         } catch (error) {
             console.log(error);

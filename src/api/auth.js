@@ -1,40 +1,35 @@
 import {generateResourceId} from '../utils/generate-resource-id';
-import {sign, decode, JWT_SECRET, JWT_EXPIRES_IN} from '../utils/jwt';
+import {decode, JWT_EXPIRES_IN, JWT_SECRET, sign} from '../utils/jwt';
 import {wait} from '../utils/wait';
+import {coreApi} from "../config";
 
 const users = [
     {
         id: '5e86809283e28b96d2d38537',
-        avatar: '/static/user-chen_simmons.png',
+        avatarUrl: '/static/user-chen_simmons.png',
         email: 'demo@devias.io',
-        name: 'Kate Heida',
+        fullName: 'Kate Heida',
         password: 'Password123!'
     }
 ];
 
 class AuthApi {
     async login({email, password}) {
-        await wait(500);
 
-        return new Promise((resolve, reject) => {
-            try {
-                // Find the user
-                const user = users.find((_user) => _user.email === email);
-
-                if (!user || (user.password !== password)) {
-                    reject(new Error('Please check your email and password'));
-                    return;
-                }
-
-                // Create the access token
-                const accessToken = sign({userId: user.id}, JWT_SECRET, {expiresIn: JWT_EXPIRES_IN});
-
-                resolve(accessToken);
-            } catch (err) {
-                console.error('[Auth Api]: ', err);
-                reject(new Error('Internal server error'));
-            }
-        });
+        try {
+            const response = await fetch(coreApi.authUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({username: email, password: password})
+            });
+            const json = await response.json();
+            const {accessToken} = json;
+            return accessToken;
+        } catch (error) {
+            throw new Error('Please check your email and password')
+        }
     }
 
     async register({email, name, password}) {
@@ -70,31 +65,31 @@ class AuthApi {
         });
     }
 
-    me(accessToken) {
-        return new Promise((resolve, reject) => {
-            try {
-                // Decode access token
-                const {userId} = decode(accessToken);
+    async me(accessToken) {
+        // Decode access token
 
-                // Find the user
-                const user = users.find((_user) => _user.id === userId);
+        const decodedToken = decode(accessToken);
+        const userId = decodedToken.sub;
 
-                if (!user) {
-                    reject(new Error('Invalid authorization token'));
-                    return;
+        try {
+            const url = `${coreApi.usersUrl}/${userId}`;
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
                 }
-
-                resolve({
-                    id: user.id,
-                    avatar: user.avatar,
-                    email: user.email,
-                    name: user.name
-                });
-            } catch (err) {
-                console.error('[Auth Api]: ', err);
-                reject(new Error('Internal server error'));
+            });
+            const user = response.json();
+            return {
+                id: user.id,
+                avatar: user.avatarUrl,
+                email: user.email,
+                name: user.fullName
             }
-        });
+        } catch (error) {
+            console.log(error);
+            throw new Error("Unsuccessful response from the server")
+        }
+
     }
 }
 
