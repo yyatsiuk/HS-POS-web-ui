@@ -53,7 +53,7 @@ export const ProductCreateDialog = (props) => {
         },
         validationSchema: Yup.object().shape({
             description: Yup.string().max(500),
-            name: Yup.string().max(255).required('Name is required'),
+            name: Yup.string().max(255).required('Product name is required'),
             category: Yup.string().required("Category is required"),
             price: Yup.number().min(0).required("Price is required"),
             imageUrl: Yup.string(),

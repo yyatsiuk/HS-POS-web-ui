@@ -3,6 +3,7 @@ import {Button, Typography} from '@material-ui/core';
 import {styled} from '@material-ui/core/styles';
 import {Plus as PlusIcon} from '../icons/plus';
 import {QuestionMarkOutlined as QuestionMarkIcon} from '../icons/question-mark-outlined';
+import {useTranslation} from "react-i18next";
 
 const ResourceUnavailableRoot = styled('div')(({theme}) => ({
     alignItems: 'center',
@@ -15,6 +16,7 @@ const ResourceUnavailableRoot = styled('div')(({theme}) => ({
 
 export const ResourceUnavailable = (props) => {
     const {onCreate, ...other} = props;
+    const {t} = useTranslation();
 
     return (
         <ResourceUnavailableRoot {...other}>
@@ -24,7 +26,7 @@ export const ResourceUnavailable = (props) => {
                 sx={{mt: 2}}
                 variant="body2"
             >
-                There are not objects here yet.
+                {t("There are not objects here yet.")}
             </Typography>
             {onCreate && (
                 <Button
