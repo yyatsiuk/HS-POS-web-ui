@@ -53,7 +53,7 @@ const statusOptions = [
 ];
 
 export const OrderStatus = (props) => {
-    const {order, ...other} = props;
+    const {order, onMarkAsPaid, ...other} = props;
     const {orderId} = useParams();
     const [markDialogOpen, handleOpenMarkDialog, handleCloseMarkDialog] = useDialog();
     const [status, setStatus] = useState(order?.status || '');
@@ -71,9 +71,10 @@ export const OrderStatus = (props) => {
         toast.success('Changes saved');
     };
 
-    const handleMark = () => {
+    const handleMark = async () => {
+        await orderApi.partialUpdateOrder(orderId, {paymentStatus: "PAID"});
+        onMarkAsPaid();
         handleCloseMarkDialog();
-        toast.error(t('This action is not available on demo'));
     };
 
     return (

@@ -34,7 +34,6 @@ export const Order = () => {
         requestMethod(getProducts, setProductsState).catch(console.error);
     }, []);
 
-    console.log(orderState.data);
     useEffect(() => {
         getOrder().catch(console.error);
     }, []);
@@ -43,7 +42,7 @@ export const Order = () => {
         gtm.push({event: 'page_view'});
     }, []);
 
-    const handleMark = () => {
+    const handleMarkAsDuplicate = () => {
         toast.error('This action is not available on demo');
     };
 
@@ -55,10 +54,23 @@ export const Order = () => {
         toast.error('This action is not available on demo');
     };
 
+    const handleMarkAsPaid = () => {
+        setOrderState(prevState => {
+            return {
+                ...prevState,
+                data: {
+                    ...prevState.data,
+                    paymentStatus: "PAID"
+                }
+            }
+        });
+    }
+
+
     const actions = [
         {
             label: 'Mark as Duplicate',
-            onClick: handleMark
+            onClick: handleMarkAsDuplicate
         },
         {
             label: 'Cancel Order',
@@ -178,7 +190,7 @@ export const Order = () => {
                             item
                             xs={12}
                         >
-                            <OrderStatus order={orderState.data}/>
+                            <OrderStatus order={orderState.data} onMarkAsPaid={handleMarkAsPaid}/>
                         </Grid>
                     </Grid>
                 </Grid>
