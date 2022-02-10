@@ -9,11 +9,13 @@ import {ExclamationOutlined as ExclamationOutlinedIcon} from '../icons/exclamati
 import {ShoppingCart as ShoppingCartIcon} from '../icons/shopping-cart';
 import {useTranslation} from "react-i18next";
 import useHttp from "../hooks/use-http";
+import {currency} from "../config";
+import numeral from "numeral";
 
-// NOTE: This should be generated based on user data
 const stats = [
     {
-        content: 'Зереєстрований з: Apr 2021',
+        label: 'Since',
+        value: '',
         icon: (
             <CalendarIcon
                 fontSize="small"
@@ -22,7 +24,8 @@ const stats = [
         )
     },
     {
-        content: 'К-сть замовлень: 17',
+        label: 'Orders',
+        value: '',
         icon: (
             <ShoppingCartIcon
                 fontSize="small"
@@ -31,7 +34,8 @@ const stats = [
         )
     },
     {
-        content: 'Витрачено: $69.00',
+        label: 'Spent',
+        value: '',
         icon: (
             <CashIcon
                 fontSize="small"
@@ -59,7 +63,6 @@ export const Customer = () => {
     const {t} = useTranslation();
     const requestMethod = useHttp();
 
-    console.log(customerId);
     const getCustomerById = () => customerApi.getCustomer(customerId === ":id" ? null : customerId);
 
     const getCustomer = useCallback(async () => {
@@ -69,6 +72,13 @@ export const Customer = () => {
     useEffect(() => {
         getCustomer().catch(console.error);
     }, []);
+
+
+    if (customerState.data) {
+        stats[0].value = t("formattedDate", {date: new Date(customerState?.data.createdAt)})
+        stats[1].value = customerState?.data.purchasesNumber;
+        stats[2].value = `${currency.symbol}${numeral(customerState?.data.purchasesAmount).format(`0,0.00`)}`
+    }
 
     const renderContent = () => {
         if (customerState.isLoading) {
@@ -142,10 +152,10 @@ export const Customer = () => {
                         }}
                         wrap="wrap"
                     >
-                        {stats.map(({content, icon}) => (
+                        {stats.map(({label, value, icon}) => (
                             <Grid
                                 item
-                                key={content}
+                                key={label}
                                 sx={{
                                     alignItems: 'center',
                                     display: 'flex',
@@ -161,7 +171,7 @@ export const Customer = () => {
                                     sx={{ml: 0.5}}
                                     variant="body2"
                                 >
-                                    {content}
+                                    {`${t(label)}: ${value}`}
                                 </Typography>
                             </Grid>
                         ))}

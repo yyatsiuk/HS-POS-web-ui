@@ -125,6 +125,8 @@ const resources = {
             "Full name is required": "Повне ім'я є обовязковим полем",
             "There are not objects here yet.": "Тут ще немає об'єктів",
 
+            Since: "Зареєстрований",
+            Spent: "Витрачено",
             Register: "Реєстрація",
             Login: "Логін",
             Password: "Пароль",
