@@ -18,7 +18,6 @@ class ImageApi {
 
         const {url} = await response.json();
         return url;
-
     }
 
 }

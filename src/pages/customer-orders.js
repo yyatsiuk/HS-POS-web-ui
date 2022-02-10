@@ -107,7 +107,7 @@ export const CustomerOrders = () => {
     const httpRequest = useHttp();
     const {t} = useTranslation();
 
-    const getCustomerOrders = () => customerApi.getCustomerOrders(customerId === ":id" ? null : customerId, {
+    const getCustomerOrders = () => customerApi.getCustomerOrders(customerId, {
         sort: controller.sort,
         sortBy: controller.sortBy
     });

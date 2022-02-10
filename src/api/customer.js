@@ -1,56 +1,7 @@
-import {subMinutes} from 'date-fns';
 import {coreApi} from '../config';
 import {applyFilters} from '../utils/apply-filters';
 import {applyPagination} from '../utils/apply-pagination';
 import {applySort} from '../utils/apply-sort';
-
-const now = new Date();
-
-const emptyCustomer = {
-    id: null,
-    address: "Україна, Тернопіль",
-    instagram: "https://instagram.com/instagram?utm_medium=copy_link",
-    fullName: "Ім'я Прізвище",
-    phone: "0980000000",
-}
-
-const defaultCusomterOrders = [
-    {
-        "id": "0",
-        "lineItems": [],
-        "prepaymentAmount": 0,
-        "subtotalAmount": 0,
-        "totalAmount": 0,
-        "customer": {
-            "id": 7,
-            "fullName": "Ім'я Прізвище",
-            "instagram": "https://instagram.com/test?utm_medium=copy_link",
-            "address": "Ternopil",
-            "phone": "0680000000",
-            "createdAt": "2022-01-17T15:42:18.497451",
-            "updatedAt": "2022-01-21T22:08:43.055751"
-        },
-        "status": "PLACED",
-        "paymentStatus": "UNPAID",
-        "address": "м. Тернопіль",
-        "courier": "Nova Poshta",
-        "branchNumber": "12",
-        "trackingCode": null,
-        "createdAt": "2022-01-27T22:21:59.525072",
-        "updatedAt": "2022-01-27T22:21:59.526215"
-    }
-];
-
-const customerNotes = [
-    {
-        id: '2',
-        content: 'Дуже вредна чайка!',
-        createdAt: subMinutes(now, 78),
-        senderAvatar: 's3://heida-pos/products/images/user-kate-heida.png',
-        senderId: '1',
-        senderName: 'Kate Heida'
-    }
-];
 
 class CustomerApi {
     async getCustomers(options) {
@@ -106,9 +57,6 @@ class CustomerApi {
     }
 
     async getCustomer(customerId) {
-        if (customerId === null) {
-            return emptyCustomer;
-        }
         try {
             const accessToken = window.localStorage.getItem('accessToken');
             const url = `${coreApi.customersUrl}/${customerId}`;
@@ -177,10 +125,6 @@ class CustomerApi {
     }
 
     async getCustomerOrders(customerId, options = {}) {
-        if (!customerId) {
-            return defaultCusomterOrders;
-        }
-
         let customerOrders = [];
         try {
             const accessToken = window.localStorage.getItem('accessToken');

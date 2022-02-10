@@ -23,10 +23,6 @@ const items = [
             {
                 href: '/dashboard/orders/create',
                 title: 'Create'
-            },
-            {
-                href: '/dashboard/orders/:id',
-                title: 'Summary'
             }
         ]
     },
@@ -37,14 +33,6 @@ const items = [
             {
                 href: '/dashboard/customers',
                 title: 'List'
-            },
-            {
-                href: '/dashboard/customers/:id',
-                title: 'Summary'
-            },
-            {
-                href: '/dashboard/customers/:id/orders',
-                title: 'Orders'
             }
         ]
     },
@@ -55,10 +43,6 @@ const items = [
             {
                 href: '/dashboard/products',
                 title: 'List'
-            },
-            {
-                href: '/dashboard/products/:id',
-                title: 'Summary'
             }
         ]
     },

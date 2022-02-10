@@ -69,6 +69,7 @@ export const OrderInfoDialog = (props) => {
       instagram: order?.customer.instagram || '',
       phone: order?.customer.phone || '',
       status: order?.status || '',
+      note: order?.note || '',
       submit: null
     },
     validationSchema: Yup.object().shape({
@@ -77,7 +78,8 @@ export const OrderInfoDialog = (props) => {
       courierBranchNumber: Yup.string().max(5).required("Branch number is required"),
       instagram: Yup.string().max(255).required('Instagram is required'),
       phone: Yup.string().max(255).required('Phone number is required'),
-      status: Yup.string().max(255).required('Status is required')
+      status: Yup.string().max(255).required('Status is required'),
+      note: Yup.string().max(500)
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -236,6 +238,23 @@ export const OrderInfoDialog = (props) => {
               </FormHelperText>
             </Grid>
           )}
+          <Grid
+              item
+              xs={12}
+          >
+            <InputField
+                error={Boolean(formik.touched.note && formik.errors.note)}
+                fullWidth
+                helperText={formik.touched.note && formik.errors.note}
+                label={t("Additional Notes")}
+                multiline
+                name="note"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                rows={4}
+                value={formik.values.note}
+            />
+          </Grid>
         </Grid>
       </DialogContent>
       <DialogActions>

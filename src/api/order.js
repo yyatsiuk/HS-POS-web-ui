@@ -3,31 +3,6 @@ import {applyFilters} from '../utils/apply-filters';
 import {applyPagination} from '../utils/apply-pagination';
 import {applySort} from '../utils/apply-sort';
 
-const order = {
-    "id": "0",
-    "lineItems": [],
-    "prepaymentAmount": 0,
-    "subtotalAmount": 0,
-    "totalAmount": 0,
-    "customer": {
-        "id": 7,
-        "fullName": "Ім'я Прізвище",
-        "instagram": "https://instagram.com/test?utm_medium=copy_link",
-        "address": "Ternopil",
-        "phone": "0680000000",
-        "createdAt": "2022-01-17T15:42:18.497451",
-        "updatedAt": "2022-01-21T22:08:43.055751"
-    },
-    "status": "PLACED",
-    "paymentStatus": "UNPAID",
-    "address": "м. Тернопіль",
-    "courier": "Nova Poshta",
-    "branchNumber": "12",
-    "trackingCode": null,
-    "createdAt": "2022-01-27T22:21:59.525072",
-    "updatedAt": "2022-01-27T22:21:59.526215"
-};
-
 class OrderApi {
     async getOrders(options) {
         let orders = [];
@@ -75,9 +50,6 @@ class OrderApi {
     }
 
     async getOrderById(orderId) {
-        if (orderId === null) {
-            return order;
-        }
         try {
             const accessToken = window.localStorage.getItem('accessToken');
             const url = `${coreApi.ordersUrl}/${orderId}`;

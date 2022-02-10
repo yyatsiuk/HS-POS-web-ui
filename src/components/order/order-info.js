@@ -126,6 +126,15 @@ export const OrderInfo = (props) => {
                     />
                 </Grid>
             </Grid>
+            {order.note && (
+                <Grid container>
+                    <PropertyListItem
+                        label={t("Additional Notes")}
+                        value={t(order.note)}
+                    />
+                </Grid>
+            )}
+
         </Card>
     );
 };

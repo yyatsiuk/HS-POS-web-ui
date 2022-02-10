@@ -19,8 +19,8 @@ export const CustomerSummary = () => {
     const [openInfoDialog, setOpenInfoDialog] = useState(false);
     const requestMethod = useHttp()
 
-    const getCustomer = () => customerApi.getCustomer(customerId === ":id" ? null : customerId);
-    const getCustomerOrders = () => customerApi.getCustomerOrders();
+    const getCustomer = () => customerApi.getCustomer(customerId);
+    const getCustomerOrders = () => customerApi.getCustomerOrders(customerId);
     const getCustomerNotes = () => customerApi.getCustomerNotes(customerId);
 
     useEffect(() => {

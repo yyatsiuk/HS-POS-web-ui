@@ -1,23 +1,7 @@
-import {subDays, subHours, subMinutes} from 'date-fns';
 import {coreApi} from '../config';
 import {applyFilters} from '../utils/apply-filters';
 import {applyPagination} from '../utils/apply-pagination';
 import {applySort} from '../utils/apply-sort';
-
-const now = new Date();
-
-const emptyProduct = {
-    id: '6541237',
-    code: 'HSLE2KLPMF',
-    createdAt: subDays(subHours(subMinutes(now, 60), 13), 30),
-    description: 'The Core Collection. Our premium line of watches with a minimalist and timeless look. Designed in the UK and perfect for everyday use. This is our black on black leather. The stainless steel case has a brushed matt black finish with a subtle reflective dial. The hands and numbers are in a shiny gun metal finish.',
-    imageUrl: '/static/product-01.png',
-    name: 'Watch With Leather Strap',
-    price: 160,
-    category: "Electronics",
-    status: 'IN_STOCK',
-    updatedAt: new Date()
-};
 
 class ProductApi {
     async getProducts(options) {
@@ -41,7 +25,6 @@ class ProductApi {
          NOTE: Query, filter, sort and pagination are operation meant to be executed on the server.
          Since this does not connect to a real backend, we simulate these operations.
          */
-
         const queriedProducts = products.filter((_product) => {
             if (!!query && !_product.name.toLowerCase().includes(query.toLowerCase())) {
                 return false;
@@ -66,10 +49,6 @@ class ProductApi {
     }
 
     async getProduct(id) {
-        if (id === null) {
-            return emptyProduct;
-        }
-
         try {
             const accessToken = window.localStorage.getItem('accessToken');
             const response = await fetch(`${coreApi.productsUrl}/${id}`, {

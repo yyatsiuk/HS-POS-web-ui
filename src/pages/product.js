@@ -26,7 +26,7 @@ export const Product = () => {
     const {t} = useTranslation();
     const requestMethod = useHttp();
 
-    const getProductById = () => productApi.getProduct(productId === ":id" ? null : productId);
+    const getProductById = () => productApi.getProduct(productId);
     const getCategories = () => productApi.getAllCategories();
 
     const getProduct = useCallback(async () => {

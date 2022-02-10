@@ -26,7 +26,7 @@ export const Order = () => {
     const requestMethod = useHttp();
     const {t} = useTranslation();
 
-    const getOrderById = () => orderApi.getOrderById(orderId === ":id" ? null : orderId);
+    const getOrderById = () => orderApi.getOrderById(orderId);
     const getProducts = () => productApi.getProducts({});
 
     const getOrder = useCallback(async () => {

@@ -3,8 +3,8 @@ import {decode, JWT_EXPIRES_IN, JWT_SECRET, sign} from '../utils/jwt';
 import {wait} from '../utils/wait';
 import {coreApi} from "../config";
 
-
 class AuthApi {
+
     async login({email, password}) {
 
         try {
