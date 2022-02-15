@@ -225,7 +225,7 @@ export const CustomerOrders = () => {
                                                 </Link>
                                             </TableCell>
                                             <TableCell>
-                                                {order.customer.phone}
+                                                {order.phone}
                                             </TableCell>
                                             <TableCell>
                                                 <Typography

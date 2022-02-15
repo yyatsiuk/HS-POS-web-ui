@@ -212,7 +212,7 @@ export const OrdersTable = (props) => {
                                         </Link>
                                     </TableCell>
                                     <TableCell>
-                                        {order.customer.phone}
+                                        {order.phone}
                                     </TableCell>
                                     <TableCell>
                                         <Typography

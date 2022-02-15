@@ -110,6 +110,8 @@ export const OrderCreate = () => {
                     {
                         customerId: values.customer.id,
                         address: values.deliveryAddress,
+                        phone: values.phone,
+                        note: values.note,
                         courier: values.courierName,
                         branchNumber: values.courierBranchNumber,
                         prepaymentAmount: values.prepayment,

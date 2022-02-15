@@ -101,7 +101,7 @@ export const OrderInfo = (props) => {
                         />
                         <PropertyListItem
                             label={t("Phone")}
-                            value={order.customer.phone}
+                            value={order.phone}
                         />
                     </PropertyList>
                 </Grid>
